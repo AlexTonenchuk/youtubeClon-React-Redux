@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/youtubeClon-React-Redux/static/css/main.479f4414.css",
+    "main.js": "/youtubeClon-React-Redux/static/js/main.12e1594b.js",
+    "static/media/Nirvana - You Know Youre Right.mp4": "/youtubeClon-React-Redux/static/media/Nirvana - You Know Youre Right.7958e0ac157963449edb.mp4",
+    "static/media/Feeder - Just A Day.mp4": "/youtubeClon-React-Redux/static/media/Feeder - Just A Day.b870ab64b20debf61b8b.mp4",
+    "static/media/Green Day - Wake Me Up When September Ends.mp4": "/youtubeClon-React-Redux/static/media/Green Day - Wake Me Up When September Ends.beb596eb7594f12f4636.mp4",
+    "static/media/Ozzy Osbourne - I dont wanna stop.mp4": "/youtubeClon-React-Redux/static/media/Ozzy Osbourne - I dont wanna stop.c854730033220c270bf7.mp4",
+    "static/media/Ill Nino - What Comes Around.mp4": "/youtubeClon-React-Redux/static/media/Ill Nino - What Comes Around.ac086d229d7fe25e7754.mp4",
+    "static/media/Iron Maiden - The Trooper.mp4": "/youtubeClon-React-Redux/static/media/Iron Maiden - The Trooper.38984cc2b5b39c0adab1.mp4",
+    "static/media/Korn - Word Up.mp4": "/youtubeClon-React-Redux/static/media/Korn - Word Up.135b55a54ebd0b55a0e5.mp4",
+    "static/media/Kiss - I Was Made For Lovin You.mp4": "/youtubeClon-React-Redux/static/media/Kiss - I Was Made For Lovin You.b4c33a57d3a9d47bddad.mp4",
+    "static/media/Limp Bizkit - Nookie.mp4": "/youtubeClon-React-Redux/static/media/Limp Bizkit - Nookie.708d1ee95cd5882ac2fe.mp4",
+    "static/media/Metallica - Whiskey In The Jar.mp4": "/youtubeClon-React-Redux/static/media/Metallica - Whiskey In The Jar.b68ae0c5001a2d41081b.mp4",
+    "static/media/Limp Bizkit - Break Stuff.mp4": "/youtubeClon-React-Redux/static/media/Limp Bizkit - Break Stuff.fac476600a415d19e80a.mp4",
+    "static/media/Limp Bizkit - Nookie.png": "/youtubeClon-React-Redux/static/media/Limp Bizkit - Nookie.725dcc856649ee30f304.png",
+    "static/media/Feeder - Just A Day.png": "/youtubeClon-React-Redux/static/media/Feeder - Just A Day.2a51591300c50c8c66b4.png",
+    "static/media/Ozzy Osbourne - I dont wanna stop.png": "/youtubeClon-React-Redux/static/media/Ozzy Osbourne - I dont wanna stop.8ff9ab6dc0b9cd0742c8.png",
+    "static/media/Limp Bizkit - Break Stuff.png": "/youtubeClon-React-Redux/static/media/Limp Bizkit - Break Stuff.91b12134c57976985605.png",
+    "static/media/Korn - Word Up.png": "/youtubeClon-React-Redux/static/media/Korn - Word Up.7a13ca49896375197fd3.png",
+    "static/media/Ill Nino - What Comes Around.png": "/youtubeClon-React-Redux/static/media/Ill Nino - What Comes Around.e4948de3af8d8e783806.png",
+    "static/media/Nirvana - You Know Youre Right.png": "/youtubeClon-React-Redux/static/media/Nirvana - You Know Youre Right.ed400d97342b3ce2be88.png",
+    "static/media/Green Day - Wake Me Up When September Ends.png": "/youtubeClon-React-Redux/static/media/Green Day - Wake Me Up When September Ends.4a2211ef8e604a358b1c.png",
+    "static/media/Metallica - Whiskey In The Jar.png": "/youtubeClon-React-Redux/static/media/Metallica - Whiskey In The Jar.cc82064498eab2d7d508.png",
+    "static/media/Kiss - I Was Made For Lovin You.png": "/youtubeClon-React-Redux/static/media/Kiss - I Was Made For Lovin You.dd9118db02c5483b2da3.png",
+    "static/media/Iron Maiden - The Trooper.png": "/youtubeClon-React-Redux/static/media/Iron Maiden - The Trooper.4ec7419afa328963c74f.png",
+    "index.html": "/youtubeClon-React-Redux/index.html",
+    "static/media/Ozzy Osbourne - I dont wanna stop.wtt": "/youtubeClon-React-Redux/static/media/Ozzy Osbourne - I dont wanna stop.90d4638642b4e8d45a83.wtt",
+    "static/media/Metallica - Whiskey In The Jar.wtt": "/youtubeClon-React-Redux/static/media/Metallica - Whiskey In The Jar.92169f77ab4a7de549a7.wtt",
+    "static/media/Iron Maiden - The Trooper.wtt": "/youtubeClon-React-Redux/static/media/Iron Maiden - The Trooper.d4314d668e1f2d8a7c63.wtt",
+    "main.479f4414.css.map": "/youtubeClon-React-Redux/static/css/main.479f4414.css.map",
+    "main.12e1594b.js.map": "/youtubeClon-React-Redux/static/js/main.12e1594b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.479f4414.css",
+    "static/js/main.12e1594b.js"
+  ]
+}

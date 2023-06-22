@@ -1,4 +1,36 @@
 import React from 'react';
+import { HeaderApp } from './features/headerApp/HeaderApp';
+import { Categories } from './features/categories/Categories';
+import { ListVideos } from './features/listVideos/ListVideos';
+
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+      <HeaderApp/>
+      <Categories/>
+      <ListVideos/>
+    </div>
+  );
+}
+
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*import React from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import './App.css';
@@ -56,3 +88,4 @@ function App() {
 }
 
 export default App;
+*/

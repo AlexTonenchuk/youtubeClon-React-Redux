@@ -1,0 +1,105 @@
+.categories {
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    margin-left: 100px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border: 1px solid rgba(209, 228, 40, 0.11);
+    padding: 5px;
+}
+
+.wrap button:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b);
+}
+
+
+.conteiner {
+    border: 1px solid rgba(197, 108, 108, 0.103);
+    overflow: hidden;
+    overflow-y: hidden;
+    margin-left: 2px;
+    width: 100%;
+
+}
+
+.wrap {
+    width: max-content;
+    margin: 5px;
+    border: 1px solid rgba(41, 173, 92, 0.205);
+    transition: margin-left 0.3s;
+}
+
+.conteiner button {
+    height: 32px;
+    margin-left: 6px;
+    margin-right: 6px;
+    border: 0px;
+    border-radius: 8px;
+    font-size: 14px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.allCategoriesBtn {
+    background-color: rgb(31, 31, 31);
+    color: rgb(214, 214, 214);
+}
+
+.rightBtn {
+    min-width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 0px;
+    padding: 0;
+    background-image: url(forward.png);
+    background-repeat: no-repeat;
+    background-size: 150%;
+    background-position: center;
+    cursor: pointer;
+    position: relative;
+    box-shadow: -9px 0px 10px 10px  rgba(255, 255, 255, 0.945);
+
+}
+
+.rightBtn:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(forward.png);
+}
+
+.leftBtn {
+    min-width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 0px;
+    padding: 0;
+    background-image: url(back.png);
+    background-repeat: no-repeat;
+    background-size: 150%;
+    background-position: center;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 9px 0px 10px 10px  rgba(255, 255, 255, 0.945);
+}
+
+.leftBtn:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(back.png);
+}
+
+.hide {
+    display:none;
+}
+
+.prompt {
+    width:max-content;
+    padding: 10px 5px 10px 5px;
+    border: 0px;
+    border-radius: 5px;
+    position: absolute;
+    top: 60px;
+    left: 0px;
+    background-color: rgb(112, 112, 112);
+    color: rgb(241, 241, 241);
+    opacity: 0.95;
+}
+
+

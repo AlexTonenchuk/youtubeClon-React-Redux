@@ -1,0 +1,238 @@
+.mainContainer {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    border: 1px solid #ececec;
+}
+
+.hide {
+    display: none;
+}
+
+.sideBarBtn {
+    position: relative;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 0px;
+    padding: 0;
+    margin-left: 30px;
+    background-image: url(sideBarBtn.png);
+    background-repeat: no-repeat;
+    background-size: 150%;
+    background-position: center;
+    cursor: pointer;
+}
+
+.sideBarBtn:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(sideBarBtn.png);
+}
+
+.logo {
+    height: 20px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.leftContainer {
+    display: flex;
+    align-items: center;
+    border: 1px solid #f1f1f152;
+    margin-right: 30px;
+}
+
+.rightContainer {
+    display: flex;
+    align-items: center;
+    border: 1px solid #f1f1f152;
+    margin-left: 30px;
+}
+
+.centralContainer {
+    display: flex;
+    align-items:center;
+    justify-content:flex-end;
+    border: 1px solid #eeeeee3f;
+    width: 600px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    position: relative;
+}
+.formNoActive {
+    display: flex;
+    align-items: center;
+    justify-content:flex-end;
+    border: 1px solid #cccccc;
+    height: 40px;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    padding: 3px;
+    position:relative;
+    width: 100%;
+    margin-left: 55px;
+}
+.formActive {
+    display: flex;
+    align-items: center;
+    justify-content:flex-end;
+    border: 1px solid #cccccc;
+    height: 40px;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    padding: 3px;
+    position:relative;
+    width: 100%;
+    margin-left: 15px;
+    }
+::placeholder {
+    color: #919191;
+}
+.searchLine {
+    padding-left: 15px;
+    height: 22px;
+    border: 0px solid #cccccc;
+    font-size: 17px;
+    width: 100%;
+    outline: none;
+}
+.searchLine:focus {
+    padding-left: 55px;
+    outline: none;
+}
+.loupeUnVisible {
+    display: none;
+}
+.loupeVisible {
+    width: 30px;
+    height: 30px;
+    border: 0;
+    position: absolute;
+    left: 15px;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    pointer-events: none;
+    background-image: url(loupe.png);
+    background-repeat: no-repeat;
+    background-size: 600%;
+    background-position: center;
+}
+
+.keyboardBtn {
+    min-width: 21px;
+    height: 13px;
+    border: 0px solid #cccccc;
+    padding: 0;
+    margin-right: 5px;
+    background: url(key.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+
+.closeBtnVisible {
+    min-width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 0px;
+    padding: 0;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-image: url(close.png);
+    background-repeat: no-repeat;
+    background-size: 120%;
+    background-position: center;
+    cursor: pointer;
+}
+
+.closeBtnVisible:hover {
+    background-image: url(close.png), linear-gradient(#cccccc3b, #cccccc3b);
+}
+
+.searchBtn {
+    min-width: 70px;
+    height: 48px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border: 1px solid #cccccc;
+    padding: 0;
+    background-image: linear-gradient(#cccccc27, #cccccc27), url(loupe.png);
+    background-repeat: no-repeat;
+    background-size: 300%;
+    background-position: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.searchBtn:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(loupe.png);
+}
+
+.microphoneBtn {
+    min-width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 0px;
+    padding: 0;
+    margin-left: 30px;
+    background-image: url(microphone.png);
+    background-repeat: no-repeat;
+    background-size: 150%;
+    background-position: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.microphoneBtn:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(microphone.png);
+}
+
+.settingsBtn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(228, 228, 228, 0.151);
+    padding: 0;
+    background-image: url(settingsBtn.png);
+    background-repeat: no-repeat;
+    background-size: 170%;
+    background-position: center;
+    cursor: pointer;
+    position: relative;
+}
+
+
+.prompt {
+    width: max-content;
+    padding: 10px 5px 10px 5px;
+    border: 0px;
+    border-radius: 5px;
+    position: absolute;
+    top: 60px;
+    left: -20px;
+    background-color: rgb(112, 112, 112);
+    color: rgb(241, 241, 241);
+    opacity: 0.95;
+}
+
+.entryBtn {
+    width: 100px;
+    height: 40px;
+    border-radius: 36px;
+    border: 1px solid #cccccc;
+    padding: 0;
+    margin-right: 30px;
+    background-color: white;
+    background-image: url(entry.png);
+    background-repeat: no-repeat;
+    background-size: 120%;
+    background-position: center;
+    cursor: pointer;
+}
+
+.entryBtn:hover {
+    background-image: linear-gradient(#a7d5fa25, #a7d5fa25), url(entry.png);
+}
+
+
+
+

@@ -1,6 +1,5 @@
 .videoList {
-    background-color: rgba(141, 141, 241, 0.096);
-    margin-left: 100px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }

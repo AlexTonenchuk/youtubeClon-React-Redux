@@ -1,0 +1,59 @@
+.sidebar {
+    height: max-content;
+    width: min-content;
+    margin-left: 8px;
+}
+
+.sidebarBtn {
+    width: 65px;
+    height: 70px;
+    border: 1px solid rgba(228, 228, 228, 0.144);
+    border-radius: 10px;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: white;
+    cursor:pointer;
+    position: relative;
+}
+
+.main {
+    background-image: url(main.png);
+}
+
+.main:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(main.png);
+}
+
+.shorts {
+    background-image: url(shorts.png);
+}
+
+.shorts:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(shorts.png);
+}
+
+.subscription {
+    background-image: url(subscription.png);
+}
+
+.subscription:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(subscription.png);
+}
+
+.library {
+    background-image: url(library.png);
+}
+
+.library:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(library.png);
+}
+
+.history {
+    background-image: url(history.png);
+}
+
+.history:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(history.png);
+}
+

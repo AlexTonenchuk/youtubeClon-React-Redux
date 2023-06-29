@@ -2,21 +2,47 @@ import React from 'react';
 import { HeaderApp } from './features/headerApp/HeaderApp';
 import { Categories } from './features/categories/Categories';
 import { ListVideos } from './features/listVideos/ListVideos';
-
-import './App.css';
+import { Sidebar } from './features/sidebar/Sidebar';
+import { BrowserRouter, Routes, Route  } from 'react-router-dom';
+import { TestCanal } from     './features/testCanal/TestCanal';
+import { TestVideoPage } from './features/testVideoPage/TestVideoPage';
+import styles from './App.module.css';
 
 function App() {
-  return (
-    <div className="App">
-      <HeaderApp/>
-      <Categories/>
-      <ListVideos/>
-    </div>
-  );
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route 
+            path="/" 
+            element = {
+              <div className="App">
+                <HeaderApp/>
+                <Categories/>
+                <div className = {styles.rowFlexContainer}>
+                  <Sidebar/>
+                  <ListVideos/>
+                </div>
+              </div> 
+            } 
+          />
+
+          <Route 
+            path="/one/:id" 
+            element= { <TestCanal/>}
+          />
+
+          <Route 
+            path="/watch/:id" 
+            element= { <TestVideoPage/>}
+          />
+
+
+        </Routes>
+      </BrowserRouter>
+    );
 }
 
 export default App;
-
 
 
 

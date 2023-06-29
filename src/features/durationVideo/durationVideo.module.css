@@ -1,6 +1,7 @@
 .durationVideo {
     border: 1px solid rgba(59, 84, 194, 0.089);
     font-family: Arial, Helvetica, sans-serif;
+    padding: 3px;
 
     background-color: rgb(29, 29, 29);
     position: absolute;

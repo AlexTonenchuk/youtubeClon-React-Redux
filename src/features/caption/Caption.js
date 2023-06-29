@@ -4,6 +4,8 @@ import styles from './caption.module.css'
 import { selectVideoById } from '../listVideos/listVideosSlice'
 import { DateVideo } from '../dateVideo/DateVideo'
 import { IconCanal } from '../iconCanal/IconCanal'
+import { Link } from 'react-router-dom';
+
 
 
 export function Caption (props) {
@@ -13,11 +15,9 @@ export function Caption (props) {
     return (
         <div className={styles.rowFlexContainer}>
             
-
-            <IconCanal id = {props.id}/>
-
-
-
+                <div className={styles.container}>
+                    <IconCanal id = {props.id}/>
+                </div> 
             
             <div className={styles.rightContainer}>
                 <div className={styles.name}>   {videoData.name}      </div>

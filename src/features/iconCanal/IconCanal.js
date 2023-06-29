@@ -1,14 +1,13 @@
 import React from 'react'
 import styles from './iconCanal.module.css'
+import { Link } from 'react-router-dom';
 
 export function IconCanal (props) {
-    const openCanal =()=>{
-        console.dir(props.id)
-    }
     return (
-    <div 
-        className={styles.iconCanal}
-        onClick = {openCanal}>
-    </div>
+        <Link to={`/one/`+props.id}>
+            <div 
+                className={styles.iconCanal}>
+            </div>
+        </Link>
     )
 } 

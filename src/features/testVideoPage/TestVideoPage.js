@@ -1,29 +1,30 @@
 import React, { useRef, useState } from 'react'
-import styles from './video.module.css'
 import { selectVideoById } from '../listVideos/listVideosSlice'
 import { useSelector } from 'react-redux'
 import { DurationVideo } from '../durationVideo/DurationVideo'
-import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom'
+import styles from './testVideoPage.module.css'
 
 
-export function Video (props) {
-  const videoRef = useRef()
-  const [duration, setDuration] = useState('')
-  const putVideoDurationInState = () =>{
-    setDuration(videoRef.current.duration)
-    console.dir(videoRef.current)
-  }
-  const videoData = useSelector((state) => {
-    return selectVideoById(state, props.id)
-  })
+export function TestVideoPage () {
+    const id = useParams().id
+    const videoRef = useRef()
+    const [duration, setDuration] = useState('')
+    const putVideoDurationInState = () =>{
+        setDuration(videoRef.current.duration)
+        console.dir(videoRef.current)
+    }
+    const videoData = useSelector((state) => {
+        return selectVideoById(state, id)
+    })
   
   return (
-    <Link to={`/watch/`+props.id}>
-      <div className={styles.video}>
+    <div className={styles.video}>
         <video  
             ref={videoRef}
             poster={videoData.poster} 
             onLoadedMetadata={putVideoDurationInState}
+            controls
         >
             <source src={videoData.video}/>
             <track  
@@ -36,9 +37,10 @@ export function Video (props) {
             </track>
         </video>
         <DurationVideo duration={duration}/>
-      </div>
-
-    </Link>
-
+    </div>
   )
 }
+
+
+
+

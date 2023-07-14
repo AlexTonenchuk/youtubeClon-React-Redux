@@ -1,0 +1,88 @@
+.controlPan {
+    width: 100%;
+    height: 50px;
+    position: relative;
+    border: 1px solid red;
+    padding: 1px;
+}
+
+
+
+.hidden {
+    display: none;
+}
+
+
+
+.controlPan button {
+    width: 35px;
+    height: 30px;
+    border: 1px solid rgba(228, 228, 228, 0.144);
+    border-radius: 1px;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: white;
+    cursor:pointer;
+    position: relative;
+}
+
+
+
+
+.play {
+    background-image: url(play.png);
+}
+.play:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(play.png);
+}
+
+
+
+
+.pause {
+    background-image: url(pause.png);
+}
+.pause:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(pause.png);
+}
+
+
+
+.previosBtn {
+    background-image: url(previosBtn.png);
+}
+.previosBtn:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(previosBtn.png);
+}
+
+
+
+.nextBtn {
+    background-image: url(nextBtn.png);
+}
+.nextBtn:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(nextBtn.png);
+}
+
+
+
+.soundOned {
+    background-image: url(soundOned.png);
+}
+.soundOned:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(soundOned.png);
+}
+
+.soundOffed {
+    background-image: url(soundOffed.png);
+}
+.soundOffed:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(soundOffed.png);
+}
+
+
+
+
+
+

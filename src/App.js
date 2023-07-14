@@ -4,9 +4,9 @@ import { Categories } from './features/categories/Categories';
 import { ListVideos } from './features/listVideos/ListVideos';
 import { Sidebar } from './features/sidebar/Sidebar';
 import { BrowserRouter, Routes, Route  } from 'react-router-dom';
-import { TestCanal } from     './features/testCanal/TestCanal';
-import { TestVideoPage } from './features/testVideoPage/TestVideoPage';
+import { TestCanal } from './features/testCanal/TestCanal';
 import styles from './App.module.css';
+import { VideoMain } from './features/videoMain/VideoMain';
 
 function App() {
     return (
@@ -33,9 +33,8 @@ function App() {
 
           <Route 
             path="/watch/:id" 
-            element= { <TestVideoPage/>}
+            element= { <VideoMain/>}
           />
-
 
         </Routes>
       </BrowserRouter>

@@ -1,0 +1,14 @@
+.smallScreen{
+    width: 700px;
+    position: relative;
+}
+
+ video {
+    width: 100%;
+}
+
+.wideScreen{
+    width: 900px;
+    position: relative;
+}
+

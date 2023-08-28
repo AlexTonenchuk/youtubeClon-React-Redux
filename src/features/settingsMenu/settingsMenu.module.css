@@ -1,0 +1,58 @@
+
+.icon {
+    width: 35px;
+    height: 30px;
+    border: 1px solid rgba(228, 228, 228, 0.144);
+    border-radius: 1px;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgba(241, 196, 16, 0.925);
+    cursor:pointer;
+    position: relative;
+}
+
+.icon.anotation {
+    background-image: url(anotation.png);
+}
+
+.icon.subtitles {
+    background-image: url(subtitles.png);
+}
+
+.icon.quality {
+    background-image: url(quality.png);
+}
+
+.icon.speed {
+    background-image: url(speed.png);
+}
+
+.icon.switchOn {
+    background-image: url(switchOn.png);
+}
+
+.left {
+    background-color: rgb(245, 75, 23);
+    display: flex;
+    align-items: center;
+}
+
+.name {
+    background-color: rgb(50, 167, 21);
+    height: 20px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(233, 47, 87);
+}
+
+.right {
+    background-color: rgb(75, 206, 211);
+}
+
+.settings {
+    width: 500px;
+}

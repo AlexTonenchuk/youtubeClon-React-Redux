@@ -11,7 +11,6 @@ export function Video (props) {
   const [duration, setDuration] = useState('')
   const putVideoDurationInState = () =>{
     setDuration(videoRef.current.duration)
-    console.dir(videoRef.current)
   }
   const videoData = useSelector((state) => {
     return selectVideoById(state, props.id)

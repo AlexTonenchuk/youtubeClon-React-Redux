@@ -4,41 +4,122 @@ import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectVideoById } from '../listVideos/listVideosSlice'
 import styles from './videoMain.module.css'
+import { TimeTrack } from "../timeTrack/TimeTrack";
+
 
 export function VideoMain () {
-
     const id = useParams().id
     const videoData = useSelector((state) => selectVideoById(state, id))
-    
-    /* Это костыль наверное. Не знаю как правильно решить проблему конфликта: 
-    "video элемент загружается асинхронно, а ссылку на него передаем в компонент
-    ControlPan синхронно".
-    Поэтому использую useState таким образом:
-    Сначала рендерится компонент  VideoMain, он внутри себя синхронно рендерит 
-    компонент  ControlPan с пустой сылкой на video элемент, затем video 
-    элемент  доконца дозагружается и срабатывает обработчик onLoadedMetadata, 
-    который в локальном стейте обновляет ссылку на video элемент, соответственно
-    происходит перерендер VideoMain и => ControlPan уже с обновленной ссылкой 
-    на video элемент
-    */
     const ref = useRef()
-    const [videoRef, setVideoRef] = useState('video until loaded')
-    const updateVideoRef = () =>  setVideoRef(ref)
+
+    // инициализация стейта, 
+    // чтобы пропсами передать потомкам значения без андефайнед
+    const [state, setState] = useState ({
+        isPlay: false,
+        muted: false,
+        volume: 0.5,          // 0...1
+        isSubtitles: true,
+        speed: 1,
+        quality: 480,       // 360, 480, 720
+        size: 'normal',     // normal, mini, wide, full
+        currentTime: 0,
+        duration: 0,
+        paused: true,
+        wideScreen: false,
+    })
+
+    // в стейт перезаписываются асинхронно сформированные в эл. video значения 
+    const onLoadedMetadata = () => {
+        setState((state)=>(
+            {...state, 
+            muted: ref.current.muted,
+            duration: Math.floor(ref.current.duration),
+            }
+        ))
+    }
+
+    // в стейте постоянно обновляется текущее время ролика
+    // оно нужно для <CurrentTime/>
+    const changeCurrentTime=()=>{
+        setState(state =>(
+            {...state, 
+            currentTime: Math.floor(ref.current.currentTime)
+            }
+        ))
+    }
+
+    // управление play/paused элемента video
+    if (ref.current){
+        ref.current.muted = state.muted
+        ref.current.volume = state.volume
+        if (state.paused===true){ 
+            ref.current.pause()
+        } else if (state.paused===false){
+            ref.current.play()
+        }
+    } 
+
+    // обработчики событий, инициируемых пользователем
+    // т.е. функции изменения стейта, для передачи их в пропсы
+    const setCurrentTime=(time)=>{
+        ref.current.currentTime = time
+    }
+    const setVolume =(volume)=>{
+        setState((state)=>({...state, volume: volume}))
+    }
+    const toggleMuted = () => {
+        setState((state)=>({...state, muted: !state.muted}))
+    }
+    const toggleWideScreen = () => {
+        setState((state)=>({...state, wideScreen: !state.wideScreen}))
+    }
+    const toggleSubtitles = () => {
+        setState(state =>({...state, isSubtitles: !state.isSubtitles}))
+    }
+    const togglePlayPause=()=>{
+        setState((state)=>({...state, paused: !state.paused}))
+    }    
+
+    //управление стилями <VideoMain/>
+    let videoMainClass
+    if (state.wideScreen === true) { 
+        videoMainClass=styles.wideScreen
+    } else if (state.wideScreen === false){
+        videoMainClass=styles.smallScreen
+    }
+
+    // UI
     return (
-        <div className={styles.videoMain}>
-            <video  
+        <div className={videoMainClass}>
+            <video
                 ref={ref}
-                onLoadedMetadata={updateVideoRef}     >
+                onLoadedMetadata={onLoadedMetadata}
+                onTimeUpdate ={changeCurrentTime }
+                >
                 <source src={videoData.video}/>
-                <track  
-                    kind="subtitles" 
+                <track
+                    kind={state.isSubtitles===true?'subtitles':''}
                     src={videoData.subtitles}
                     srcLang="ru"
                     default   
-                    label="Русский"    >
+                    label="Русский"       >
                 </track>
             </video>
-            <ControlPan video={videoRef.current}  />
+            <ControlPan 
+                currentTime={state.currentTime}
+                duration={state.duration}
+                isSubtitles={state.isSubtitles}
+                muted={state.muted}
+                setVolume={setVolume}
+                setCurrentTime={setCurrentTime}
+                toggleMuted={toggleMuted}
+                togglePlayPause={togglePlayPause}
+                toggleWideScreen={toggleWideScreen}
+                toggleSubtitles={toggleSubtitles}
+                paused={state.paused}
+                volume={state.volume}
+                wideScreen={state.wideScreen}
+            />
         </div>    
     )
 } 

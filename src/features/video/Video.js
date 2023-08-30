@@ -17,7 +17,8 @@ export function Video (props) {
   })
   
   return (
-    <Link to={`/watch/`+props.id}>
+    <Link  reloadDocument to={`/video/`+props.id}
+      >
       <div className={styles.video}>
         <video  
             ref={videoRef}

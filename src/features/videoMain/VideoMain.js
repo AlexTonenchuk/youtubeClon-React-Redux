@@ -1,10 +1,11 @@
 import React, {useRef, useState} from "react";
 import { ControlPan } from '../controlPan/ControlPan'
-import { useParams } from 'react-router-dom'
+import { useParams, Outlet } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectVideoById } from '../listVideos/listVideosSlice'
 import styles from './videoMain.module.css'
 import { TimeTrack } from "../timeTrack/TimeTrack";
+import { ListVideos } from "../listVideos/ListVideos"
 
 
 export function VideoMain () {
@@ -90,37 +91,42 @@ export function VideoMain () {
 
     // UI
     return (
-        <div className={videoMainClass}>
-            <video
-                ref={ref}
-                onLoadedMetadata={onLoadedMetadata}
-                onTimeUpdate ={changeCurrentTime }
-                >
-                <source src={videoData.video}/>
-                <track
-                    kind={state.isSubtitles===true?'subtitles':''}
-                    src={videoData.subtitles}
-                    srcLang="ru"
-                    default   
-                    label="Русский"       >
-                </track>
-            </video>
-            <ControlPan 
-                currentTime={state.currentTime}
-                duration={state.duration}
-                isSubtitles={state.isSubtitles}
-                muted={state.muted}
-                setVolume={setVolume}
-                setCurrentTime={setCurrentTime}
-                toggleMuted={toggleMuted}
-                togglePlayPause={togglePlayPause}
-                toggleWideScreen={toggleWideScreen}
-                toggleSubtitles={toggleSubtitles}
-                paused={state.paused}
-                volume={state.volume}
-                wideScreen={state.wideScreen}
-            />
-        </div>    
+        <div className={styles.flex}>
+            <div className={videoMainClass}>
+                <video
+                    ref={ref}
+                    onLoadedMetadata={onLoadedMetadata}
+                    onTimeUpdate ={changeCurrentTime }
+                    >
+                    <source src={videoData.video}/>
+                    <track
+                        kind={state.isSubtitles===true?'subtitles':''}
+                        src={videoData.subtitles}
+                        srcLang="ru"
+                        default   
+                        label="Русский"       >
+                    </track>
+                </video>
+                <ControlPan 
+                    currentTime={state.currentTime}
+                    duration={state.duration}
+                    isSubtitles={state.isSubtitles}
+                    muted={state.muted}
+                    setVolume={setVolume}
+                    setCurrentTime={setCurrentTime}
+                    toggleMuted={toggleMuted}
+                    togglePlayPause={togglePlayPause}
+                    toggleWideScreen={toggleWideScreen}
+                    toggleSubtitles={toggleSubtitles}
+                    paused={state.paused}
+                    volume={state.volume}
+                    wideScreen={state.wideScreen}
+                />
+            </div>
+            <div className ={styles.rightPanel}>
+                <ListVideos isInVideoMain={true}/>
+            </div>
+        </div>
     )
 } 
 

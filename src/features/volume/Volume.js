@@ -3,19 +3,12 @@ import styles from './volume.module.css'
 
 export function Volume (props) {
 
-
-    const onChangeVolume = (e) =>  {
-        props.setVolume(e.target.value/10)
-    }
-
-    //const toggleMute = () => props.toggleMute()
-    const {soundOn, soundOff} = styles
-    const muteClass =  props.muted === true ? soundOff : soundOn
+    const onChangeVolume = (e) => props.setVolume(e.target.value/10)
 
     return (
         <div>
             <button 
-                className={muteClass}
+                className={props.muted === true ? styles.soundOff : styles.soundOn}
                 onClick={props.toggleMuted}          >
             </button>
 

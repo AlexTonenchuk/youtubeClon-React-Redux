@@ -2,6 +2,7 @@
 
 .controlPan {
     width: 100%;
+    min-width: max-content;
     position: relative;
     border: 1px solid red;
     background-color: rgb(73, 72, 72);
@@ -53,6 +54,14 @@
 .miniPlayer:hover {
     background-image: linear-gradient(#cccccc3b, #cccccc3b), url(miniPlayer.png);
 }
+
+.narrowScreen {
+    background-image: url(narrowScreen.png);
+}
+.narrowScreen:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(narrowScreen.png);
+}
+
 
 
 
@@ -137,6 +146,7 @@
 }
 
 .leftContainer{
+    flex-shrink:0;
     display: flex;
     justify-content: start;
 }

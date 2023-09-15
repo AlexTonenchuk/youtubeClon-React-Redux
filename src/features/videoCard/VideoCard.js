@@ -4,8 +4,8 @@ import { Caption } from '../caption/Caption'
 import { selectVideoById } from '../listVideos/listVideosSlice'
 import { useSelector } from 'react-redux'
 import { DurationVideo } from '../durationVideo/DurationVideo'
-import { Link } from 'react-router-dom';
-
+import { Link, useLocation } from 'react-router-dom';
+import { Video } from '../video/Video'
 
 export function VideoCard (props) {
   const videoRef = useRef()
@@ -16,29 +16,36 @@ export function VideoCard (props) {
   const videoData = useSelector((state) => {
     return selectVideoById(state, props.id)
   })
+
+  let style
+  if (props.isInMain){
+    style = styles.verticalCard
+  } else if (props.isInListInVideoPage){
+    style = styles.horizontalCard
+  }
+
+  
+  
   return (
-    <div className={styles.videoCard}>
+    <div 
+      className={style}>
       <Link  
         reloadDocument to={`/video/`+props.id}>
         <div className={styles.video}>
-          <video  
-            ref={videoRef}
-            poster={videoData.poster} 
-            onLoadedMetadata={putVideoDurationInState}>
-            <source src={videoData.video}/>
-            <track  
-              kind="subtitles" 
-              src={videoData.subtitles}
-              srcLang="ru"
-              default   
-              label="Русский">
-            </track>
-          </video>
-          <DurationVideo duration={duration}/>
-        </div>
+          <Video 
+            id={props.id}
+            isInMain={props.isInMain}
+            isInListInVideoPage={props.isInListInVideoPage}
+            poster={videoData.poster}
+          />
+{/*           <DurationVideo duration={duration}/>
+ */}        </div>
       </Link>
-                                          {/* КОМПОНЕНТ Caption*/}
-      <Caption id = {props.id}/>
+                                              {/* КОМПОНЕНТ */}
+      <Caption 
+        id = {props.id}
+        isInListInVideoPage={props.isInListInVideoPage}
+      />
     </div>
   )
 }

@@ -1,47 +1,49 @@
+
+div {
+  font-size: 14px;
+  }
+
 .rowFlexContainer {
-        max-height:inherit;
-        display: flex;
-        justify-content: flex-start;
+  max-height:inherit;
+  display: flex;
+  justify-content: flex-start;
+  border: 1px solid red;
 }
+
+
     
 .canal {
-    display: flex;
-    justify-content: flex-start;
-    color: #747474;
-    font-size: 14px;
+  display: flex;
+  justify-content: flex-start;
+  color: #747474;
+  font-size: 14px;
+}
+
+.caption {
+  display: flex;
+}
+
+.miniCaption div {
+  font-size: 12px;
 }
    
 .dot {
-    min-width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 0px;
-    padding: 0;
-    background-image: url(dot.png);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-    cursor: pointer;
-    position: relative;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 0px;
+  padding: 0;
+  background-image: url(dot.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  cursor: pointer;
+  position: relative;
 }
 
 .name {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.verify {
-    min-width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    border: 0px;
-    padding: 0;
-    background-image: url(verify.png);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-    cursor: pointer;
-    position: relative;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 

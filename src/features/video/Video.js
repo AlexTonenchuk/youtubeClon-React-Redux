@@ -1,18 +1,21 @@
 import React, {useRef, useState} from "react";
 import { ControlPan } from '../controlPan/ControlPan'
+import { Caption} from '../caption/Caption'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectVideoById } from '../listVideos/listVideosSlice'
 import styles from './video.module.css'
+import { ListVideos } from "../listVideos/ListVideos";
 
 
 export function Video (props) {
 
   // если компонент строится внутри <VideoPage/>, то id берется из url
   // если внутри списка, то id берется из пропсов
-  let id = useParams().id
-  if(!id){
-    id = props.id
+  let id 
+  id= useParams().id
+  if (props.id){
+    id=props.id
   }
 
   // инициализация локального стейта UI (React), 
@@ -32,6 +35,7 @@ export function Video (props) {
     paused: true,
     wideScreen: false,
   })
+
 
   // извлечение данных из стейта данных (Redux)
   const videoData = useSelector((reduxState) => selectVideoById(reduxState, state.id))
@@ -82,89 +86,118 @@ export function Video (props) {
     // обработчики событий, инициируемых пользователем
     // т.е. функции изменения стейта, для передачи их в пропсы
 
-    const playNextVideo =()=>{
+    const playNextVideo =()=> {
       setState((state)=>({...state, id: ++state.id}))
     }
-    const setVolume =(volume)=>{
+    const setVolume =(volume)=> {
       setState((state)=>({...state, volume: volume}))
     }
     const toggleAutoplay =()=> {
       setState((state)=>({...state, autoplay: !state.autoplay}))
     }
-    const toggleMuted = () => {
+    const toggleMuted =()=> {
       setState((state)=>({...state, muted: !state.muted}))
     }
-    const toggleWideScreen = () => {
+    const toggleWideScreen =()=> {
       setState((state)=>({...state, widthScreen: !state.widthScreen}))
     }
-    const toggleSubtitles = () => {
+    const toggleSubtitles =()=> {
       setState(state =>({...state, isSubtitles: !state.isSubtitles}))
     }
-    const togglePlayPause=()=>{
+    const togglePlayPause =()=> {
       setState((state)=>({...state, paused: !state.paused}))
     }
 
+    const locationVideo = props.location
+
   //управление стилями <Video/> --- сделать понормальному т.е. styleState !
   let style
-  if (props.isInMain){
+  if (locationVideo==='inListInMain'){
     style = styles.videoInListInMain
-  } else if (props.isInListInVideoPage){
+  } 
+  if (locationVideo==='inListInVideoPage'){
     style = styles.videoInListInVideoPage
   }
-  if (state.widthScreen === true){       
-    style = style+' '+styles.widthScreen
+  if (locationVideo==='inVideoPage'){
+    style = styles.inVideoPage
   }
+ /*  if (state.widthScreen === true){       
+    style = style+' '+styles.widthScreen
+  } */
+
+console.dir(locationVideo)
 
   // UI
   return (
     <div >
-      <div >
-        <video
-          key={state.id}
-          className={style}
-          ref={ref}
-          onLoadedMetadata={onLoadedMetadata}
-          onTimeUpdate ={changeCurrentTime }
-          onEnded={onEnded}
-          poster={props.poster}
-          >
-          <source src={videoData.video}/>
-          <track
-            kind={state.isSubtitles===true?'subtitles':''}
-            src={videoData.subtitles}
-            srcLang="ru"
-            default   
-            label="Русский"       >
-          </track>
-        </video>
-                                        {/* КОМПОНЕНТ */}
-        {
-          props.isInMain || props.isInListInVideoPage ? false : 
-          <ControlPan
-            autoplay={state.autoplay}
-            currentTime={state.currentTime}
-            duration={state.duration}
-            isSubtitles={state.isSubtitles}
-            muted={state.muted}
-            playNextVideo={playNextVideo}
-            setVolume={setVolume}
-            setCurrentTime={setCurrentTime}
-            toggleAutoplay={toggleAutoplay}
-            toggleMuted={toggleMuted}
-            togglePlayPause={togglePlayPause}
-            toggleWideScreen={toggleWideScreen}
-            toggleSubtitles={toggleSubtitles}
-            paused={state.paused}
-            volume={state.volume}
-            wideScreen={state.wideScreen}
-          />
+      <div className ={ locationVideo==='inVideoPage' ? styles.flex : false } >
+        <div className ={ locationVideo==='inListInVideoPage' ? styles.flex : false } >
+          
+          <video
+            className = {style}
+            ref = {ref}
+            onLoadedMetadata = {onLoadedMetadata}
+            onTimeUpdate = {changeCurrentTime }
+            onEnded = {onEnded}
+            poster = {videoData.poster}
+            >
+            <source src={videoData.video}/>
+            <track
+              kind={state.isSubtitles===true?'subtitles':''}
+              src={videoData.subtitles}
+              srcLang="ru"
+              default   
+              label="Русский"       >
+            </track>
+          </video>
+        
+          { locationVideo==='inVideoPage' ? 
+            <ControlPan                           // ОШИБКА!!! передать просто state
+              autoplay={state.autoplay}
+              currentTime={state.currentTime}
+              duration={state.duration}
+              isSubtitles={state.isSubtitles}
+              muted={state.muted}
+              playNextVideo={playNextVideo}
+              setVolume={setVolume}
+              setCurrentTime={setCurrentTime}
+              toggleAutoplay={toggleAutoplay}
+              toggleMuted={toggleMuted}
+              togglePlayPause={togglePlayPause}
+              toggleWideScreen={toggleWideScreen}
+              toggleSubtitles={toggleSubtitles}
+              paused={state.paused}
+              volume={state.volume}
+              wideScreen={state.wideScreen}
+            />
+            : false
+          }
+
+          { locationVideo==='inListInMain' ||
+            locationVideo==='inListInVideoPage' ?
+            <Caption
+              location={props.location}
+              name={videoData.name}
+              canal={videoData.canal}
+              views={videoData.views}
+              videodata={videoData.creatDate}
+            />
+            : false
+          }
+
+        </div>
+
+        { locationVideo==='inVideoPage' ?
+          <div  className={styles.listVideosContainer}>
+            <ListVideos
+              location='inVideoPage'
+            />
+          </div>
+          : false
         }
 
       </div>
-{/*         <div className ={styles.rightPanel}>
-        <ListVideos isInVideoMain={false}/>
       </div>
-*/}      </div>
   )
 } 
 

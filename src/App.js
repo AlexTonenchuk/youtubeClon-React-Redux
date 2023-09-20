@@ -5,7 +5,7 @@ import { ListVideos } from './features/listVideos/ListVideos';
 import { Sidebar } from './features/sidebar/Sidebar';
 import { BrowserRouter, Routes, Route  } from 'react-router-dom';
 import styles from './App.module.css';
-import { VideoPage } from './features/videoPage/VideoPage';
+import { Video } from './features/video/Video';
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
               <div className = {styles.rowFlexContainer}>
                 <Sidebar/>
                 <ListVideos 
-                  isInMain={true}
+                  location='inMain'
                 />
               </div>
             </div> 
@@ -30,7 +30,11 @@ function App() {
 
         <Route 
           path="/video/:id" 
-          element={<VideoPage/>}
+          element={
+            <Video
+              location='inVideoPage'
+            />
+          }
         />
 
       </Routes>

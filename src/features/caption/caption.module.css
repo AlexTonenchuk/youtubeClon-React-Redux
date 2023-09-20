@@ -1,5 +1,5 @@
 
-div {
+/* div {
   font-size: 14px;
   }
 
@@ -9,7 +9,7 @@ div {
   justify-content: flex-start;
   border: 1px solid red;
 }
-
+ */
 
     
 .canal {
@@ -21,10 +21,13 @@ div {
 
 .caption {
   display: flex;
+  width: 100%;
 }
 
 .miniCaption div {
   font-size: 12px;
+  border: 2px solid rgb(238, 11, 227);
+
 }
    
 .dot {

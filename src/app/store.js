@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import categoriesReducer from '../features/categories/categoriesSlice';
-import listVideosReduser from '../features/listVideos/listVideosSlice'
+import categoriesReducer from '../features/categories/categoriesSlice'
+import videoListReduser from '../features/videoList/videoListSlice'
+import videoReduser from '../features/video/videoSlice'
 
 export const store = configureStore({
   reducer: {
     categories: categoriesReducer,
-    videos: listVideosReduser
+    videoList: videoListReduser,
+    //video: videoReduser,
   },
 });

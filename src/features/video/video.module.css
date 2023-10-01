@@ -29,6 +29,6 @@ border: 5px solid rgb(11, 238, 30);
 
 }
 
-.widthScreen {
-    border: 5px solid rgb(54, 145, 219);
+.wideScreen {
+    width: 95vw;
 }

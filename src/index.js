@@ -5,15 +5,15 @@ import { store } from './app/store';
 import App from './App';
 //import reportWebVitals from './reportWebVitals';
 import './index.css';
-import { loaded } from './features/listVideos/listVideosSlice';
+import { loaded } from './features/videoList/videoListSlice';
 import { videoList } from './data/data';
 
 
 store.dispatch(loaded(videoList));
+console.dir(store.getState())
 
 const container = document.getElementById('root');
 const root = createRoot(container);
-
 
 root.render(
   <React.StrictMode>

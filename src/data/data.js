@@ -41,7 +41,12 @@ export const videoList = [
         creatDate: '2023-06-07', 
         views: 1, 
         isVerificated: true, 
-        categories: ['Животные', 'Война', 'Музыка', 'Живое выступление'] 
+        categories: ['Животные', 'Война', 'Музыка', 'Живое выступление'],
+        played: false,
+        mute: true,
+        volume: 0.5,
+        currentTime: 0,
+        specifiedTime: 0,
     },
     {
         id:3, 
@@ -53,7 +58,12 @@ export const videoList = [
         creatDate: '2023-06-06', 
         views: 1, 
         isVerificated: true, 
-        categories: ['Загородная жизнь', 'Дом', 'Музыка'] 
+        categories: ['Загородная жизнь', 'Дом', 'Музыка'],
+        played: false,
+        mute: true,
+        volume: 0.5,
+        currentTime: 0,
+        specifiedTime: 0,
     },
     {
         id:4, 
@@ -64,7 +74,12 @@ export const videoList = [
         creatDate: '2023-06-05', 
         views: 1, 
         isVerificated: true, 
-        categories: ['На сцене', 'Музыка'] 
+        categories: ['На сцене', 'Музыка'],
+        played: false,
+        mute: true,
+        volume: 0.5,
+        currentTime: 0,
+        specifiedTime: 0,
     },
     {
         id:5, 
@@ -76,7 +91,12 @@ export const videoList = [
         creatDate: '2022-06-04', 
         views: 1, 
         isVerificated: true, 
-        categories: ['Космос', 'Музыка', 'В студии'] 
+        categories: ['Космос', 'Музыка', 'В студии'],
+        played: false, 
+        mute: true,
+        volume: 0.5,
+        currentTime: 0,
+        specifiedTime: 0,
     },
     {
         id:6, 
@@ -87,7 +107,12 @@ export const videoList = [
         creatDate: '2020-06-03', 
         views: 1, 
         isVerificated: true, 
-        categories: ['Скейт', 'Музыка', 'Гараж'] 
+        categories: ['Скейт', 'Музыка', 'Гараж'],
+        played: false, 
+        mute: true,
+        volume: 0.5,
+        currentTime: 0,
+        specifiedTime: 0,
     },
     {
         id:7, 
@@ -98,7 +123,12 @@ export const videoList = [
         creatDate: '2023-06-02', 
         views: 1, 
         isVerificated: true, 
-        categories: ['Улица', 'Музыка', 'РепКор'] 
+        categories: ['Улица', 'Музыка', 'РепКор'],
+        played: false, 
+        mute: true,
+        volume: 0.5,
+        currentTime: 0,
+        specifiedTime: 0,
     },
     {
         id:8, 
@@ -109,7 +139,12 @@ export const videoList = [
         creatDate: '2023-06-01', 
         views: 1, 
         isVerificated: true, 
-        categories: ['Улица', 'Музыка', 'Животные'] 
+        categories: ['Улица', 'Музыка', 'Животные'],
+        played: false, 
+        mute: true,
+        volume: 0.5,
+        currentTime: 0,
+        specifiedTime: 0,
     },
     {
         id:9, 
@@ -120,7 +155,12 @@ export const videoList = [
         creatDate: '2023-05-01', 
         views: 1, 
         isVerificated: true, 
-        categories: ['Дом', 'Музыка'] 
+        categories: ['Дом', 'Музыка'],
+        played: false, 
+        mute: true,
+        volume: 0.5,
+        currentTime: 0,
+        specifiedTime: 0,
     },
     {
         id:10, 
@@ -131,7 +171,12 @@ export const videoList = [
         creatDate: '2023-04-01', 
         views: 1, 
         isVerificated: true, 
-        categories: ['На сцене', 'Музыка'] 
+        categories: ['На сцене', 'Музыка'],
+        played: false, 
+        mute: true,
+        volume: 0.5,
+        currentTime: 0,
+        specifiedTime: 0,
         },
     {
         id:11, 
@@ -142,7 +187,12 @@ export const videoList = [
         creatDate: '2023-02-01', 
         views: 1, 
         isVerificated: true, 
-        categories: ['Война', 'Музыка', 'В студии'] 
+        categories: ['Война', 'Музыка', 'В студии'],
+        played: false, 
+        mute: true,
+        volume: 0.5,
+        currentTime: 0,
+        specifiedTime: 0,
     },
     {
         id:12, 
@@ -153,7 +203,12 @@ export const videoList = [
         creatDate: '2022-06-01', 
         views: 1, 
         isVerificated: true, 
-        categories: ['Природа', 'Улица', 'Музыка'] 
+        categories: ['Природа', 'Улица', 'Музыка'],
+        played: false, 
+        mute: true,
+        volume: 0.5,
+        currentTime: 0,
+        specifiedTime: 0,
     }
 
 ]

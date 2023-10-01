@@ -1,7 +1,7 @@
 import React from 'react';
 import { HeaderApp } from './features/headerApp/HeaderApp';
 import { Categories } from './features/categories/Categories';
-import { ListVideos } from './features/listVideos/ListVideos';
+import { VideoList } from './features/videoList/VideoList';
 import { Sidebar } from './features/sidebar/Sidebar';
 import { BrowserRouter, Routes, Route  } from 'react-router-dom';
 import styles from './App.module.css';
@@ -15,25 +15,24 @@ function App() {
           exact
           path="/" 
           element = {
-            <div className="App">
+            <div className = "App">
               <HeaderApp/>
               <Categories/>
-              <div className = {styles.rowFlexContainer}>
+              <div className = {styles.flex}>
                 <Sidebar/>
-                <ListVideos 
-                  location='inMain'
-                />
+                <VideoList location = 'inMain' />
               </div>
             </div> 
           } 
         />
 
         <Route 
-          path="/video/:id" 
-          element={
-            <Video
-              location='inVideoPage'
-            />
+          path = "/video/:id" 
+          element = { 
+            <div className = {styles.flex} >
+              <Video location = 'inVideoPage' />
+              <VideoList location = 'inVideoPage' />
+            </div>
           }
         />
 

@@ -16,36 +16,29 @@ export function Caption (props) {
   }
 
   return (
-    <div 
-      className={style}>
-        
-      <div 
-        className={styles.container}>
-        { props.isInListInVideoPage ? false :
-          <IconCanal 
-            id = {props.id}
-          />
-        }
-      </div> 
-        
-      <div 
-        className={styles.rightContainer}>
+    <div className={style} >
 
-        <div 
-          className={styles.name}>
+        
+      { props.location==='inListInVideoPage' ? false :
+      /*ОШБКА ! Какой еще контейнер... убрать */
+        <div className={styles.container} >
+            <IconCanal id = {props.id} />
+        </div> 
+      }
+        
+      <div className={styles.rightContainer} >
+
+        <div className={styles.name} >
           {props.name}      
         </div>
 
-        <div 
-          className={styles.rowFlexContainer}>
-          <div 
-            className={styles.canalName}>  
+        <div className={styles.rowFlexContainer} >
+          <div className={styles.canalName} >  
             {props.canal}   
           </div>
         </div>
 
-        <div 
-          className={styles.rowFlexContainer}>
+        <div className={styles.rowFlexContainer} >
           <div className={styles.views}> 
             {`${props.views} просмотров *`} 
           </div>

@@ -1,10 +1,10 @@
-.rowFlexContainer {
+.flex {
     display: flex;
-    justify-content: center;
+    justify-content: left;
+    flex-wrap: wrap;
 }
 
 div {
     border: 1px solid rgb(255, 249, 249);
     padding: 1px;
-
 }

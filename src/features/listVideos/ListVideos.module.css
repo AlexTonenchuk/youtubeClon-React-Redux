@@ -1,9 +1,0 @@
-.videoList {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.videoListInVideoMainComponent{
-    background-color: rgb(255, 141, 121);
-}

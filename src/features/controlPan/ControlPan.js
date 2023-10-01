@@ -3,13 +3,33 @@ import styles from './controlPan.module.css'
 import { DurationVideo } from "../durationVideo/DurationVideo"
 import { CurrentTime } from "../currentTime/CurrentTime";
 import { Volume } from '../volume/Volume'
-import { TimeTrack } from "../timeTrack/TimeTrack";
-import { SettingsMenu } from "../settingsMenu/SettingsMenu";
-
+/* import { TimeTrack } from "../timeTrack/TimeTrack";
+ */import { SettingsMenu } from "../settingsMenu/SettingsMenu";
+import { useSelector, useDispatch } from "react-redux";
+import { 
+  muteOn, 
+  muteOff, 
+  setVolume,
+  togglePlay, 
+  selectPlayed,
+  selectVolume
+} from "../videoList/videoListSlice";
 
 export function ControlPan (props) {
 
-    
+  const id = props.id
+  const dispatch = useDispatch()
+  const played = useSelector( (state)=> selectPlayed(state, id) )
+  const volume = useSelector( (state)=> selectVolume(state, id) )
+
+
+  //обработчики событий
+  const togglePlayPause =()=> {
+    dispatch( togglePlay(id) )
+    dispatch( muteOff(id) )
+  }
+
+
   // стейт стилей компонента
   const [style, setStyle] = useState({
     mute: styles.soundOned,
@@ -21,81 +41,79 @@ export function ControlPan (props) {
     fullScreen: styles.fullScreen
   })
 
-const togglePlayPause =()=> props.togglePlayPause()
-
-
-  const subtitlesClass =  
+/*   const subtitlesClass =  
     props.isSubtitles === true ? 
     styles.subtitlesOn 
     : styles.subtitlesOff
-  
-  const toggleAutoplay = () => {
+ */  
+/*   const toggleAutoplay = () => {
     if (style.autoplay===styles.autoplayOff) {
       setStyle({...style, autoplay: styles.autoplayOn})
     } else if (style.autoplay===styles.autoplayOn) {
       setStyle({...style, autoplay: styles.autoplayOff})
     }
   }
-
+ */
   const toggleSettings = () => {
     if(style.settingsBtn===styles.settingsBtnOff){
-      console.dir(11)
       setStyle({...style, 
                   settingsBtn: styles.settingsBtnOn,
                   settingsMenu: styles.show}) 
     } else if (style.settingsBtn===styles.settingsBtnOn){
-      console.dir(22)
       setStyle({...style, 
                   settingsBtn: styles.settingsBtnOff,
                   settingsMenu: styles.hide}) 
     }
   }
 
+
   return (
     <div className={styles.controlPan}>
-      <TimeTrack 
+{/*       <TimeTrack 
         currentTime = {props.currentTime}
         duration = {props.duration}
         setCurrentTime={props.setCurrentTime}
       />
-      <div className={styles.flex}>
+ */}      <div className={styles.flex}>
         <div className={styles.leftContainer}>
           <button 
             id='playPauseBtn'
-            className={props.paused === true ? styles.play : styles.pause}
-            onClick={togglePlayPause}          >
+            className={played === true ? styles.pause : styles.play }
+            onClick={ togglePlayPause }          
+            >
           </button>
           <button
             id='playNextBtn'
             className={styles.nextBtn}
-            onClick={props.playNextVideo}
-          >
+/*             onClick={props.playNextVideo}
+ */          >
           </button>
-          <Volume
-            muted = {props.muted}
+          <Volume id = {id}
+/*             muted = {props.muted}
             toggleMuted = {props.toggleMuted}
             setVolume = {props.setVolume}
             volume = {props.volume}
             duration={props.duration}
-          />
-          <CurrentTime 
-            currentTime={props.currentTime}
-          />
+ */          />
+          <CurrentTime id = {id}
+/*             currentTime={props.currentTime}
+ */          />
           <DurationVideo 
-            duration={props.duration} 
-          />
+/*             duration={props.duration} 
+ */          />
         </div>
-
 
         <div className={styles.rightContainer}>
           <button
             id='autoplayBtn'
-            className={props.autoplay===true ? styles.autoplayOn : styles.autoplayOff}
-            onClick={props.toggleAutoplay}          >
+/*             className={props.autoplay===true ? styles.autoplayOn : styles.autoplayOff}
+            onClick={props.toggleAutoplay}          
+ */            >
           </button>
           <button 
-            className={subtitlesClass}
-            onClick={props.toggleSubtitles}          >
+/*             className={subtitlesClass}
+ *//*             onClick={props.toggleSubtitles}          
+ */            >
           </button>
           <button 
             className={style.settingsBtn}
@@ -106,8 +124,9 @@ const togglePlayPause =()=> props.togglePlayPause()
           </button>
           <button
             id='wideScreen'
-            className={ props.wideScreen===false ? styles.wideScreen : styles.narrowScreen}
-            onClick={props.toggleWideScreen}         >
+/*             className={ props.wideScreen===false ? styles.wideScreen : styles.narrowScreen}
+            onClick={props.toggleWideScreen}         
+ */            >
           </button>
           <button 
             className={style.fullScreen}         >

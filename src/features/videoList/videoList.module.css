@@ -1,0 +1,14 @@
+.inMain {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.inVideoPage {
+    width: 35vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+
+}

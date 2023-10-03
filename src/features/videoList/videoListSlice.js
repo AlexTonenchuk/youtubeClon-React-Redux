@@ -46,6 +46,10 @@ export const videoListSlice = createSlice({
     setSpecifiedTime: (state, action) => {
       state.entities[action.payload.id].specifiedTime = action.payload.specifiedTime
     },
+    writeDuration: (state, action) => {
+      state.entities[action.payload.id].duration = action.payload.duration
+    },
+
 
     
 
@@ -62,7 +66,8 @@ export const {
   toggleMute,
   setVolume,
   writeCurrentTime,
-  setSpecifiedTime
+  setSpecifiedTime,
+  writeDuration
 } = videoListSlice.actions;
 
 export default videoListSlice.reducer;
@@ -108,6 +113,14 @@ export const selectSpecifiedTime = createSelector(
   (state, id) => id,
   (state, id) => state.videoList.entities[id].specifiedTime
 )
+
+//получаем  длительность видео
+export const selectDuration= createSelector(
+  (state, id) => state,
+  (state, id) => id,
+  (state, id) => state.videoList.entities[id].duration
+)
+
 
 
 

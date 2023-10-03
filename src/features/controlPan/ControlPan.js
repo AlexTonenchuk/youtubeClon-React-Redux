@@ -3,8 +3,8 @@ import styles from './controlPan.module.css'
 import { DurationVideo } from "../durationVideo/DurationVideo"
 import { CurrentTime } from "../currentTime/CurrentTime";
 import { Volume } from '../volume/Volume'
-/* import { TimeTrack } from "../timeTrack/TimeTrack";
- */import { SettingsMenu } from "../settingsMenu/SettingsMenu";
+import { TimeTrack } from "../timeTrack/TimeTrack";
+import { SettingsMenu } from "../settingsMenu/SettingsMenu";
 import { useSelector, useDispatch } from "react-redux";
 import { 
   muteOn, 
@@ -69,12 +69,13 @@ export function ControlPan (props) {
 
   return (
     <div className={styles.controlPan}>
-{/*       <TimeTrack 
-        currentTime = {props.currentTime}
+       <TimeTrack id = {id}
+        /* currentTime = {props.currentTime}
         duration = {props.duration}
-        setCurrentTime={props.setCurrentTime}
+        setCurrentTime={props.setCurrentTime} */
+      
       />
- */}      <div className={styles.flex}>
+       <div className={styles.flex}>
         <div className={styles.leftContainer}>
           <button 
             id='playPauseBtn'

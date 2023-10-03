@@ -47,6 +47,7 @@ export const videoList = [
         volume: 0.5,
         currentTime: 0,
         specifiedTime: 0,
+        duration: 0,
     },
     {
         id:3, 
@@ -64,6 +65,7 @@ export const videoList = [
         volume: 0.5,
         currentTime: 0,
         specifiedTime: 0,
+        duration: 0,
     },
     {
         id:4, 
@@ -80,6 +82,7 @@ export const videoList = [
         volume: 0.5,
         currentTime: 0,
         specifiedTime: 0,
+        duration: 0,
     },
     {
         id:5, 
@@ -97,6 +100,7 @@ export const videoList = [
         volume: 0.5,
         currentTime: 0,
         specifiedTime: 0,
+        duration: 0,
     },
     {
         id:6, 
@@ -113,6 +117,7 @@ export const videoList = [
         volume: 0.5,
         currentTime: 0,
         specifiedTime: 0,
+        duration: 0,
     },
     {
         id:7, 
@@ -129,6 +134,7 @@ export const videoList = [
         volume: 0.5,
         currentTime: 0,
         specifiedTime: 0,
+        duration: 0,
     },
     {
         id:8, 
@@ -145,6 +151,7 @@ export const videoList = [
         volume: 0.5,
         currentTime: 0,
         specifiedTime: 0,
+        duration: 0,
     },
     {
         id:9, 
@@ -161,6 +168,7 @@ export const videoList = [
         volume: 0.5,
         currentTime: 0,
         specifiedTime: 0,
+        duration: 0,
     },
     {
         id:10, 
@@ -177,6 +185,7 @@ export const videoList = [
         volume: 0.5,
         currentTime: 0,
         specifiedTime: 0,
+        duration: 0,
         },
     {
         id:11, 
@@ -193,6 +202,7 @@ export const videoList = [
         volume: 0.5,
         currentTime: 0,
         specifiedTime: 0,
+        duration: 0,
     },
     {
         id:12, 
@@ -209,6 +219,7 @@ export const videoList = [
         volume: 0.5,
         currentTime: 0,
         specifiedTime: 0,
+        duration: 0,
     }
 
 ]

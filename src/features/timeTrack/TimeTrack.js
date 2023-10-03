@@ -1,50 +1,61 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import styles from './timeTrack.module.css'
+import { selectCurrentTime, selectDuration, setSpecifiedTime } from "../videoList/videoListSlice";
+import { useSelector, useDispatch } from 'react-redux'
 
 
 export function TimeTrack (props) {
-
-    const [state, setState] = useState({visibility: styles.hide,
-                                        leftPopup: 0,
-                                        timeInPopup: 0})
-    const showPopup=()=>setState((state)=>({...state, visibility: styles.visible}))
-    const hidePopup=()=>setState((state)=>({...state, visibility: styles.hide}))
-    const movePopup = (e) => {
-        setState((state)=>{
-            const time = e.clientX*props.duration/e.target.parentElement.clientWidth
-            return (
-                {...state, 
-                leftPopup: e.clientX, 
-                timeInPopup: time}
-            )
-        })
-    }
-    const changeCurrentTime =()=>{
-        props.setCurrentTime(state.timeInPopup)
-    }
-
-    return (
-        <div>
-            <div className = {styles.timeTrack}
-                        onMouseOver = {showPopup}
-                        onMouseOut = {hidePopup}
-                        onMouseMove = {movePopup}
-                        onClick = {changeCurrentTime}
-                        title={'222'}        >
-                
-                <div className = {styles.red}
-                    style={{width: props.currentTime*100/props.duration + '%' }}     >
-                </div>
-            </div>
-            <div className = {styles.popup +' '+ state.visibility}
-                    style={{left:state.leftPopup}}    >
-                    {Math.floor(state.timeInPopup)}
-            </div>
-
-        </div>
-    )
+  const id = props.id
+  const dispatch = useDispatch()
+  const currentTime = useSelector( (state)=> selectCurrentTime(state, id) )
+  const duration = useSelector( (state)=> selectDuration(state, id) )
+  // локальный стейт для управления всплывающим окном со временем,
+  // соответствующем позиции курсора на трэке
+  const [popupState, setStatePopup] = useState({
+    visibility: styles.hide,
+    left: 0,
+    timeInPopup: 0
+  })
+  // обработчик вычисляет время, соответствующее позиции курсора 
+  // на трэке и отправляет это время в ReduxState
+  const fastForward =(e)=>{
+    const left = e.currentTarget.getBoundingClientRect().left
+    const width = e.currentTarget.getBoundingClientRect().width
+    const time = Math.floor( (e.clientX-left)*duration/width )
+    dispatch( setSpecifiedTime({id, specifiedTime:time}) )
+  }
+  //обработчик меняет видимость всплывающего окна, меняет его координату, 
+  // меняет значение внутри него в соответствии с позицией курсора на трэке
+  const moveTimePopup =(e)=>{
+    const left = e.currentTarget.getBoundingClientRect().left
+    const width = e.currentTarget.getBoundingClientRect().width
+    const time = Math.floor( (e.clientX-left)*duration/width )
+    setStatePopup((state)=>({
+      ...state,
+      visibility: styles.visible,
+      left: e.clientX-10,
+      timeInPopup: time
+    }))
+  }
+  //обработчик скрывает всплывающее окно
+  const hideTimePopup =(e)=>{
+    setStatePopup((state)=>({...state, visibility: styles.hide}))
+  }
+  return (
+    <div 
+      className = {styles.track}
+      onClick = {fastForward}
+      onMouseOut = {hideTimePopup}
+      onMouseMove = {moveTimePopup}  >
+      <div 
+        className={styles.red}
+        style={{width: currentTime*100/duration + '%' }}   >
+      </div>
+      <div 
+        className = {styles.popup +' '+ popupState.visibility}
+        style={{left:popupState.left}}    >
+        {popupState.timeInPopup}
+      </div>
+    </div>
+  )
 }
-
-
-

@@ -17,7 +17,9 @@ import {
   selectVolume,
   writeCurrentTime,
   selectSpecifiedTime,
-  setSpecifiedTime
+  setSpecifiedTime,
+  writeDuration,
+  selectDuration
  } from "../videoList/videoListSlice";
 
 export function Video (props) {
@@ -37,25 +39,42 @@ export function Video (props) {
 
   
   //обработчики событий
-  const playWhenHover = () => {
+  const play = () => {
     if (location==='inListInVideoPage' || location==='inListInMain'){
       dispatch( playOn(id) );
       dispatch( muteOn(id) )
     }
   }
-  const pauseWhenHoverOff = () => {
+  const pause = () => {
     if (location==='inListInVideoPage' || location==='inListInMain'){
       dispatch( playOff(id) );
       dispatch( muteOn(id) )
     }
   }
-  const pauseWhenEnd = () => dispatch( playOff(id) )
-
+  const stop = () => {
+    dispatch( playOff(id) );
+    dispatch( muteOn(id) )
+  }
   const onTimeUpdate =(e)=> {
     const currentTime = Math.floor(e.target.currentTime)
     dispatch( writeCurrentTime({id, currentTime}) )
     dispatch( setSpecifiedTime({id, specifiedTime:0}))
   }
+
+    // после прогрузки в стейт перезаписываются, 
+  // асинхронно сформированные в элементе video, значения 
+   const onLoadedMetadata = () => {
+    const duration = Math.floor(ref.current.duration)
+    dispatch( writeDuration({id, duration}))
+/*     setState((state)=>(
+      {...state, 
+      muted: ref.current.muted,
+      duration: Math.floor(ref.current.duration),
+      }
+    ))
+ */ 
+  } 
+
 
 
 
@@ -85,16 +104,6 @@ export function Video (props) {
 
 
 
-  // после прогрузки в стейт перезаписываются, 
-  // асинхронно сформированные в элементе video, значения 
-/*   const onLoadedMetadata = () => {
-    setState((state)=>(
-      {...state, 
-      muted: ref.current.muted,
-      duration: Math.floor(ref.current.duration),
-      }
-    ))
-  } */
 
   // по окончанию видео инкриментируем id для построения следущего <Video/>
  /*  const onEnded =()=>{
@@ -186,13 +195,11 @@ export function Video (props) {
             id = {id}
             className = {style}
             ref = {ref}
-/*             onLoadedMetadata = {onLoadedMetadata}
- *//*             
- */         
+            onLoadedMetadata = {onLoadedMetadata}
             onTimeUpdate = {onTimeUpdate }
-            onMouseOver = { playWhenHover }
-            onMouseOut = { pauseWhenHoverOff }
-            onEnded = { pauseWhenEnd }
+            onMouseOver = { play }
+            onMouseOut = { pause }
+            onEnded = { stop }
 /*             onEnded = {onEnded}
             poster = {videoData.poster}
  */            >

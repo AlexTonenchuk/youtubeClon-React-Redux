@@ -48,6 +48,7 @@ export const videoList = [
         currentTime: 0,
         specifiedTime: 0,
         duration: 0,
+        isSubtitles: false,
     },
     {
         id:3, 
@@ -66,6 +67,7 @@ export const videoList = [
         currentTime: 0,
         specifiedTime: 0,
         duration: 0,
+        isSubtitles: false,
     },
     {
         id:4, 
@@ -83,6 +85,7 @@ export const videoList = [
         currentTime: 0,
         specifiedTime: 0,
         duration: 0,
+        isSubtitles: false,
     },
     {
         id:5, 
@@ -101,6 +104,7 @@ export const videoList = [
         currentTime: 0,
         specifiedTime: 0,
         duration: 0,
+        isSubtitles: false,
     },
     {
         id:6, 
@@ -118,6 +122,7 @@ export const videoList = [
         currentTime: 0,
         specifiedTime: 0,
         duration: 0,
+        isSubtitles: false,
     },
     {
         id:7, 
@@ -135,6 +140,7 @@ export const videoList = [
         currentTime: 0,
         specifiedTime: 0,
         duration: 0,
+        isSubtitles: false,
     },
     {
         id:8, 
@@ -152,6 +158,7 @@ export const videoList = [
         currentTime: 0,
         specifiedTime: 0,
         duration: 0,
+        isSubtitles: false,
     },
     {
         id:9, 
@@ -169,6 +176,7 @@ export const videoList = [
         currentTime: 0,
         specifiedTime: 0,
         duration: 0,
+        isSubtitles: false,
     },
     {
         id:10, 
@@ -186,6 +194,7 @@ export const videoList = [
         currentTime: 0,
         specifiedTime: 0,
         duration: 0,
+        isSubtitles: false,
         },
     {
         id:11, 
@@ -203,6 +212,7 @@ export const videoList = [
         currentTime: 0,
         specifiedTime: 0,
         duration: 0,
+        isSubtitles: false,
     },
     {
         id:12, 
@@ -220,6 +230,7 @@ export const videoList = [
         currentTime: 0,
         specifiedTime: 0,
         duration: 0,
+        isSubtitles: false,
     }
 
 ]

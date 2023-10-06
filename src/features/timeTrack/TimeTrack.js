@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import styles from './timeTrack.module.css'
-import { selectCurrentTime, selectDuration, setSpecifiedTime } from "../videoList/videoListSlice";
+import { 
+  selectCurrentTime, 
+  selectDuration, 
+  setSpecifiedTime,
+} from "../videoList/videoListSlice";
 import { useSelector, useDispatch } from 'react-redux'
 
 
@@ -23,6 +27,7 @@ export function TimeTrack (props) {
     const width = e.currentTarget.getBoundingClientRect().width
     const time = Math.floor( (e.clientX-left)*duration/width )
     dispatch( setSpecifiedTime({id, specifiedTime:time}) )
+
   }
   //обработчик меняет видимость всплывающего окна, меняет его координату, 
   // меняет значение внутри него в соответствии с позицией курсора на трэке

@@ -23,10 +23,12 @@ export function VideoList (props) {
         if ( !(`${item.id}` === urlId)){
           return (
             <Link
-              id = {`${item.id}`} 
-              reloadDocument                        // Костыль !!!!!!!!!!   !!!!!!!!!!    !!!!!!!!!!
-              to = {`/video/`+item.id}
-              key = {item.id} >
+              id = {`${item.id}`}
+              key = {`${item.id}`}
+              // Костыль !!!!!!!!!!   !!!!!!!!!!    !!!!!!!!!!
+              // убрать и обнулять значения в стейте
+              /* reloadDocument */                        
+              to = {`/video/`+item.id}>
   
               <Video
                 key={item.id}

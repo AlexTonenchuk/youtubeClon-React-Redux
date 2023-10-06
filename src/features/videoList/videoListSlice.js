@@ -49,6 +49,11 @@ export const videoListSlice = createSlice({
     writeDuration: (state, action) => {
       state.entities[action.payload.id].duration = action.payload.duration
     },
+    toggleSubtitles: (state, action) => {
+      const id = action.payload
+      state.entities[id].isSubtitles = !state.entities[id].isSubtitles
+    },
+
 
 
     
@@ -67,7 +72,8 @@ export const {
   setVolume,
   writeCurrentTime,
   setSpecifiedTime,
-  writeDuration
+  writeDuration,
+  toggleSubtitles
 } = videoListSlice.actions;
 
 export default videoListSlice.reducer;
@@ -120,6 +126,22 @@ export const selectDuration= createSelector(
   (state, id) => id,
   (state, id) => state.videoList.entities[id].duration
 )
+
+//получаем флаг субтитрыВыключены?
+export const selectIsSubtitles = createSelector(
+  (state, id) => state,
+  (state, id) => id,
+  (state, id) => state.videoList.entities[id].isSubtitles
+)
+
+//получаем содержимое субтитра
+export const selectSubtitles = createSelector(
+  (state, id) => state,
+  (state, id) => id,
+  (state, id) => state.videoList.entities[id].subtitles
+)
+
+
 
 
 

@@ -1,7 +1,7 @@
 import React, {useRef, useState} from "react";
 import { ControlPan } from '../controlPan/ControlPan'
 import { Caption} from '../caption/Caption'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 /* import { selectPaused, setFocusId, selectFocusId } from "./videoSlice";
  */
@@ -19,7 +19,9 @@ import {
   selectSpecifiedTime,
   setSpecifiedTime,
   writeDuration,
-  selectDuration
+  selectDuration,
+  selectIsSubtitles,
+  selectSubtitles,
  } from "../videoList/videoListSlice";
 
 export function Video (props) {
@@ -29,39 +31,53 @@ export function Video (props) {
   const location = props.location
   const urlId = useParams().id
   const id = props.id ? props.id : urlId
-  
+  const navigate = useNavigate()
+
   // извлечение данных из стейта Redux
   const video = useSelector( (state)=> selectVideoFile(state, id) )
   const played = useSelector( (state)=> selectPlayed(state, id) )
   const mute = useSelector( (state)=> selectMute(state, id) )
   const volume = useSelector( (state)=> selectVolume(state, id)  )
   const specifiedTime = useSelector( (state)=> selectSpecifiedTime(state, id)  )
+  const isSubtitles = useSelector( (state)=> selectIsSubtitles(state, id)  )
+  const subtitles = useSelector( (state)=> selectSubtitles(state, id)  )
 
-  
   //обработчики событий
-  const play = () => {
+  const onMouseOver =()=> {
     if (location==='inListInVideoPage' || location==='inListInMain'){
       dispatch( playOn(id) );
       dispatch( muteOn(id) )
     }
   }
-  const pause = () => {
+  const onMouseOut =()=> {
     if (location==='inListInVideoPage' || location==='inListInMain'){
       dispatch( playOff(id) );
       dispatch( muteOn(id) )
     }
   }
-  const stop = () => {
-    dispatch( playOff(id) );
+  const onEnded =()=> {
+    dispatch( playOff(id) )
     dispatch( muteOn(id) )
+    dispatch( setSpecifiedTime({id, specifiedTime:0}))
+    if (location==='inVideoPage'){
+      navigate('/video/'+(Number(id)+1))
+    }
   }
   const onTimeUpdate =(e)=> {
     const currentTime = Math.floor(e.target.currentTime)
     dispatch( writeCurrentTime({id, currentTime}) )
-    dispatch( setSpecifiedTime({id, specifiedTime:0}))
+    dispatch( setSpecifiedTime({id, specifiedTime:undefined})) // Важно: это сброс !
+  }
+  const onClick =()=> {
+    if (location==='inListInVideoPage' || location==='inListInMain'){
+      dispatch ( setSpecifiedTime({id, specifiedTime:0}) )
+      dispatch( writeCurrentTime({id, currentTime:0}) )
+      dispatch (playOff(id))
+      dispatch( muteOn(id) )
+    }
   }
 
-    // после прогрузки в стейт перезаписываются, 
+  // после прогрузки в стейт перезаписываются, 
   // асинхронно сформированные в элементе video, значения 
    const onLoadedMetadata = () => {
     const duration = Math.floor(ref.current.duration)
@@ -126,10 +142,6 @@ export function Video (props) {
     // БЛОК УПРАВЛЕНИЯ элементом video (play, paused, volume, muted )
     // т.е. поведение video управляется стейтом UI
     if (ref.current){
-/*       ref.current.muted = state.muted
-      ref.current.volume = state.volume
- */      
-
       if (played === true) {
         ref.current.play()
       } else if (played === false) {
@@ -141,9 +153,16 @@ export function Video (props) {
       } else {
         ref.current.volume = volume
       }
-      if (specifiedTime !== 0){
+      // схема управления временем видео такая: 
+      // пользователь -> specifiedTime -> ref (DOM) -> currentTime -> UI
+      // Важно: после любой перемотки времени, как только видео 
+      // начинает играть происходит сброс specifiedTime в
+      // обработчике onTimeUpdate - чтобы никакой rerender <video>
+      // не повторил перемотку времени
+      if (specifiedTime !== undefined){           
         ref.current.currentTime = specifiedTime
       }
+
 
 /*       if (played===true && location==='inVideoPage'){ 
         ref.current.pause()                                 // ОШиБКА т.к. это асинхронная функция
@@ -184,6 +203,7 @@ export function Video (props) {
     style = style+' '+styles.wideScreen
   } 
  */
+
   
   // UI
   return (
@@ -193,24 +213,27 @@ export function Video (props) {
           
           <video
             id = {id}
+            key = {id}
             className = {style}
             ref = {ref}
             onLoadedMetadata = {onLoadedMetadata}
             onTimeUpdate = {onTimeUpdate }
-            onMouseOver = { play }
-            onMouseOut = { pause }
-            onEnded = { stop }
-/*             onEnded = {onEnded}
-            poster = {videoData.poster}
- */            >
+            onMouseOver = { onMouseOver }
+            onMouseOut = { onMouseOut }
+            onClick = { onClick }
+            onEnded = { onEnded }
+            /*  poster = {videoData.poster} */   >
             <source src={video}/>
-            <track
-/*               kind={state.isSubtitles===true?'subtitles':''}
-              src={videoData.subtitles}
- */              srcLang="ru"
-              default   
-              label="Русский"    >
-            </track>
+            { isSubtitles === true ? 
+                <track
+                  kind = 'subtitles'
+                  src = { subtitles } 
+                  srcLang="ru"
+                  default   
+                  label="Русский"    
+                />
+              : false
+            }
           </video>
         
           { location==='inVideoPage' ?            // location для Video

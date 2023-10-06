@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import styles from './controlPan.module.css'
-import { DurationVideo } from "../durationVideo/DurationVideo"
-import { CurrentTime } from "../currentTime/CurrentTime";
+import { Time } from "../time/Time"
 import { Volume } from '../volume/Volume'
 import { TimeTrack } from "../timeTrack/TimeTrack";
 import { SettingsMenu } from "../settingsMenu/SettingsMenu";
@@ -12,7 +11,9 @@ import {
   setVolume,
   togglePlay, 
   selectPlayed,
-  selectVolume
+  selectVolume,
+  toggleSubtitles,
+  selectIsSubtitles
 } from "../videoList/videoListSlice";
 
 export function ControlPan (props) {
@@ -21,6 +22,7 @@ export function ControlPan (props) {
   const dispatch = useDispatch()
   const played = useSelector( (state)=> selectPlayed(state, id) )
   const volume = useSelector( (state)=> selectVolume(state, id) )
+  const isSubtitles = useSelector( (state)=> selectIsSubtitles(state, id)  )
 
 
   //обработчики событий
@@ -41,11 +43,11 @@ export function ControlPan (props) {
     fullScreen: styles.fullScreen
   })
 
-/*   const subtitlesClass =  
-    props.isSubtitles === true ? 
+  const subtitlesClass =  
+    isSubtitles === true ? 
     styles.subtitlesOn 
     : styles.subtitlesOff
- */  
+  
 /*   const toggleAutoplay = () => {
     if (style.autoplay===styles.autoplayOff) {
       setStyle({...style, autoplay: styles.autoplayOn})
@@ -69,12 +71,7 @@ export function ControlPan (props) {
 
   return (
     <div className={styles.controlPan}>
-       <TimeTrack id = {id}
-        /* currentTime = {props.currentTime}
-        duration = {props.duration}
-        setCurrentTime={props.setCurrentTime} */
-      
-      />
+       <TimeTrack id = {id} />
        <div className={styles.flex}>
         <div className={styles.leftContainer}>
           <button 
@@ -89,19 +86,8 @@ export function ControlPan (props) {
 /*             onClick={props.playNextVideo}
  */          >
           </button>
-          <Volume id = {id}
-/*             muted = {props.muted}
-            toggleMuted = {props.toggleMuted}
-            setVolume = {props.setVolume}
-            volume = {props.volume}
-            duration={props.duration}
- */          />
-          <CurrentTime id = {id}
-/*             currentTime={props.currentTime}
- */          />
-          <DurationVideo 
-/*             duration={props.duration} 
- */          />
+          <Volume id = {id} />
+          <Time id = {id} />
         </div>
 
         <div className={styles.rightContainer}>
@@ -111,9 +97,12 @@ export function ControlPan (props) {
             onClick={props.toggleAutoplay}          
  */            >
           </button>
-          <button 
-/*             className={subtitlesClass}
- *//*             onClick={props.toggleSubtitles}          
+          <button
+            className={subtitlesClass}
+            onClick={ ()=> dispatch(toggleSubtitles(id)) }
+
+/*             
+ *//*                       
  */            >
           </button>
           <button 

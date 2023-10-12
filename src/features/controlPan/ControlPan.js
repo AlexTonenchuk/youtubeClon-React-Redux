@@ -4,6 +4,7 @@ import { Time } from "../time/Time"
 import { Volume } from '../volume/Volume'
 import { TimeTrack } from "../timeTrack/TimeTrack";
 import { SettingsMenu } from "../settingsMenu/SettingsMenu";
+import { BtnAutoplay } from "../btnAutoplay/BtnAutoplay";
 import { useSelector, useDispatch } from "react-redux";
 import { 
   muteOn, 
@@ -69,6 +70,7 @@ export function ControlPan (props) {
   }
 
 
+
   return (
     <div className={styles.controlPan}>
        <TimeTrack id = {id} />
@@ -91,12 +93,15 @@ export function ControlPan (props) {
         </div>
 
         <div className={styles.rightContainer}>
-          <button
+          <BtnAutoplay/>
+
+{/*           <button
             id='autoplayBtn'
-/*             className={props.autoplay===true ? styles.autoplayOn : styles.autoplayOff}
+            className={props.autoplay===true ? styles.autoplayOn : styles.autoplayOff}
             onClick={props.toggleAutoplay}          
- */            >
+          >
           </button>
+ */}          
           <button
             className={subtitlesClass}
             onClick={ ()=> dispatch(toggleSubtitles(id)) }

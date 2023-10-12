@@ -31,8 +31,8 @@ function App() {
           element = { 
             <div className = {styles.flex} >
               <Video location = 'inVideoPage' />
-              <VideoList location = 'inVideoPage' />
-            </div>
+{/*               <VideoList location = 'inVideoPage' />
+ */}            </div>
           }
         />
 

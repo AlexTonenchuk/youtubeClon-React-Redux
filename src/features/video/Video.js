@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, {useRef, useState, useEffect} from "react";
 import { ControlPan } from '../controlPan/ControlPan'
 import { Caption} from '../caption/Caption'
 import { useParams, useNavigate } from 'react-router-dom'
@@ -11,18 +11,27 @@ import {
   playOff,
   muteOn,
   muteOff,
-  selectVideoFile, 
-  selectPlayed,
-  selectMute,
-  selectVolume,
   writeCurrentTime,
-  selectSpecifiedTime,
   setSpecifiedTime,
   writeDuration,
   selectDuration,
   selectIsSubtitles,
   selectSubtitles,
+  selectVideoFile, 
+  selectPlayed,
+  selectMute,
+  selectVolume,
+  selectSpecifiedTime,
  } from "../videoList/videoListSlice";
+ import {
+  toggleAutoplayIsOn,
+  toggleVideoIsOver,
+  selectAutoplayIsOn,
+  selectVideoIsOver
+ } from '../btnAutoplay/btnAutoplaySlice.js'
+
+
+
 
 export function Video (props) {
 
@@ -30,10 +39,12 @@ export function Video (props) {
   const dispatch = useDispatch()
   const location = props.location
   const urlId = useParams().id
+  //из пропсов id берется для видеороликов внутри списка
+  //из url для главного видео
   const id = props.id ? props.id : urlId
   const navigate = useNavigate()
 
-  // извлечение данных из стейта Redux
+  // извлечение данных из ReduxState
   const video = useSelector( (state)=> selectVideoFile(state, id) )
   const played = useSelector( (state)=> selectPlayed(state, id) )
   const mute = useSelector( (state)=> selectMute(state, id) )
@@ -41,8 +52,41 @@ export function Video (props) {
   const specifiedTime = useSelector( (state)=> selectSpecifiedTime(state, id)  )
   const isSubtitles = useSelector( (state)=> selectIsSubtitles(state, id)  )
   const subtitles = useSelector( (state)=> selectSubtitles(state, id)  )
+  const autoplayIsOn = useSelector( selectAutoplayIsOn)
+  const videoIsOver = useSelector( selectVideoIsOver )
 
-  //обработчики событий
+  // Блок управления DOM узлом <video> читает 
+  // значения из ReduxState и управляет узлом
+  useEffect( ()=>{
+    if (played === true) {
+      ref.current.play()
+    } else if (played === false) {
+      ref.current.pause()
+    }
+    ref.current.volume = volume
+    if (mute === true) {
+      ref.current.volume = 0
+    } else {
+      ref.current.volume = volume
+    }
+    // схема управления временем видео такая: 
+    // пользователь -> specifiedTime -> ref (DOM) -> currentTime -> UI
+    // Важно: после любой перемотки времени, как только видео 
+    // начинает играть происходит сброс specifiedTime в
+    // обработчике onTimeUpdate - чтобы никакой rerender <video>
+    // не повторил перемотку времени
+    if (specifiedTime !== undefined){           
+      ref.current.currentTime = specifiedTime
+    }
+    if (location==='inVideoPage' && videoIsOver){
+      dispatch( toggleVideoIsOver() )
+      dispatch( playOn(Number(id)+1) )
+      dispatch( muteOff(Number(id)+1) )
+      navigate( '/video/'+(Number(id)+1) )
+    }
+  })
+
+  //обработчики
   const onMouseOver =()=> {
     if (location==='inListInVideoPage' || location==='inListInMain'){
       dispatch( playOn(id) );
@@ -57,18 +101,16 @@ export function Video (props) {
   }
   const onEnded =()=> {
     dispatch( playOff(id) )
-    dispatch( muteOn(id) )
     dispatch( setSpecifiedTime({id, specifiedTime:0}))
-    if (location==='inVideoPage'){
-      navigate('/video/'+(Number(id)+1))
-    }
+    dispatch( toggleVideoIsOver() )
   }
   const onTimeUpdate =(e)=> {
     const currentTime = Math.floor(e.target.currentTime)
     dispatch( writeCurrentTime({id, currentTime}) )
-    dispatch( setSpecifiedTime({id, specifiedTime:undefined})) // Важно: это сброс !
+    // Важно: это сброс ! см. в блок управления
+    dispatch( setSpecifiedTime({id, specifiedTime: undefined})) 
   }
-  const onClick =()=> {
+/*   const onClick =()=> {
     if (location==='inListInVideoPage' || location==='inListInMain'){
       dispatch ( setSpecifiedTime({id, specifiedTime:0}) )
       dispatch( writeCurrentTime({id, currentTime:0}) )
@@ -76,19 +118,12 @@ export function Video (props) {
       dispatch( muteOn(id) )
     }
   }
-
+ */
   // после прогрузки в стейт перезаписываются, 
   // асинхронно сформированные в элементе video, значения 
    const onLoadedMetadata = () => {
     const duration = Math.floor(ref.current.duration)
     dispatch( writeDuration({id, duration}))
-/*     setState((state)=>(
-      {...state, 
-      muted: ref.current.muted,
-      duration: Math.floor(ref.current.duration),
-      }
-    ))
- */ 
   } 
 
 
@@ -96,8 +131,6 @@ export function Video (props) {
 
 
 
-  // если компонент строится внутри <VideoPage/>, то id берется из url
-  // если внутри списка, то id берется из пропсов
 
   // инициализация локального стейта UI (React), 
   // чтобы пропсами передать потомкам значения без андефайнед
@@ -141,52 +174,14 @@ export function Video (props) {
 
     // БЛОК УПРАВЛЕНИЯ элементом video (play, paused, volume, muted )
     // т.е. поведение video управляется стейтом UI
-    if (ref.current){
-      if (played === true) {
-        ref.current.play()
-      } else if (played === false) {
-        ref.current.pause()
-      }
-      ref.current.volume = volume
-      if (mute === true) {
-        ref.current.volume = 0
-      } else {
-        ref.current.volume = volume
-      }
-      // схема управления временем видео такая: 
-      // пользователь -> specifiedTime -> ref (DOM) -> currentTime -> UI
-      // Важно: после любой перемотки времени, как только видео 
-      // начинает играть происходит сброс specifiedTime в
-      // обработчике onTimeUpdate - чтобы никакой rerender <video>
-      // не повторил перемотку времени
-      if (specifiedTime !== undefined){           
-        ref.current.currentTime = specifiedTime
-      }
+    
 
 
-/*       if (played===true && location==='inVideoPage'){ 
-        ref.current.pause()                                 // ОШиБКА т.к. это асинхронная функция
-      } 
-      if (played===false && location==='inVideoPage'){
-        ref.current.play()                                   // ОШиБКА т.к. это асинхронная функция
-      }
-      if (played && (location==='inListInVideoPage' || 'inListInMain')){
-        ref.current.muted = true
-        ref.current.play()                                   // ОШиБКА т.к. это асинхронная функция
-      }
-      if (played===false && (location==='inListInVideoPage' || 'inListInMain')){
-        ref.current.pause()                                   // ОШиБКА т.к. это асинхронная функция
-        ref.current.currentTime = 0
-      }
- */
 
-    } 
 
-/*     const setCurrentTime=(time)=>{
-      ref.current.currentTime = time
-    }
- */
 
+
+    
 
   //управление стилями <Video/> --- сделать понормальному т.е. styleState !
   let style
@@ -220,8 +215,8 @@ export function Video (props) {
             onTimeUpdate = {onTimeUpdate }
             onMouseOver = { onMouseOver }
             onMouseOut = { onMouseOut }
-            onClick = { onClick }
-            onEnded = { onEnded }
+/*             onClick = { onClick }
+ */            onEnded = { onEnded }
             /*  poster = {videoData.poster} */   >
             <source src={video}/>
             { isSubtitles === true ? 

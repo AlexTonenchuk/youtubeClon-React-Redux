@@ -1,4 +1,4 @@
-import React from "react";
+/* import React from "react";
 import { Video } from "../video/Video";
 import { ListVideos } from "../listVideos/ListVideos";
 import styles from './videoPage.module.css'
@@ -27,4 +27,4 @@ export function VideoPage (props) {
 
     </div>
   )
-}
+} */

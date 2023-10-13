@@ -3,8 +3,6 @@ import { ControlPan } from '../controlPan/ControlPan'
 import { Caption} from '../caption/Caption'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-/* import { selectPaused, setFocusId, selectFocusId } from "./videoSlice";
- */
 import styles from './video.module.css'
 import { 
   playOn, 
@@ -24,10 +22,7 @@ import {
   selectSpecifiedTime,
  } from "../videoList/videoListSlice";
  import {
-  toggleAutoplayIsOn,
-  toggleVideoIsOver,
-  selectAutoplayIsOn,
-  selectVideoIsOver
+  selectAutoplay,
  } from '../btnAutoplay/btnAutoplaySlice.js'
 
 
@@ -39,12 +34,14 @@ export function Video (props) {
   const dispatch = useDispatch()
   const location = props.location
   const urlId = useParams().id
-  //из пропсов id берется для видеороликов внутри списка
-  //из url для главного видео
+  /* 
+  из пропсов id берется для видеороликов
+  внутри списка, а из url для главного видео
+  */
   const id = props.id ? props.id : urlId
   const navigate = useNavigate()
 
-  // извлечение данных из ReduxState
+  // извлечение значений из ReduxState
   const video = useSelector( (state)=> selectVideoFile(state, id) )
   const played = useSelector( (state)=> selectPlayed(state, id) )
   const mute = useSelector( (state)=> selectMute(state, id) )
@@ -52,11 +49,19 @@ export function Video (props) {
   const specifiedTime = useSelector( (state)=> selectSpecifiedTime(state, id)  )
   const isSubtitles = useSelector( (state)=> selectIsSubtitles(state, id)  )
   const subtitles = useSelector( (state)=> selectSubtitles(state, id)  )
-  const autoplayIsOn = useSelector( selectAutoplayIsOn)
-  const videoIsOver = useSelector( selectVideoIsOver )
+  const autoplayIsOn = useSelector( selectAutoplay)
 
-  // Блок управления DOM узлом <video> читает 
-  // значения из ReduxState и управляет узлом
+  // БЛОК УПРАВЛЕНИЯ DOM-узлом
+  /* 
+  БЛОК УПРАВЛЕНИЯ DOM-узлом <video> читает 
+  значения из ReduxState и управляет узлом.
+  Схема управления временем видео слудующая: 
+  пользователь -> specifiedTime -> ref (DOM) -> currentTime -> UI.
+  После любой перемотки времени, как только видео 
+  начинает играть происходит сброс specifiedTime в
+  обработчике onTimeUpdate - чтобы никакой rerender <video>
+  не повторил перемотку времени.
+  */
   useEffect( ()=>{
     if (played === true) {
       ref.current.play()
@@ -69,24 +74,12 @@ export function Video (props) {
     } else {
       ref.current.volume = volume
     }
-    // схема управления временем видео такая: 
-    // пользователь -> specifiedTime -> ref (DOM) -> currentTime -> UI
-    // Важно: после любой перемотки времени, как только видео 
-    // начинает играть происходит сброс specifiedTime в
-    // обработчике onTimeUpdate - чтобы никакой rerender <video>
-    // не повторил перемотку времени
     if (specifiedTime !== undefined){           
       ref.current.currentTime = specifiedTime
     }
-    if (location==='inVideoPage' && videoIsOver){
-      dispatch( toggleVideoIsOver() )
-      dispatch( playOn(Number(id)+1) )
-      dispatch( muteOff(Number(id)+1) )
-      navigate( '/video/'+(Number(id)+1) )
-    }
   })
 
-  //обработчики
+  //ОБРАБОТЧКИ
   const onMouseOver =()=> {
     if (location==='inListInVideoPage' || location==='inListInMain'){
       dispatch( playOn(id) );
@@ -102,15 +95,19 @@ export function Video (props) {
   const onEnded =()=> {
     dispatch( playOff(id) )
     dispatch( setSpecifiedTime({id, specifiedTime:0}))
-    dispatch( toggleVideoIsOver() )
+    if (location === 'inVideoPage'){
+      dispatch( playOn(Number(id)+1) )
+      dispatch( muteOff(Number(id)+1) )
+      navigate( '/video/'+(Number(id)+1) )
+    }
   }
   const onTimeUpdate =(e)=> {
     const currentTime = Math.floor(e.target.currentTime)
     dispatch( writeCurrentTime({id, currentTime}) )
-    // Важно: это сброс ! см. в блок управления
-    dispatch( setSpecifiedTime({id, specifiedTime: undefined})) 
+    // Важно! Это сброс (см. блок управления DOM-узлом)
+    dispatch( setSpecifiedTime({id, specifiedTime: undefined}))
   }
-/*   const onClick =()=> {
+  const onClick =()=> {
     if (location==='inListInVideoPage' || location==='inListInMain'){
       dispatch ( setSpecifiedTime({id, specifiedTime:0}) )
       dispatch( writeCurrentTime({id, currentTime:0}) )
@@ -118,17 +115,14 @@ export function Video (props) {
       dispatch( muteOn(id) )
     }
   }
- */
-  // после прогрузки в стейт перезаписываются, 
-  // асинхронно сформированные в элементе video, значения 
-   const onLoadedMetadata = () => {
+  /* 
+  после прогрузки в стейт перезаписываются, 
+  асинхронно сформированные в элементе video, значения 
+   */
+  const onLoadedMetadata = () => {
     const duration = Math.floor(ref.current.duration)
     dispatch( writeDuration({id, duration}))
   } 
-
-
-
-
 
 
 
@@ -150,10 +144,6 @@ export function Video (props) {
     wideScreen: false,
   }) */
 
-
-
-
-
   // по окончанию видео инкриментируем id для построения следущего <Video/>
  /*  const onEnded =()=>{
     setState((state)=>({...state, id: ++state.id}))
@@ -171,15 +161,6 @@ export function Video (props) {
       ))
     }
  */
-
-    // БЛОК УПРАВЛЕНИЯ элементом video (play, paused, volume, muted )
-    // т.е. поведение video управляется стейтом UI
-    
-
-
-
-
-
 
     
 
@@ -215,8 +196,8 @@ export function Video (props) {
             onTimeUpdate = {onTimeUpdate }
             onMouseOver = { onMouseOver }
             onMouseOut = { onMouseOut }
-/*             onClick = { onClick }
- */            onEnded = { onEnded }
+            onClick = { onClick }
+            onEnded = { onEnded }
             /*  poster = {videoData.poster} */   >
             <source src={video}/>
             { isSubtitles === true ? 

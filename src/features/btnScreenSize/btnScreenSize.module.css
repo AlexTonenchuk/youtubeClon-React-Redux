@@ -1,0 +1,13 @@
+.smallRectangle {
+    background-image: url(smallRectangle.png);
+}
+.smallRectangle:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(smallRectangle.png);
+}
+
+.largeRectangle {
+    background-image: url(largeRectangle.png);
+}
+.largeRectangle:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(largeRectangle.png);
+}

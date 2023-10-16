@@ -9,9 +9,7 @@ import {
     name: 'autoplay',
     initialState,
     reducers: {
-      setAutoplay: (state, action) => {
-        state = action.payload
-      },
+      setAutoplay: (state, action) => action.payload,
     }
   });
   

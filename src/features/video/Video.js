@@ -20,11 +20,9 @@ import {
   selectMute,
   selectVolume,
   selectSpecifiedTime,
- } from "../videoList/videoListSlice";
- import {
-  selectAutoplay,
- } from '../btnAutoplay/btnAutoplaySlice.js'
-
+ } from "../videoList/videoListSlice"
+import {  selectAutoplay } from '../btnAutoplay/btnAutoplaySlice.js'
+import { selectScreenSize } from "../btnScreenSize/btnScreenSizeSlice";
 
 
 
@@ -49,7 +47,8 @@ export function Video (props) {
   const specifiedTime = useSelector( (state)=> selectSpecifiedTime(state, id)  )
   const isSubtitles = useSelector( (state)=> selectIsSubtitles(state, id)  )
   const subtitles = useSelector( (state)=> selectSubtitles(state, id)  )
-  const autoplayIsOn = useSelector( selectAutoplay)
+  const autoplay = useSelector( selectAutoplay)
+  const screenSize = useSelector( selectScreenSize)
 
   // БЛОК УПРАВЛЕНИЯ DOM-узлом
   /* 
@@ -96,9 +95,11 @@ export function Video (props) {
     dispatch( playOff(id) )
     dispatch( setSpecifiedTime({id, specifiedTime:0}))
     if (location === 'inVideoPage'){
-      dispatch( playOn(Number(id)+1) )
-      dispatch( muteOff(Number(id)+1) )
       navigate( '/video/'+(Number(id)+1) )
+      dispatch( muteOff(Number(id)+1) )
+      if(autoplay===true){
+        dispatch( playOn(Number(id)+1) )
+      }
     }
   }
   const onTimeUpdate =(e)=> {
@@ -166,19 +167,20 @@ export function Video (props) {
 
   //управление стилями <Video/> --- сделать понормальному т.е. styleState !
   let style
+
   if (location==='inListInMain'){
     style = styles.videoInListInMain
   } 
   if (location==='inListInVideoPage'){
     style = styles.videoInListInVideoPage
   }
-  if (location==='inVideoPage'){
-    style = styles.inVideoPage
+  if (location==='inVideoPage' && screenSize === 'small'){
+    style = styles.inVideoPageSmallScreen
   }
-/*   if (state.wideScreen === true){       
-    style = style+' '+styles.wideScreen
+  if (location==='inVideoPage' && screenSize === 'large'){       
+    style = styles.inVideoPageLargeScreen
   } 
- */
+
 
   
   // UI

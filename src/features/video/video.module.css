@@ -21,16 +21,16 @@
 }
 
 
-.inVideoPageSmallScreen {
+.videoInPageSmallScreen {
 width: 60vw;
 height: 35vw;
 border: 5px solid rgb(11, 238, 30);
-
-
+object-fit: cover;
 }
 
-.inVideoPageLargeScreen {
+.videoInPageLargeScreen {
     width: 95vw;
     height: 45vw;
     border: 5px solid rgb(204, 238, 11);
+    object-fit: cover;
     }

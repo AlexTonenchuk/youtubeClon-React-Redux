@@ -1,0 +1,6 @@
+.btnPlayNext {
+    background-image: url(nextBtn.png);
+}
+.btnPlayNext:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(nextBtn.png);
+}

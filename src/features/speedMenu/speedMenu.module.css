@@ -1,0 +1,49 @@
+
+
+.iconField {
+    width: 35px;
+    height: 30px;
+    border: 1px solid rgba(228, 228, 228, 0.144);
+    border-radius: 1px;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgb(7, 7, 7);
+    cursor:pointer;
+    position: relative;
+}
+
+.speedMenu {
+    border: 3px solid rgb(206, 66, 23);
+/*     position: absolute;
+    top: 100px;
+    left: 200px;
+ */    
+    width: 200px;
+}
+
+.rowField {
+    border: 3px solid rgb(168, 20, 124);
+    display: flex;
+    justify-content: flex-start;
+}
+
+.valueField {
+    color: rgb(192, 20, 20);
+    width: 100%;     
+    background-color: rgba(67, 173, 25, 0.514);
+    text-align: right;
+
+}
+
+
+
+.checkMarkIcon {
+    background-image: url(checkMark.png);
+}
+
+
+
+
+
+

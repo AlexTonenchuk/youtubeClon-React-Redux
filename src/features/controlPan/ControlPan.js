@@ -3,9 +3,10 @@ import styles from './controlPan.module.css'
 import { Time } from "../time/Time"
 import { Volume } from '../volume/Volume'
 import { TimeTrack } from "../timeTrack/TimeTrack";
-import { SettingsMenu } from "../settingsMenu/SettingsMenu";
+import { BtnSettings } from "../btnSettings/BtnSettings"; 
 import { BtnAutoplay } from "../btnAutoplay/BtnAutoplay";
 import { BtnScreenSize } from "../btnScreenSize/BtnScreenSize";
+import { BtnPlayNext } from "../btnPlayNext/BtnPlayNext";
 import { useSelector, useDispatch } from "react-redux";
 import { 
   muteOn, 
@@ -83,12 +84,7 @@ export function ControlPan (props) {
             onClick={ togglePlayPause }          
             >
           </button>
-          <button
-            id='playNextBtn'
-            className={styles.nextBtn}
-/*             onClick={props.playNextVideo}
- */          >
-          </button>
+          <BtnPlayNext/>
           <Volume id = {id} />
           <Time id = {id} />
         </div>
@@ -101,24 +97,17 @@ export function ControlPan (props) {
             onClick={ ()=> dispatch(toggleSubtitles(id)) }
           >
           </button>
-          <button 
+
+{/*           <button 
             className={style.settingsBtn}
             onClick={toggleSettings}          >
           </button>
+ */}      
+          <BtnSettings/>
+    
           <button 
             className={style.miniPlayer}         >
           </button>
-
-
-
-          <button
-/*             id='wideScreen !!!!!!!!!!!!!!!'
-            className={ props.wideScreen===false ? styles.wideScreen : styles.narrowScreen}
-            onClick={props.toggleWideScreen}         
- */            >
-          </button>
-
-
           <BtnScreenSize/>
 
 
@@ -129,9 +118,8 @@ export function ControlPan (props) {
           </button>
         </div>
       </div>
-        <SettingsMenu 
-          className={style.settingsMenu}
-        />
-    </div>
+
+
+  </div>
     )
 }

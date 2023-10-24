@@ -23,6 +23,8 @@ import {
  } from "../videoList/videoListSlice"
 import {  selectAutoplay } from '../btnAutoplay/btnAutoplaySlice.js'
 import { selectScreenSize } from "../btnScreenSize/btnScreenSizeSlice";
+import { selectPlayNext, setPlayNext } from "../btnPlayNext/btnPlayNextSlice";
+import { selectSpeed } from "../speedMenu/speedMenuSlice";
 
 
 
@@ -40,15 +42,17 @@ export function Video (props) {
   const navigate = useNavigate()
 
   // извлечение значений из ReduxState
-  const video = useSelector( (state)=> selectVideoFile(state, id) )
-  const played = useSelector( (state)=> selectPlayed(state, id) )
-  const mute = useSelector( (state)=> selectMute(state, id) )
-  const volume = useSelector( (state)=> selectVolume(state, id)  )
+  const video =         useSelector( (state)=> selectVideoFile(state, id) )
+  const played =        useSelector( (state)=> selectPlayed(state, id) )
+  const mute =          useSelector( (state)=> selectMute(state, id) )
+  const volume =        useSelector( (state)=> selectVolume(state, id)  )
   const specifiedTime = useSelector( (state)=> selectSpecifiedTime(state, id)  )
-  const isSubtitles = useSelector( (state)=> selectIsSubtitles(state, id)  )
-  const subtitles = useSelector( (state)=> selectSubtitles(state, id)  )
-  const autoplay = useSelector( selectAutoplay)
-  const screenSize = useSelector( selectScreenSize)
+  const isSubtitles =   useSelector( (state)=> selectIsSubtitles(state, id)  )
+  const subtitles =     useSelector( (state)=> selectSubtitles(state, id)  )
+  const autoplay =      useSelector( selectAutoplay)
+  const screenSize =    useSelector( selectScreenSize)
+  const playNext =      useSelector( selectPlayNext)
+  const speed =         useSelector( selectSpeed )
 
   // БЛОК УПРАВЛЕНИЯ DOM-узлом
   /* 
@@ -75,6 +79,19 @@ export function Video (props) {
     }
     if (specifiedTime !== undefined){           
       ref.current.currentTime = specifiedTime
+      dispatch( setSpecifiedTime({id, specifiedTime: undefined})) 
+    }
+    if (location === 'inVideoPage' && playNext === true) {
+      dispatch( playOff(id) )
+      dispatch( setPlayNext(false) )
+      navigate( '/video/'+(Number(id)+1) )
+    }
+    // !!!!!! ИСПРАВиТЬ
+    // будет срабатывать при каждом эффекте, это нагрузит процессор
+    // нужно блок управления разбить на отдельные эффекты, зависящие
+    // от изменения конкретных частей ReduxState
+    if (true) {
+      ref.current.playbackRate = speed
     }
   })
 
@@ -105,8 +122,6 @@ export function Video (props) {
   const onTimeUpdate =(e)=> {
     const currentTime = Math.floor(e.target.currentTime)
     dispatch( writeCurrentTime({id, currentTime}) )
-    // Важно! Это сброс (см. блок управления DOM-узлом)
-    dispatch( setSpecifiedTime({id, specifiedTime: undefined}))
   }
   const onClick =()=> {
     if (location==='inListInVideoPage' || location==='inListInMain'){
@@ -124,46 +139,7 @@ export function Video (props) {
     const duration = Math.floor(ref.current.duration)
     dispatch( writeDuration({id, duration}))
   } 
-
-
-
-  // инициализация локального стейта UI (React), 
-  // чтобы пропсами передать потомкам значения без андефайнед
-  /* const [state, setState] = useState ({
-    id: id,
-    autoplay: false,      // указывает на: будет ли запускаться след.видео по окончанию
-    isPlay: false,
-    muted: false,
-    volume: 0.5,          // 0...1
-    isSubtitles: true,
-    speed: 1,
-    quality: 480,         // 360, 480, 720
-    size: 'normal',       // normal, mini, wide, full - !!! ПЕРЕДЕЛАТЬ так, а не wideScreen !!!!!!!!!!!!!
-    currentTime: 0,
-    duration: 0,
-    paused: true,
-    wideScreen: false,
-  }) */
-
-  // по окончанию видео инкриментируем id для построения следущего <Video/>
- /*  const onEnded =()=>{
-    setState((state)=>({...state, id: ++state.id}))
-    setState((state)=>({...state, paused: true}))
-
-  } */
-
-  // обработчик событий, который в стейте постоянно обновляет 
-  // текущее время ролика, которое нужно для <CurrentTime/>
-/*     const changeCurrentTime =()=> {
-      setState((state) =>(
-        {...state, 
-        currentTime: Math.floor(ref.current.currentTime)
-        }
-      ))
-    }
- */
-
-    
+   
 
   //управление стилями <Video/> --- сделать понормальному т.е. styleState !
   let style
@@ -175,12 +151,11 @@ export function Video (props) {
     style = styles.videoInListInVideoPage
   }
   if (location==='inVideoPage' && screenSize === 'small'){
-    style = styles.inVideoPageSmallScreen
+    style = styles.videoInPageSmallScreen
   }
   if (location==='inVideoPage' && screenSize === 'large'){       
-    style = styles.inVideoPageLargeScreen
+    style = styles.videoInPageLargeScreen
   } 
-
 
   
   // UI

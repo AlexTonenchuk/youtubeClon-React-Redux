@@ -1,5 +1,3 @@
-
-
 .iconField {
     width: 35px;
     height: 30px;
@@ -15,11 +13,7 @@
 
 .speedMenu {
     border: 3px solid rgb(206, 66, 23);
-/*     position: absolute;
-    top: 100px;
-    left: 200px;
- */    
-    width: 200px;
+    min-width: 200px;
 }
 
 .rowField {
@@ -35,8 +29,6 @@
     text-align: right;
 
 }
-
-
 
 .checkMarkIcon {
     background-image: url(checkMark.png);

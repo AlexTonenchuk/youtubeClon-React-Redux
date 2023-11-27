@@ -78,32 +78,23 @@ export const {
 
 export default videoListSlice.reducer;
 
-// Получаем файл video 
-export const selectVideoFile = createSelector(
+export const selectCanal = createSelector(
   (state) => state,
   (state, id) => id,
-  (state, id) => state.videoList.entities[id].video
+  (state, id) => state.videoList.entities[id].canal
 )
 
-// получаем флаг видеоИграет?
-export const selectPlayed = createSelector(
+export const selectCategories = createSelector(
   (state) => state,
   (state, id) => id,
-  (state, id) => state.videoList.entities[id].played
+  (state, id) => state.videoList.entities[id].categories
 )
 
-//получаем флаг громкостьВыключена?
-export const selectMute = createSelector(
-  (state, id) => state,
-  (state, id) => id,
-  (state, id) => state.videoList.entities[id].mute
-)
 
-//получаем уровень громкости (от 0 до 1)
-export const selectVolume = createSelector(
-  (state, id) => state,
+export const selectCreatDate = createSelector(
+  (state) => state,
   (state, id) => id,
-  (state, id) => state.videoList.entities[id].volume
+  (state, id) => state.videoList.entities[id].creatDate
 )
 
 //получаем текущее время
@@ -111,13 +102,6 @@ export const selectCurrentTime = createSelector(
   (state, id) => state,
   (state, id) => id,
   (state, id) => state.videoList.entities[id].currentTime
-)
-
-//получаем  время на которое хотим перемотать видео
-export const selectSpecifiedTime = createSelector(
-  (state, id) => state,
-  (state, id) => id,
-  (state, id) => state.videoList.entities[id].specifiedTime
 )
 
 //получаем  длительность видео
@@ -133,6 +117,59 @@ export const selectIsSubtitles = createSelector(
   (state, id) => id,
   (state, id) => state.videoList.entities[id].isSubtitles
 )
+
+//получаем флаг громкостьВыключена?
+export const selectMute = createSelector(
+  (state, id) => state,
+  (state, id) => id,
+  (state, id) => state.videoList.entities[id].mute
+)
+
+export const selectName = createSelector(
+  (state, id) => state,
+  (state, id) => id,
+  (state, id) => state.videoList.entities[id].name
+)
+
+// получаем флаг видеоИграет?
+export const selectPlayed = createSelector(
+  (state) => state,
+  (state, id) => id,
+  (state, id) => state.videoList.entities[id].played
+)
+
+//получаем  время на которое хотим перемотать видео
+export const selectSpecifiedTime = createSelector(
+  (state, id) => state,
+  (state, id) => id,
+  (state, id) => state.videoList.entities[id].specifiedTime
+)
+
+// Получаем файл video 
+export const selectVideoFile = createSelector(
+  (state) => state,
+  (state, id) => id,
+  (state, id) => state.videoList.entities[id].video
+)
+
+export const selectViews = createSelector(
+  (state) => state,
+  (state, id) => id,
+  (state, id) => state.videoList.entities[id].views
+)
+
+//получаем уровень громкости (от 0 до 1)
+export const selectVolume = createSelector(
+  (state, id) => state,
+  (state, id) => id,
+  (state, id) => state.videoList.entities[id].volume
+)
+
+
+
+
+
+
 
 //получаем содержимое субтитра
 export const selectSubtitles = createSelector(

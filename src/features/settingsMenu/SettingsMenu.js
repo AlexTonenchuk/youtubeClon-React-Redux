@@ -1,23 +1,27 @@
 import React from "react";
 import styles from './settingsMenu.module.css'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSettingsMenu } from "../btnSettings/btnSettingsSlice";
+import { selectSpeed } from "../speedMenu/speedMenuSlice";
 
 
 export function SettingsMenu () {
   const dispatch = useDispatch()
+  const speed = useSelector(selectSpeed)
   const changeMenu =(e)=> {
     const id = e.target.id
     const idP = e.target.parentNode.id
     if ( (id || idP) === 'speed' ) { dispatch(setSettingsMenu('speedMenu')) }
   }
   const {
+    gray,
     iconField, 
     nameField, 
     qualityIcon,
     settingRow,
     settingsMenu,
     speedIcon,
+    subtitlesIcon,
     valueField,
   } = styles
   //RETURN
@@ -27,15 +31,21 @@ export function SettingsMenu () {
             onClick = { changeMenu }>
         
         <div  id='speed' className = { settingRow } >
-          <div className={ iconField +' '+ speedIcon }>     </div>
-          <div className={ nameField }> {'Скорость'}        </div>
-          <div className={ valueField }> '60km'             </div>
+          <div className={ iconField +' '+ speedIcon }>                </div>
+          <div className={ nameField }> {'Скорость воспроизведения'}   </div>
+          <div className={ valueField }> {speed}                       </div>
+        </div>
+
+        <div  id='subtitles' className = { settingRow } >
+          <div className={ iconField +' '+ subtitlesIcon }>                     </div>
+          <div className={ nameField+' '+gray }> {'Субтитры  (врем. не раб.)'}  </div>
+          <div className={ valueField }> рус.                                    </div>
         </div>
 
         <div id='quality' className = { settingRow } >
-          <div className={ iconField +' '+ qualityIcon }>   </div>
-          <div className={ nameField }> {'Качество'}        </div>
-          <div className={ valueField }> 'HD'               </div>
+          <div className={ iconField +' '+ qualityIcon }>                       </div>
+          <div className={ nameField+' '+gray }> {'Качество (врем. не раб.)'}   </div>
+          <div className={ valueField }> 240                                    </div>
         </div>
 
       </div>

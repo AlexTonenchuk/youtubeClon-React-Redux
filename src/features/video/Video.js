@@ -1,6 +1,6 @@
-import React, {useRef, useState, useEffect} from "react";
+import React, {useRef, useState, useEffect} from "react"
 import { ControlPan } from '../controlPan/ControlPan'
-import { Caption} from '../caption/Caption'
+import { Caption } from '../caption/Caption'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import styles from './video.module.css'
@@ -22,11 +22,11 @@ import {
   selectSpecifiedTime,
  } from "../videoList/videoListSlice"
 import {  selectAutoplay } from '../btnAutoplay/btnAutoplaySlice.js'
-import { selectScreenSize } from "../btnScreenSize/btnScreenSizeSlice";
+import { selectScreenSize } from "../panScreenSize/panScreenSizeSlice";
 import { selectPlayNext, setPlayNext } from "../btnPlayNext/btnPlayNextSlice";
 import { selectSpeed } from "../speedMenu/speedMenuSlice";
-
-
+import { VideoFooter } from "../videoFooter/VideoFooter";
+import { selectSearch } from "../search/searchSlice.js"
 
 export function Video (props) {
 
@@ -53,6 +53,8 @@ export function Video (props) {
   const screenSize =    useSelector( selectScreenSize)
   const playNext =      useSelector( selectPlayNext)
   const speed =         useSelector( selectSpeed )
+  const search =        useSelector(selectSearch)
+
 
   // БЛОК УПРАВЛЕНИЯ DOM-узлом
   /* 
@@ -140,70 +142,99 @@ export function Video (props) {
     dispatch( writeDuration({id, duration}))
   } 
    
+  // сделать нормальные названия
+  const {
+    containerInListInMain,
+    containerInListInMainFiltred,
+    videoInListInMain,          // это лишнее
+    videoInListInMainFiltred,
+    videoInListInVideoPage,     
+    videoInVideoPageSmallScreen,
+    videoInVideoPageBigScreen,
+    videoInVideoPageFullScreen,
+    containerForSmallScreen,
+    containerForBigScreen,
+    containerForFullScreen,
+    containerInListInVideopage,
+  } = styles
 
-  //управление стилями <Video/> --- сделать понормальному т.е. styleState !
-  let style
-
-  if (location==='inListInMain'){
-    style = styles.videoInListInMain
-  } 
-  if (location==='inListInVideoPage'){
-    style = styles.videoInListInVideoPage
+  //управление стилями <Video/> 
+  // !!! !!! !!! переделать понормальному ! (switch?) !!! !!! !!!
+  const calcVideoStyle =()=> {
+    if (location==='inListInMain')              { return videoInListInMain } 
+    if (location==='inListInMain'
+        && search)                              { return videoInListInMainFiltred  }
+    if (location==='inListInVideoPage')         { return videoInListInVideoPage  }
+    if (location==='inVideoPage'
+        && screenSize==='smallScreen')          { return videoInVideoPageSmallScreen }
+    if (location==='inVideoPage'
+        && screenSize==='bigScreen')            { return videoInVideoPageBigScreen } 
+    if (location==='inVideoPage' 
+        && screenSize==='fullScreen')           { return videoInVideoPageFullScreen } 
   }
-  if (location==='inVideoPage' && screenSize === 'small'){
-    style = styles.videoInPageSmallScreen
-  }
-  if (location==='inVideoPage' && screenSize === 'large'){       
-    style = styles.videoInPageLargeScreen
-  } 
-
   
-  // UI
+  //управление стилями container вокруг <Video/> и <Caption/> 
+  // !!! !!! !!! переделать понормальному ! (switch?) !!! !!! !!!
+  const calcContainerStyle =()=> {
+    if (location==='inListInMain'
+        && !search)                             { return containerInListInMain } 
+    if (location==='inListInMain'
+        && search )                             { return containerInListInMainFiltred }
+    if (location==='inListInVideoPage')         { return containerInListInVideopage  }
+    if (location==='inVideoPage' 
+        && screenSize==='smallScreen')          { return containerForSmallScreen  }
+    if (location==='inVideoPage' 
+        && screenSize==='bigScreen')            { return containerForBigScreen  }
+    if (location==='inVideoPage' 
+        && screenSize==='fullScreen')           { return containerForFullScreen  }
+  }
+  
+ 
+  // RETURN
   return (
-    <div >
-      <div className ={ location==='inVideoPage' ? styles.flex : 'false' } >
-        <div className ={ location==='inListInVideoPage' ? styles.flex : 'false' } >
-          
-          <video
-            id = {id}
-            key = {id}
-            className = {style}
-            ref = {ref}
-            onLoadedMetadata = {onLoadedMetadata}
-            onTimeUpdate = {onTimeUpdate }
-            onMouseOver = { onMouseOver }
-            onMouseOut = { onMouseOut }
-            onClick = { onClick }
-            onEnded = { onEnded }
-            /*  poster = {videoData.poster} */   >
-            <source src={video}/>
-            { isSubtitles === true ? 
-                <track
-                  kind = 'subtitles'
-                  src = { subtitles } 
-                  srcLang="ru"
-                  default   
-                  label="Русский"    
-                />
-              : false
-            }
-          </video>
+    <div className={calcContainerStyle()}>
+      <video
+        id = {id}
+        key = {id}
+        className = { calcVideoStyle() }
+        ref = {ref}
+        onLoadedMetadata = { onLoadedMetadata }
+        onTimeUpdate = { onTimeUpdate }
+        onMouseOver = { onMouseOver }
+        onMouseOut = { onMouseOut }
+        onClick = { onClick }
+        onEnded = { onEnded }
+        /*  poster = {videoData.poster} */   >
+        <source src={video}/>
+        { isSubtitles === true ? 
+            <track
+              kind = 'subtitles'
+              src = { subtitles } 
+              srcLang="ru"
+              default   
+              label="Русский"    
+            />
+          : false
+        }
         
-          { location==='inVideoPage' ?            // location для Video
-            <ControlPan id = {id} />
-            : false
-          }
+      </video>
+    
+      { location==='inVideoPage' ?            // location для Video
+        <ControlPan id = {id} />
+        : false
+      }
 
-{/*           { location==='inListInMain' ||        // location для Video
-            location==='inListInVideoPage' ?
-            <Caption location={props.location}/>
-            : false
-          }
- */}
-        </div>
+      { location==='inVideoPage' ?            // location для Video
+        <VideoFooter id = {id} />
+        : false
+      }
 
-      </div>
-      </div>
+      { location==='inListInMain' || location==='inFiltredListInMain' || location==='inListInVideoPage' ?
+        <Caption id={id} location={props.location}/>
+        : false
+      }
+
+    </div>
   )
 } 
 

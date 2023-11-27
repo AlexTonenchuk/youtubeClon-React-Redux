@@ -1,13 +1,15 @@
 import React from 'react';
 import { HeaderApp } from './features/headerApp/HeaderApp';
-import { Categories } from './features/categories/Categories';
+import { Filters } from './features/filters/Filters';
 import { VideoList } from './features/videoList/VideoList';
 import { Sidebar } from './features/sidebar/Sidebar';
 import { BrowserRouter, Routes, Route  } from 'react-router-dom';
 import styles from './App.module.css';
 import { Video } from './features/video/Video';
+import { Search } from './features/search/Search';
 
 function App() {
+
   return (
     <BrowserRouter>
       <Routes>
@@ -15,13 +17,11 @@ function App() {
           exact
           path="/" 
           element = {
-            <div className = "App">
+            <div>
               <HeaderApp/>
-              <Categories/>
-              <div className = {styles.flex}>
-                <Sidebar/>
-                <VideoList location = 'inMain' />
-              </div>
+              <Filters/>
+              <Sidebar/>
+              <VideoList location = 'inMain' />
             </div> 
           } 
         />
@@ -29,7 +29,8 @@ function App() {
         <Route 
           path = "/video/:id" 
           element = { 
-            <div className = {styles.flex} >
+            <div className = {styles.container} >
+              <HeaderApp/>
               <Video location = 'inVideoPage' />
               <VideoList location = 'inVideoPage' />
             </div>

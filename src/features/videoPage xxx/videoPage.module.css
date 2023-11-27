@@ -1,0 +1,10 @@
+.flex {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+}
+
+.noflex {
+    border: 10px solid rgb(0, 47, 255);
+
+}

@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     justify-content:space-between;
+    max-width: 1240px;
 }
 
 .hide {
@@ -46,14 +47,11 @@
 }
 
 .centralContainer {
-    display: flex;
-    align-items:center;
-    justify-content:flex-end;
-    width: 600px;
-    margin-top: 3px;
-    margin-bottom: 3px;
+    width: 700px;
     position: relative;
+    height: max-content;
 }
+
 .formNoActive {
     display: flex;
     align-items: center;
@@ -67,6 +65,7 @@
     width: 100%;
     margin-left: 55px;
 }
+
 .formActive {
     display: flex;
     align-items: center;
@@ -115,6 +114,8 @@
 }
 
 .keyboardBtn {
+    position: relative;
+    left: -100px;
     min-width: 21px;
     height: 13px;
     border: 0px solid #cccccc;
@@ -127,6 +128,8 @@
 }
 
 .closeBtnVisible {
+    position: relative;
+    left: -180px;
     min-width: 40px;
     height: 40px;
     border-radius: 50%;

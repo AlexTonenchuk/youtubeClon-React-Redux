@@ -1,11 +1,12 @@
 
 
 .controlPan {
-    width: 100%;
+    width: 99%;
     min-width: max-content;
     position: relative;
+    top: -100px;
     border: 1px solid red;
-    background-color: rgb(73, 72, 72);
+    background-color: rgba(73, 72, 72, 0.2);
     padding: 1px;
 }
 
@@ -48,12 +49,6 @@
     background-image: linear-gradient(#cccccc3b, #cccccc3b), url(fullScreen.png);
 }
 
-.miniPlayer {
-    background-image: url(miniPlayer.png);
-}
-.miniPlayer:hover {
-    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(miniPlayer.png);
-}
 
 .narrowScreen {
     background-image: url(narrowScreen.png);
@@ -111,19 +106,6 @@
     display: block;
 }
 
-.subtitlesOn {
-    background-image: url(subtitles.png);
-}
-.subtitlesOn:hover {
-    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(subtitles.png);
-}
-
-.subtitlesOff {
-    background-image: url(subtitlesOff.png);
-}
-.subtitlesOff:hover {
-    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(subtitlesOff.png);
-}
 .volume {
     width: 50px;
     height: 4px;

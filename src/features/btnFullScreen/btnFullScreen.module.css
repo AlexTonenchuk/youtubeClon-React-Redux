@@ -1,0 +1,27 @@
+.button {
+    width: 35px;
+    height: 30px;
+    border: 1px solid rgba(228, 228, 228, 0.144);
+    border-radius: 1px;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgb(73, 72, 72);
+    cursor:pointer;
+    position: relative;
+}
+
+.fullScreenBtn {
+    background-image: url(fullScreen.png);
+}
+.fullScreenBtn:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(fullScreen.png);
+}
+
+.noFullScreenBtn {
+    background-image: url(noFullScreen.png);
+}
+.noFullScreenBtn:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(noFullScreen.png);
+}
+

@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './HeaderApp.module.css';
 import logoYou from './youtube.png'
 import { useState } from "react";
+import { Search } from '../search/Search';
 
 export function HeaderApp() {
 
@@ -49,17 +50,6 @@ export function HeaderApp() {
 
 
 
-  /*    window.addEventListener('resize', (e)=>{
-    let left= document.querySelector(`#leftContainer`)
-    let right = document.querySelector('#rightContainer')
-    let central = document.querySelector('#centralContainer')
-    let marg = e.target.innerWidth-left.clientWidth-right.clientWidth-central.clientWidth
-    //if (marg<40) {document.querySelector(`form`).className=styles.hide}
-    if (marg>40) {document.querySelector(`form`).className=""}
-    console.dir(document.querySelector(`form`))
-  })
- */ 
-
   return (
     <div className={styles.mainContainer} >
 
@@ -71,32 +61,11 @@ export function HeaderApp() {
 
       <div  className={styles.centralContainer}
             id='centralContainer'>
-
-        <form className={formClass} >
-          <div className={loupeClass}></div>
-          <input  type="text" 
-                  className={styles.searchLine} 
-                  placeholder='Введите запрос'
-                  onFocus={showLoupe}
-                  onBlur={hideLoupe}
-                  onChange={showCloseBtn}/>
-          <button className = {styles.keyboardBtn}></button>
-          <button className = {closeBtnClass}></button>
-        </form>
-
-        <button className={styles.searchBtn}
-                onMouseOver={showSearchPrompt}
-                onMouseLeave={hideSearchPrompt}>
-          <div className={searchPromptClass}> Введите запрос</div>
-        </button>
-
-        <button className={styles.microphoneBtn}
-                onMouseOver={showMicrophonePrompt}
-                onMouseLeave={hideMicrophonePrompt}>
-          <div className={microphonePromptClass}> Голосовой поиск</div>
-        </button>
+        <Search/>
 
       </div>
+
+      
 
       <div className={styles.rightContainer} id='rightContainer'>
         <button className={styles.settingsBtn}

@@ -1,8 +1,13 @@
 import React from "react";
+import { useSelector } from 'react-redux'
+import { selectCreatDate } from '../videoList/videoListSlice'
+
 
 export function DateVideo (props) {
+    const id = props.id
+    const date = useSelector((state)=> selectCreatDate(state, id))
     const now = new Date()
-    const createDate = new Date(props.creatDate)
+    const createDate = new Date(date)
     let dayInterval = Math.floor((now-createDate)/1000/60/60/24)
     let  period 
     if (dayInterval<30) {

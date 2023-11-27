@@ -3,7 +3,9 @@ import {
     createSelector 
   } from '@reduxjs/toolkit';
 
-  const initialState = 'small'
+  // В стейте будут 3 значения 'smallScreen' или 'bigScreen' или 'fullScreen'
+  // изначальное значение 'smallScreen' 
+  const initialState = 'smallScreen' 
 
   export const screenSizeSlice = createSlice({
     name: 'screenSize',

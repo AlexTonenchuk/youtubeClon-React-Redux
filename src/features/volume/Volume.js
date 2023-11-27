@@ -22,10 +22,16 @@ export function Volume (props) {
         dispatch( setVolume({id, volume}) )
     }
 
+    const {
+        sound,
+        soundOff,
+        soundOn,
+    } = styles
+
     return (
         <div>
             <button 
-                className = { isMute === true ? styles.soundOff : styles.soundOn }
+                className = { sound+' '+(isMute === true ? soundOff : soundOn) }
                 onClick = { ()=> dispatch( toggleMute(id) ) }          >
             </button>
 

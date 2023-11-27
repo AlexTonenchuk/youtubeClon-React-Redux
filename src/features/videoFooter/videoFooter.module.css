@@ -1,0 +1,76 @@
+.subscribe {
+    padding: 0;
+    margin: 0;
+    object-fit: contain;
+}
+
+.buttons {
+    padding: 0;
+    margin: 0;
+    object-fit: contain;
+}
+
+.container {
+    width: 800px;
+    background-color: white;
+    position: relative;
+    top: -90px;
+
+}
+
+.comments {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+    object-fit: cover;
+    border: 1px solid rgba(228, 228, 228, 0.144);
+}
+
+.description {
+    width: 95%;
+    border-radius: 5px;
+    background-color: rgb(238, 238, 238);
+    padding: 16px;
+    margin-top: 10px;
+}
+
+.flex{
+    display: flex;
+    justify-content:space-between;
+}
+
+.round {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(228, 228, 228, 0.144);
+    border-radius: 20px;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor:pointer;
+    position: relative;
+    background-image: url(round.png);
+}
+
+.round:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(round.png);
+}
+
+
+
+.nameStyle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight:600;
+    text-transform: uppercase;
+}
+
+.canalStyle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+

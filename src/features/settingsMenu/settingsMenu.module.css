@@ -1,3 +1,8 @@
+.gray {
+    color:rgb(182, 182, 182);
+    font-style: italic ;
+}
+
 .iconField {
     width: 35px;
     height: 30px;
@@ -13,19 +18,7 @@
 
 .settingsMenu {
     border: 3px solid rgb(26, 231, 43);
-/*     position: absolute;
-    top: 100px;
-    left: 200px;
- */    
-    width: 300px;
-}
-
-.speedMenu {
-    border: 3px solid rgb(206, 66, 23);
-    position: absolute;
-    top: 100px;
-    left: 200px;
-    width: 200px;
+    min-width: 300px;
 }
 
 .settingRow {
@@ -54,6 +47,9 @@
 }
 .speedIcon {
     background-image: url(speed.png);
+}
+.subtitlesIcon {
+    background-image: url(subtitles.png);
 }
 .qualityIcon {
     background-image: url(quality.png);

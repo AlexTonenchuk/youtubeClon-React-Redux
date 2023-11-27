@@ -13,7 +13,7 @@ export function BtnSettings () {
     if (visibleMenu !== 'nothing')  { dispatch(setSettingsMenu('nothing')) }
   }
   const putSettingsMenuComponent =()=> {
-    if (visibleMenu === "nothing")        { return 'NICHEGO' }
+    if (visibleMenu === "nothing")        { return false }
     if (visibleMenu === "settingsMenu")   { return <SettingsMenu/> }
     if (visibleMenu === "speedMenu")      { return <SpeedMenu/> }
   }

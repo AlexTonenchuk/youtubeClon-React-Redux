@@ -1,0 +1,36 @@
+.miniPlayer {
+    width: 35px;
+    height: 30px;
+    border: 1px solid rgba(228, 228, 228, 0.144);
+    border-radius: 1px;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgb(73, 72, 72);
+    cursor: pointer;
+    position: relative;
+    background-image: url(miniPlayer.png);
+}
+
+.miniPlayer:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(miniPlayer.png);
+}
+
+
+.hide {
+    display: none;
+}
+
+.prompt {
+    width: max-content;
+    padding: 10px 5px 10px 5px;
+    border: 0px;
+    border-radius: 5px;
+    position: absolute;
+    top: -100px;
+    left: -50px;
+    background-color: rgb(112, 112, 112);
+    color: rgb(241, 241, 241);
+    opacity: 0.95;
+}
+

@@ -1,22 +1,22 @@
 import { configureStore } from '@reduxjs/toolkit';
-import categoriesReducer from '../features/categories/categoriesSlice'
+import filtersReducer from '../features/filters/filtersSlice'
 import videoListReduser from '../features/videoList/videoListSlice'
-import videoReduser from '../features/video/videoSlice'
 import autoplayReduser from '../features/btnAutoplay/btnAutoplaySlice'
-import screenSizeReduser from '../features/btnScreenSize/btnScreenSizeSlice'
 import playNextReduser from '../features/btnPlayNext/btnPlayNextSlice'
 import speedReduser from '../features/speedMenu/speedMenuSlice'
 import settingsMenuReduser from '../features/btnSettings/btnSettingsSlice'
+import screenSizeReduser from '../features/panScreenSize/panScreenSizeSlice';
+import searchReduser from '../features/search/searchSlice'
 
 export const store = configureStore({
   reducer: {
-    categories: categoriesReducer,
+    filters: filtersReducer,
     videoList: videoListReduser,
     autoplay: autoplayReduser,
-    screenSize: screenSizeReduser,
     playNext: playNextReduser,
     speed: speedReduser,
-    settingsMenu: settingsMenuReduser
-    //video: videoReduser,
+    settingsMenu: settingsMenuReduser,
+    screenSize: screenSizeReduser,
+    search: searchReduser,
   },
 });

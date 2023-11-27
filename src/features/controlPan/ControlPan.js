@@ -5,8 +5,9 @@ import { Volume } from '../volume/Volume'
 import { TimeTrack } from "../timeTrack/TimeTrack";
 import { BtnSettings } from "../btnSettings/BtnSettings"; 
 import { BtnAutoplay } from "../btnAutoplay/BtnAutoplay";
-import { BtnScreenSize } from "../btnScreenSize/BtnScreenSize";
 import { BtnPlayNext } from "../btnPlayNext/BtnPlayNext";
+import { BtnSubtitles } from "../btnSubtitles/BtnSubtitles";
+import { PanScreenSize } from "../panScreenSize/PanScreenSize";
 import { useSelector, useDispatch } from "react-redux";
 import { 
   muteOn, 
@@ -15,8 +16,6 @@ import {
   togglePlay, 
   selectPlayed,
   selectVolume,
-  toggleSubtitles,
-  selectIsSubtitles
 } from "../videoList/videoListSlice";
 
 export function ControlPan (props) {
@@ -25,7 +24,6 @@ export function ControlPan (props) {
   const dispatch = useDispatch()
   const played = useSelector( (state)=> selectPlayed(state, id) )
   const volume = useSelector( (state)=> selectVolume(state, id) )
-  const isSubtitles = useSelector( (state)=> selectIsSubtitles(state, id)  )
 
 
   //обработчики событий
@@ -46,33 +44,6 @@ export function ControlPan (props) {
     fullScreen: styles.fullScreen
   })
 
-  const subtitlesClass =  
-    isSubtitles === true ? 
-    styles.subtitlesOn 
-    : styles.subtitlesOff
-  
-/*   const toggleAutoplay = () => {
-    if (style.autoplay===styles.autoplayOff) {
-      setStyle({...style, autoplay: styles.autoplayOn})
-    } else if (style.autoplay===styles.autoplayOn) {
-      setStyle({...style, autoplay: styles.autoplayOff})
-    }
-  }
- */
-  const toggleSettings = () => {
-    if(style.settingsBtn===styles.settingsBtnOff){
-      setStyle({...style, 
-                  settingsBtn: styles.settingsBtnOn,
-                  settingsMenu: styles.show}) 
-    } else if (style.settingsBtn===styles.settingsBtnOn){
-      setStyle({...style, 
-                  settingsBtn: styles.settingsBtnOff,
-                  settingsMenu: styles.hide}) 
-    }
-  }
-
-
-
   return (
     <div className={styles.controlPan}>
        <TimeTrack id = {id} />
@@ -88,38 +59,13 @@ export function ControlPan (props) {
           <Volume id = {id} />
           <Time id = {id} />
         </div>
-
         <div className={styles.rightContainer}>
           <BtnAutoplay/>
-
-          <button
-            className={subtitlesClass}
-            onClick={ ()=> dispatch(toggleSubtitles(id)) }
-          >
-          </button>
-
-{/*           <button 
-            className={style.settingsBtn}
-            onClick={toggleSettings}          >
-          </button>
- */}      
+          <BtnSubtitles id={id}/>
           <BtnSettings/>
-    
-          <button 
-            className={style.miniPlayer}         >
-          </button>
-          <BtnScreenSize/>
-
-
-
-
-          <button 
-            className={style.fullScreen}         >
-          </button>
+          <PanScreenSize/>
         </div>
       </div>
-
-
   </div>
     )
 }

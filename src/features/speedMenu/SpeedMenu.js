@@ -15,6 +15,7 @@ export function SpeedMenu () {
   }
   const {
     iconField,
+    firstRow,
     checkMarkIcon,
     rowField,
     valueField,
@@ -42,7 +43,7 @@ export function SpeedMenu () {
   return (
     <div className={speedMenu} 
           onClick={changeSpeed}>
-      <div id='back' key='back' className={rowField}> {'< Скорость воспроизведения'} </div>
+      <div id='back' key='back' className={rowField+' '+firstRow}> {'< Скорость воспроизведения'} </div>
       { speeds }
     </div>
   )

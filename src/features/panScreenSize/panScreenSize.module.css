@@ -1,3 +1,8 @@
 .panScreenSize {
     display: flex;
+    align-items: center;
+}
+
+.panScreenSize > * {
+    margin-right: 3px;
 }

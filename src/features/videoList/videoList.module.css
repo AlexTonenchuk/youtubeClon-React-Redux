@@ -2,8 +2,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 1160px;
-    border: 1px solid rgb(11, 102, 238);
+    width: 90vw;
+    border: 0px solid rgb(11, 102, 238);
     position: relative;
     left: 80px;
     top: -350px;
@@ -17,11 +17,19 @@
     top: -350px;
 }
 
-.inRightSide {
+/* .inRightSide {
     position:absolute;
     top: 80px;
     left: 820px;
     width: 380px;
+}
+ */
+
+ .inRightSide {
+    display: inline-block;
+    width: 380px;
+    border: 0px solid rgb(238, 11, 11);
+
 }
 
 .underBigScreenVideo {

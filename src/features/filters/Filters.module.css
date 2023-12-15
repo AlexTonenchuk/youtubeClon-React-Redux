@@ -1,33 +1,19 @@
+.allFiltersBtn {
+    background-color: rgb(31, 31, 31);
+    color: rgb(214, 214, 214);
+}
+
 .black {
     background-color: black;
     color:aliceblue;
 }
 
-.filters {
-    display: flex;
-    align-items:center;
-    justify-content: space-between;
-    margin-left: 100px;
-    margin-top: 10px;
-    margin-right: 10px;
-    padding: 5px;
-}
-
-.wrap button:hover {
-    background-image: linear-gradient(#cccccc3b, #cccccc3b);
-}
-
 .conteiner {
+    display: inline-block;
     overflow: hidden;
     overflow-y: hidden;
     margin-left: 2px;
-    width: 100%;
-}
-
-.wrap {
-    width: max-content;
-    margin: 5px;
-    transition: margin-left 0.3s;
+    width: 600px;
 }
 
 .conteiner button {
@@ -41,12 +27,74 @@
     padding-right: 12px;
 }
 
-.allFiltersBtn {
-    background-color: rgb(31, 31, 31);
-    color: rgb(214, 214, 214);
+.filters {
+    display: inline-block;
+    position: relative;
+    margin-left: calc( (100% - 700px)*0.5);
+    margin-top: 10px;
+    margin-right: 10px;
+    padding: 5px;
+    width: max-content;
+}
+
+.filterBtn{
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.leftBtn {
+    position: relative;
+    margin-left: 10px;
+    margin-right: 1px;
+    min-width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    padding: 0;
+    border: 0px;
+    background-image: url(back.png);
+    background-repeat: no-repeat;
+    background-size: 150%;
+    background-position: center;
+    cursor: pointer;
+    box-shadow: 15px 0px 10px 10px  rgba(255, 255, 255, 0.945);
+}
+
+.leftBtn:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(back.png);
+}
+
+.promptLeft{
+    position: absolute;
+    top: 70px;
+    left: 10px;
+    z-index: 1;
+    width: max-content;
+    padding: 10px 5px 10px 5px;
+    border: 0px;
+    border-radius: 5px;
+    background-color: rgb(112, 112, 112);
+    color: rgb(241, 241, 241);
+    opacity: 0.95;
+}
+
+.promptRight {
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    z-index: 1;
+    width: max-content;
+    padding: 10px 5px 10px 5px;
+    border: 0px;
+    border-radius: 5px;
+    background-color: rgb(112, 112, 112);
+    color: rgb(241, 241, 241);
+    opacity: 0.95;
 }
 
 .rightBtn {
+    margin-left: 0px;
+    margin-right: 10px;
     min-width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -57,49 +105,20 @@
     background-size: 150%;
     background-position: center;
     cursor: pointer;
-    position: relative;
-    box-shadow: -9px 0px 10px 10px  rgba(255, 255, 255, 0.945);
-
+    box-shadow: -15px 0px 10px 10px  rgba(255, 255, 255, 0.945);
 }
 
 .rightBtn:hover {
     background-image: linear-gradient(#cccccc3b, #cccccc3b), url(forward.png);
 }
 
-.leftBtn {
-    min-width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 0px;
-    padding: 0;
-    background-image: url(back.png);
-    background-repeat: no-repeat;
-    background-size: 150%;
-    background-position: center;
-    cursor: pointer;
-    position: relative;
-    box-shadow: 9px 0px 10px 10px  rgba(255, 255, 255, 0.945);
+.wrap button:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b);
 }
 
-.leftBtn:hover {
-    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(back.png);
+.wrapStyle {
+    width: max-content;
+    margin: 5px;
+    transition: margin-left 0.3s;
 }
-
-.hide {
-    display:none;
-}
-
-.prompt {
-    width:max-content;
-    padding: 10px 5px 10px 5px;
-    border: 0px;
-    border-radius: 5px;
-    position: absolute;
-    top: 60px;
-    left: 0px;
-    background-color: rgb(112, 112, 112);
-    color: rgb(241, 241, 241);
-    opacity: 0.95;
-}
-
 

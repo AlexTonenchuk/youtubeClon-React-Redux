@@ -1,12 +1,13 @@
 
 .track {
-    background-color: rgb(241, 207, 207);
-    height: 36px;
+    background-color: rgb(167, 167, 167);
+    height: 5px;
+    margin-bottom: 5px;
 }
 
 .red {
     background-color: red;
-    height: 20px;
+    height: 3px;
 }
 
 .popup {

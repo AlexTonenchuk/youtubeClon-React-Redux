@@ -10,6 +10,7 @@ import { selectSearch, setSearch } from '../search/searchSlice';
 import { useEffect } from 'react';
 import { selectCategories } from './videoListSlice';
 import { selectCurrentFilter } from '../filters/filtersSlice';
+import { setFilter } from '../filters/filtersSlice';
 
 
 export function VideoList (props) {
@@ -23,7 +24,12 @@ export function VideoList (props) {
   // обнуление поля поиска в глобальном стейте
   // после выполнения поиска
   useEffect( ()=> {
-    if (location === 'inVideoPage') { dispatch( setSearch(false) ) }
+    if (location === 'inVideoPage') { 
+      //dispatch( setSearch(false) ) 
+      dispatch( setFilter('Все'))
+      console.dir(search)
+    
+    }
   })
 
   const {
@@ -39,17 +45,18 @@ export function VideoList (props) {
     if (location==='inMain' && !search)                         { return inMain } 
     if (location==='inMain' && search)                          { return inMainFiltred } 
     if (location==="inVideoPage" && screenSize==='smallScreen') { return inRightSide }
-    if (location==="inVideoPage" && screenSize==='bigScreen' )  { return underBigScreenVideo }
+    if (location==="inVideoPage" && screenSize==='bigScreen')   { return underBigScreenVideo }
     if (location==="inVideoPage" &&  screenSize==='fullScreen') { return underFullScreenVideo }
   }
 
   // фу. фильтрации списка видео с учетом поискового запроса
-  // и с учетом фыбронного фильтра-жанра музыки
+  // и с учетом выбронного фильтра-жанра музыки
   const filterVideoList = ( videoList, searchWord, filter )=> {
+    if (location==="inVideoPage") {return videoList }
     let filtredVideoList = []
     videoList.forEach((item) => {
       const name = item.name
-      const pattern =new RegExp( `\\b${searchWord}`, 'i')
+      const pattern = new RegExp( `\\b${searchWord}`, 'i')
       const isContainCategory = item.categories.find((i) => i === filter) === filter ? true : false
       if ( isContainCategory===true && (!searchWord || pattern.test(name)) ) { 
         filtredVideoList.push(item)  
@@ -58,33 +65,22 @@ export function VideoList (props) {
     return filtredVideoList
   }
 
-    const videos = filterVideoList(videoList, search, filter).map((item) => {
-      if ( `${item.id}` !== urlId ){
-        return (
-          <Link
-            id = {`${item.id}`}
-            key = {`${item.id}`}
-            to = {`/video/`+item.id}>
-
-            <Video
-              key={item.id}
-              id = {`${item.id}`} 
-              location = { 
-                location==='inMain' ? 'inListInMain' : false
-                ||
-                location==='inVideoPage' ? 'inListInVideoPage' : false
-              }
-            />
-          </Link>
-        )     
-      } else {
-        return false
-      }
-    });
+  const videos = filterVideoList(videoList, search, filter).map((item) => {
+    const id = `${item.id}`
+    if ( id !== urlId ){
+      return (
+        <Link id = {id} key = {id} to = {`/video/`+ id}>
+          <Video id = {id} key={id}  location = {  location==='inMain' ? 'inListInMain' : false
+                                                      ||
+                                                    location==='inVideoPage' ? 'inListInVideoPage' : false  }
+          />
+        </Link>
+      )     
+    } else { return false }
+  });
 
   return (
-    <div 
-      className={calcStyle()}>
+    <div className={calcStyle()}>
       {videos}
     </div>
   )

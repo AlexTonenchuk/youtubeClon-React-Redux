@@ -29,7 +29,7 @@ export function Volume (props) {
     } = styles
 
     return (
-        <div>
+        <div className={styles.container}>
             <button 
                 className = { sound+' '+(isMute === true ? soundOff : soundOn) }
                 onClick = { ()=> dispatch( toggleMute(id) ) }          >

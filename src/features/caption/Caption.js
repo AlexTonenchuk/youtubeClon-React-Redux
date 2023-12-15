@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './caption.module.css'
 import { useSelector } from 'react-redux'
 import { DateVideo } from '../dateVideo/DateVideo'
-import { IconCanal } from '../iconCanal/IconCanal'
+import { IconCanal } from '../xxx iconCanal/IconCanal'
 import { selectName, selectCanal, selectViews } from '../videoList/videoListSlice'
 
 export function Caption (props) {
@@ -23,14 +23,8 @@ export function Caption (props) {
   return (
     <div className={calcStyle()} >
         
-      { props.location==='inListInVideoPage' ? false :
-      /*ОШБКА ! Какой еще контейнер... убрать */
-        <div className={styles.container} >
-          <IconCanal id = {props.id} />
-        </div> 
-      }
-        
-
+      { props.location==='inListInVideoPage' ? false : <div className={styles.round} >  </div> }
+      
       <div className={styles.rightContainer} >
 
         <div className={styles.name} > { name }   </div>
@@ -38,11 +32,12 @@ export function Caption (props) {
         <div className={styles.canalName} > { canal } </div>
 
         <div className={styles.rowFlexContainer} >
-          <div className={styles.views}> { `${views} просмотров *` } </div>
+          <div className={styles.views}> { `${views} просмотров` } </div>
+          <div className={styles.dot}> </div>
           <DateVideo id={id}/>
         </div>
 
       </div>
-  </div>
+    </div>
   )
 }

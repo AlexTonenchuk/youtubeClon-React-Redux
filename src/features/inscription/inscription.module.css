@@ -1,0 +1,57 @@
+.border {
+  border: 2px dashed red;
+  display: inline-block;
+  text-align: center;
+  width: 120px;
+  height: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(97, 97, 97);
+  color: aliceblue;
+
+
+  }
+
+.hide {
+  display: none;
+}
+
+.inscription {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border: 0px;
+  border-radius: 20px;
+  width: 400px;
+  height: 250px;
+  z-index: 1;
+  background-color: rgb(61, 61, 61);
+  padding: 20px;
+  box-shadow: 0 15px 15px 0 rgb(19, 19, 19);
+
+  
+}
+
+.ok {
+  width: 80px;
+  height: 40px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
+  box-shadow: 0 5px 15px 0 rgb(19, 19, 19);
+  cursor: pointer;
+}
+
+.text {
+  border: 0px ;
+  text-align: center;
+  font-size: 18px;
+  color: aliceblue;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

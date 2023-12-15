@@ -23,8 +23,8 @@ export function ControlPan (props) {
   const id = props.id
   const dispatch = useDispatch()
   const played = useSelector( (state)=> selectPlayed(state, id) )
-  const volume = useSelector( (state)=> selectVolume(state, id) )
-
+/*   const volume = useSelector( (state)=> selectVolume(state, id) )
+ */
 
   //обработчики событий
   const togglePlayPause =()=> {
@@ -34,7 +34,7 @@ export function ControlPan (props) {
 
 
   // стейт стилей компонента
-  const [style, setStyle] = useState({
+/*   const [style, setStyle] = useState({
     mute: styles.soundOned,
     autoplay: styles.autoplayOff,
     settingsBtn: styles.settingsBtnOff,
@@ -43,29 +43,30 @@ export function ControlPan (props) {
     wideScreenBtn: styles.widthScreen,
     fullScreen: styles.fullScreen
   })
-
+ */
   return (
     <div className={styles.controlPan}>
-       <TimeTrack id = {id} />
-       <div className={styles.flex}>
-        <div className={styles.leftContainer}>
-          <button 
-            id='playPauseBtn'
-            className={played === true ? styles.pause : styles.play }
-            onClick={ togglePlayPause }          
-            >
-          </button>
-          <BtnPlayNext/>
-          <Volume id = {id} />
-          <Time id = {id} />
+        <TimeTrack id = {id} />
+        <div className={styles.flex}>
+            <div className={styles.leftContainer}>
+              <button 
+                id='playPauseBtn'
+                className={played === true ? styles.pause : styles.play }
+                onClick={ togglePlayPause }          
+                >
+              </button>
+              <BtnPlayNext/>
+              <Volume id = {id} />
+              <Time id = {id} />
+            </div>
+          
+            <div className={styles.rightContainer}>
+              <BtnAutoplay/>
+              <BtnSubtitles id={id}/>
+              <BtnSettings/>
+              <PanScreenSize/>
+            </div>
         </div>
-        <div className={styles.rightContainer}>
-          <BtnAutoplay/>
-          <BtnSubtitles id={id}/>
-          <BtnSettings/>
-          <PanScreenSize/>
-        </div>
-      </div>
   </div>
     )
 }

@@ -1,11 +1,23 @@
+.autoplayOff {
+    background-image: url(autoplayOff.png);
+}
+.autoplayOff:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(autoplayOff.png);
+}
 
+.autoplayOn {
+    background-image: url(autoplayOn.png);
+}
+.autoplayOn:hover {
+    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(autoplayOn.png);
+}
 
 .controlPan {
     width: 99%;
     min-width: max-content;
     position: relative;
-    top: -100px;
-    border: 1px solid red;
+    bottom: 70px;
+    border: 0px solid red;
     background-color: rgba(73, 72, 72, 0.2);
     padding: 1px;
 }
@@ -27,28 +39,13 @@
     display: none;
 }
 
-
-.autoplayOff {
-    background-image: url(autoplayOff.png);
-}
-.autoplayOff:hover {
-    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(autoplayOff.png);
-}
-
-.autoplayOn {
-    background-image: url(autoplayOn.png);
-}
-.autoplayOn:hover {
-    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(autoplayOn.png);
-}
-
 .fullScreen {
     background-image: url(fullScreen.png);
 }
+
 .fullScreen:hover {
     background-image: linear-gradient(#cccccc3b, #cccccc3b), url(fullScreen.png);
 }
-
 
 .narrowScreen {
     background-image: url(narrowScreen.png);
@@ -56,9 +53,6 @@
 .narrowScreen:hover {
     background-image: linear-gradient(#cccccc3b, #cccccc3b), url(narrowScreen.png);
 }
-
-
-
 
 .play {
     background-image: url(play.png);
@@ -131,13 +125,24 @@
     flex-shrink:0;
     display: flex;
     justify-content: start;
+    align-items: center;
+}
+
+.leftContainer * {
+    margin-right: 3px;
 }
 
 .rightContainer{
     display: flex;
     justify-content: end;
+    align-items: center;
+
 }
 
+.rightContainer > * {
+    margin-right: 3px;
+
+}
 
 
 

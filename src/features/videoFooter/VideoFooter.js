@@ -52,10 +52,7 @@ export function VideoFooter (props) {
       </div>
 
       <img src={commentsImg} className={comments} />
-
-        
-
-      
+       
     </div>
   )
 }

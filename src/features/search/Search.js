@@ -5,19 +5,22 @@ import { useState } from "react";
 import { setSearch, selectSearch } from "./searchSlice";
 import { useLocation } from 'react-router-dom'
 import { useNavigate } from "react-router-dom"
+import { useEffect } from "react";
 
 
 export function Search(){
   const dispatch = useDispatch()
   const [formIsFocused, setFormIsFocused] = useState(false)
-  const [formHaveLetter, setFormHaveLetter] = useState()
+  const [textInput, setTextInput] = useState('')
   const [hoveredId, setHoveredId] = useState(undefined)
   const location = useLocation()
   const navigate = useNavigate()
+  const search = useSelector( selectSearch )
+  
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(setSearch(formHaveLetter));
+    dispatch(setSearch(textInput));
     // если url = /video/.. то при сабмите поискового запроса меняется путь
     if (Array.from(location.pathname)[1]==='v') {  navigate('/')  }
   }
@@ -25,7 +28,7 @@ export function Search(){
   const onKeyDown=(e)=> {
     if (e.keyCode===13) {
       e.preventDefault()
-      dispatch(setSearch(formHaveLetter))
+      dispatch(setSearch(textInput))
       // если url = /video/.. то при сабмите поискового запроса меняется путь
       if (Array.from(location.pathname)[1]==='v') {  navigate('/')  }
     }
@@ -43,13 +46,13 @@ export function Search(){
     microphoneBtnStyle,
     formStyle,
     formWithFocusStyle,
-    search,
+    searchStyle,
   } = styles
 
 
   return (
 
-    <div  id='search' className ={search} >
+    <div  id='search' className ={searchStyle} >
 
       <form
         className={ formIsFocused===false ? formStyle : formWithFocusStyle }
@@ -66,9 +69,9 @@ export function Search(){
           className={inputStyle}
           type = "text"
           placeholder = 'Введите запрос'
-          onChange={ (e)=> setFormHaveLetter(e.target.value) }
+          onChange={ (e)=> setTextInput(e.target.value) }
           onKeyDown={ onKeyDown }
-          value = {formHaveLetter}
+          value = {textInput}
         />
 
         <div 
@@ -78,18 +81,18 @@ export function Search(){
           onMouseLeave={ ()=> setHoveredId(undefined) }
         >
         <div className={ hoveredId==='keyboard' ? showPrompt : hide}> 
-          Клавиатура временно не раб. 
+          Клавиатура  
         </div>
 
         </div>
 
         <button 
           id='close' 
-          className = { formHaveLetter ? closeBtn : hide }
+          className = { textInput ? closeBtn : hide }
           type="submit"
           onClick={ (e)=> {
             e.preventDefault(); 
-            setFormHaveLetter('')
+            setTextInput('')
           }}
           > 
           
@@ -103,19 +106,19 @@ export function Search(){
         >   
           <div className={ hoveredId==='searchBtn' ? showPrompt : hide}> Введите запрос </div>
         </button>
+  
+      </form>
 
-        <button
+      <button
           id='microphoneBtn'
           className={ microphoneBtnStyle }
           onMouseOver={ (e)=> setHoveredId(e.target.id) }
           onMouseLeave={ ()=> setHoveredId(undefined) }
         >   
           <div className={ hoveredId==='microphoneBtn' ? showPrompt : hide}> 
-            Голосовой поиск временно не раб.
+            Голосовой поиск 
           </div>
         </button>
-  
-      </form>
 
     </div>
   )

@@ -1,9 +1,10 @@
 .closeBtn {
     position: absolute;
+    z-index: 1;
     margin: auto;
     top: 0;
     bottom: 0;
-    right: 10px;
+    right: 70px;
     width: 25px;
     border: 0px;
     background-color: white;
@@ -16,24 +17,27 @@
 }
 
 .formStyle {
-    position: relative;
-    border: 1px solid #696161;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 40px;
+    border: 1px solid #cccccc;
     height: 35px;
-    border-top-left-radius: 35px;
-    border-bottom-left-radius: 35px;
-    width: 540px;
-    margin-right: 120px;
+    border-radius: 35px;
+    width: calc(100% - 90px);
 }
 
 .formWithFocusStyle {
-    position: relative;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 40px;
     border: 1px solid #cccccc;
     height: 35px;
-    border-top-left-radius: 35px;
-    border-bottom-left-radius: 35px;
-    width: 570px;
-    margin-right: 120px;
-
+    border-radius: 35px;
+    width: calc(100% - 50px);
 }
 
 .hide {
@@ -45,10 +49,12 @@
     margin: auto;
     top: 0;
     bottom: 0;
-    right: 70px;
+    right: 140px;
     height: 20px;
-    width: 450px;
-    border: 0px solid rgb(51, 255, 0);
+    width: calc(100% - 180px);
+    border: 0px;
+    border: 0px solid #2202af;
+
 }
 
 .inputStyle:focus {
@@ -60,10 +66,11 @@
     margin: auto;
     top: 0;
     bottom: 0;
-    right: 40px;
+    right: 100px;
     width: 21px;
     border: 0px;
     padding: 0;
+    border: 1px dashed rgba(255, 0, 0, 0.507);
     background-image: url(key.png);
     background-repeat: no-repeat;
     background-size: 100%;
@@ -73,10 +80,11 @@
 
 .loupeStyle {
     position: absolute;
+    z-index: 1;
     margin: auto;
     top: 0;
     bottom: 0;
-    left: 10px;
+    left: 8px;
     border: 1px;
     height: 20px;
     width: 20px;
@@ -91,12 +99,13 @@
     margin: auto;
     top: 0;
     bottom: 0;
-    right: -115px;
+    right: 0px;
     min-width: 35px;
     height: 35px;
     border-radius: 50%;
     border: 0px;
     padding: 0;
+    border: 1px dashed rgba(255, 0, 0, 0.507);
     background-image: url(microphone.png);
     background-repeat: no-repeat;
     background-size: auto auto;
@@ -105,13 +114,14 @@
     
 }
 
-.search {
+.searchStyle {
     position: absolute;
     margin: auto;
     top: 0;
     bottom: 0;
     right: 0;
     height: max-content;
+    width: 100%;
 }
 
 .searchBtnStyle {
@@ -119,12 +129,12 @@
     margin: auto;
     top: 0;
     bottom: 0;
-    right: -65px;
+    right: 0px;
     width: 65px;
     height: 35px;
     border-top-right-radius: 35px;
     border-bottom-right-radius: 35px;
-    border: 1px solid #cccccc;
+    border: 0px solid #cccccc;
     padding: 0px;
     margin: 0px;
     background-color: rgb(248 248 248);
@@ -152,5 +162,6 @@
     color: rgb(241, 241, 241);
     opacity: 0.95;
     font-size: 12px;
+    text-align: center;
 
 }

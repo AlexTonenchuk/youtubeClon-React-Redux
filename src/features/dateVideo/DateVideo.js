@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from 'react-redux'
 import { selectCreatDate } from '../videoList/videoListSlice'
+import styles from './dateVideo.module.css' 
 
 
 export function DateVideo (props) {
@@ -47,6 +48,6 @@ export function DateVideo (props) {
             }
     }
     return (
-        <div> {period} </div>
+        <div className={styles.dateVideo}> {period} </div>
     )
 }

@@ -11,21 +11,52 @@
     position: relative;
 }
 
-.speedMenu {
-    border: 3px solid rgb(206, 66, 23);
-    min-width: 200px;
+.firstRow {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgba(0, 0, 0, 0.329);
+
 }
 
+.speedMenu {
+    border: 0px solid rgb(206, 66, 23);
+    background-color: rgba(7, 7, 7, 0.774);
+    border-radius: 10px;
+    color: rgb(201, 201, 201);
+    min-width: 200px;
+    position: relative;
+    bottom: 380px;
+    right: -250px;
+    z-index: 1;
+    height: 250px;
+    overflow:auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+::-webkit-scrollbar {
+    border-radius: 10px;
+    width: 8px;
+    color: aquamarine;
+    background-color: #383838;
+
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #646464;
+    border-radius: 10px;
+}
+
+
 .rowField {
-    border: 3px solid rgb(168, 20, 124);
+    border: 0px solid rgb(168, 20, 124);
     display: flex;
     justify-content: flex-start;
 }
 
 .valueField {
-    color: rgb(192, 20, 20);
+    color: rgb(201, 201, 201);
     width: 100%;     
-    background-color: rgba(67, 173, 25, 0.514);
     text-align: right;
 
 }

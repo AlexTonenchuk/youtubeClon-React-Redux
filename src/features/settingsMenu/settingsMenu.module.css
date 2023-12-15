@@ -1,7 +1,3 @@
-.gray {
-    color:rgb(182, 182, 182);
-    font-style: italic ;
-}
 
 .iconField {
     width: 35px;
@@ -16,21 +12,51 @@
     position: relative;
 }
 
+.nameField {
+    border: 0px solid rgb(219, 46, 46);
+    position: relative;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+
 .settingsMenu {
-    border: 3px solid rgb(26, 231, 43);
+    padding: 5px;
+    border: 0px solid rgb(26, 231, 43);
+    border-radius: 10px;
     min-width: 300px;
+    position: relative;
+    bottom: 240px;
+    right: -250px;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.712);
 }
 
 .settingRow {
-    border: 3px solid rgb(168, 20, 124);
+    color:rgb(226, 226, 226);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    border: 0px solid rgb(168, 20, 124);
     display: flex;
     justify-content: flex-start;
+    cursor: pointer;
 }
 
 .valueField {
-    color: rgb(192, 20, 20);
+    color:rgb(226, 226, 226);
     margin-left: auto;
+    position: relative;
+    margin-top: auto;
+    margin-bottom: auto;
+
 }
+
+.dontWork{
+    border: 1px dashed rgba(255, 0, 0, 0.507);
+    margin-bottom: 3px;
+    cursor: auto;
+}
+
 
 /* Иконки */
 .btnOffIcon {

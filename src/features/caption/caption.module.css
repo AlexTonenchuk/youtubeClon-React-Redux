@@ -1,17 +1,4 @@
 
- div {
-  font-size: 14px;
-}
-
-.rowFlexContainer {
-  max-height:inherit;
-  display: flex;
-  justify-content: flex-start;
-  border: 1px solid red;
-}
- 
-
-    
 .canal {
   display: flex;
   justify-content: flex-start;
@@ -19,19 +6,20 @@
   font-size: 14px;
 }
 
-.caption {
+/* .caption {
   display: flex;
   width: 100%;
 }
-
+ */
 .miniCaption div {
   font-size: 12px;
-  width: 200px;
-  border: 1px solid rgb(238, 11, 227);
+/*   width: 200px;
+ */  border: 0px solid rgb(238, 11, 227);
 
 }
    
 .dot {
+  display: inline-block;
   min-width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -48,6 +36,37 @@
 .name {
   font-size: 16px;
   font-weight: bold;
+  margin-bottom: 8px;
 }
 
+.round {
+  display: inline-block;
+  position: relative;
+  top: -20px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 0px solid red;
+  padding: 0;
+  background-image: url(round.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  cursor: pointer;
+}
 
+.rightContainer {
+  display: inline-block;
+  max-width: 85%;
+}
+
+.rowFlexContainer {
+  max-height:inherit;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.views {
+  display: inline-block;
+  flex-shrink: 0;
+}

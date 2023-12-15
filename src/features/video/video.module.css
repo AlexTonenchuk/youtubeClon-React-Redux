@@ -1,7 +1,6 @@
 .containerInListInMain {
     width: 380px;
     position: relative;
-    border: 1px solid rgb(238, 166, 11);
 }
 
 .containerInListInMainFiltred {
@@ -13,15 +12,19 @@
 
 .containerInListInVideopage {
     display: flex;
-    border: 5px solid rgb(248, 170, 0);
+    border: 1px solid rgba(248, 0, 0, 0.103);
     width: 380px;
+    margin-bottom: 3px;
 }
 
 .containerForSmallScreen {
-    width: 800px;
-    position: absolute;
-    top: 80px;
-    border: 5px solid rgb(238, 11, 189);
+    display: inline-block;
+    max-width: 800px;
+    width: calc(100vw - 500px);
+    min-width: 600px;
+    position: relative;
+    border: 0px solid rgb(238, 11, 189);
+    vertical-align: top;
 }
 
 .containerForBigScreen {
@@ -33,7 +36,7 @@
 .containerForFullScreen {
     width: 1230px;
     position: relative;
-    border: 5px solid rgb(238, 11, 189);
+    border: 1px solid rgb(238, 11, 189);
 }
 
 
@@ -58,12 +61,14 @@
     min-width: 150px;
     min-height: 90px;
     object-fit: cover;
+    border-radius: 10px;
 }
 
 .videoInVideoPageSmallScreen {
     width: 100%;
-    height: 440px;
+    max-height: 440px;
     object-fit: cover;
+    border-radius: 15px;
 }
 
 .videoInVideoPageBigScreen {

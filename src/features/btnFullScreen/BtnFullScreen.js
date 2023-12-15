@@ -14,11 +14,11 @@ export function BtnFullScreen () {
   // RETURN:
   return (
     <div>
-      <button 
+      <div 
         id='fullScreen' 
         className={ button+' '+ (screenSize==='fullScreen' ? fullScreenBtn : noFullScreenBtn) } 
         onClick={ changeScreenSize }> 
-      </button>
+      </div>
     </div>
   )
 }

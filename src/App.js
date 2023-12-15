@@ -7,11 +7,13 @@ import { BrowserRouter, Routes, Route  } from 'react-router-dom';
 import styles from './App.module.css';
 import { Video } from './features/video/Video';
 import { Search } from './features/search/Search';
+import { Inscription } from './features/inscription/Inscription';
 
 function App() {
 
   return (
     <BrowserRouter>
+      <Inscription/>
       <Routes>
         <Route
           exact
@@ -29,10 +31,13 @@ function App() {
         <Route 
           path = "/video/:id" 
           element = { 
-            <div className = {styles.container} >
+            <div className = {styles.mainContainer} >
               <HeaderApp/>
-              <Video location = 'inVideoPage' />
-              <VideoList location = 'inVideoPage' />
+              <div>
+                <Video location = 'inVideoPage' />
+                <VideoList location = 'inVideoPage' />
+              </div>
+              
             </div>
           }
         />

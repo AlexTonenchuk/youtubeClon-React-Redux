@@ -9,6 +9,7 @@ export function BtnFullScreen () {
   const changeScreenSize =()=> {
     if (screenSize==='fullScreen') { dispatch(setScreenSize('smallScreen')) }
     if (screenSize !=='fullScreen') { dispatch(setScreenSize('fullScreen')) }
+    
   }
   const { button, fullScreenBtn, noFullScreenBtn } = styles
   // RETURN:

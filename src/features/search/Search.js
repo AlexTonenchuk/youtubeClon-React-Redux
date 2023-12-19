@@ -5,7 +5,6 @@ import { useState } from "react";
 import { setSearch, selectSearch } from "./searchSlice";
 import { useLocation } from 'react-router-dom'
 import { useNavigate } from "react-router-dom"
-import { useEffect } from "react";
 
 
 export function Search(){
@@ -15,7 +14,6 @@ export function Search(){
   const [hoveredId, setHoveredId] = useState(undefined)
   const location = useLocation()
   const navigate = useNavigate()
-  const search = useSelector( selectSearch )
   
 
   const onSubmit = (e) => {

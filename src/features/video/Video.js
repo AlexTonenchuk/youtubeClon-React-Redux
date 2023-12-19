@@ -95,7 +95,16 @@ export function Video (props) {
     if (true) {
       ref.current.playbackRate = speed
     }
+    // Управление полноэкранным режимом
+    if (location==='inVideoPage' && screenSize==='fullScreen') {
+      document.documentElement.requestFullscreen()
+    }
+    if (location==='inVideoPage' && (screenSize==='smallScreen' || screenSize==='bigScreen')) {
+      document.exitFullscreen()
+    } 
   })
+
+
 
   //ОБРАБОТЧКИ
   const onMouseOver =()=> {
@@ -144,6 +153,7 @@ export function Video (props) {
    
   // сделать нормальные названия
   const {
+    blackBackground,
     containerInListInMain,
     containerInListInMainFiltred,
     videoInListInMain,          // это лишнее
@@ -193,20 +203,21 @@ export function Video (props) {
   // RETURN
   return (
     <div className={calcContainerStyle()}>
-      <video
-        id = {id}
-        key = {id}
-        className = { calcVideoStyle() }
-        ref = {ref}
-        onLoadedMetadata = { onLoadedMetadata }
-        onTimeUpdate = { onTimeUpdate }
-        onMouseOver = { onMouseOver }
-        onMouseOut = { onMouseOut }
-        onClick = { onClick }
-        onEnded = { onEnded }
-        /*  poster = {videoData.poster} */   >
-        <source src={video}/>
-        { isSubtitles === true ? 
+      <div className={screenSize==='bigScreen' ? blackBackground : false}>
+        <video
+          id = {id}
+          key = {id}
+          className = { calcVideoStyle() }
+          ref = {ref}
+          onLoadedMetadata = { onLoadedMetadata }
+          onTimeUpdate = { onTimeUpdate }
+          onMouseOver = { onMouseOver }
+          onMouseOut = { onMouseOut }
+          onClick = { onClick }
+          onEnded = { onEnded }
+          /*  poster = {videoData.poster} */   >
+          <source src={video}/>
+          { isSubtitles === true ? 
             <track
               kind = 'subtitles'
               src = { subtitles } 
@@ -214,11 +225,11 @@ export function Video (props) {
               default   
               label="Русский"    
             />
-          : false
-        }
-        
-      </video>
-    
+            : false
+          }
+        </video>
+      </div>
+
       { location==='inVideoPage' ?            // location для Video
         <ControlPan id = {id} />
         : false

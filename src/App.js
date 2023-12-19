@@ -33,7 +33,7 @@ function App() {
           element = { 
             <div className = {styles.mainContainer} >
               <HeaderApp/>
-              <div>
+              <div className={styles.container}>
                 <Video location = 'inVideoPage' />
                 <VideoList location = 'inVideoPage' />
               </div>

@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './videoFooter.module.css'
 import { useSelector } from 'react-redux'
 import { selectName, selectCanal, selectViews } from '../videoList/videoListSlice'
+import { selectScreenSize } from '../panScreenSize/panScreenSizeSlice'
 import { DateVideo } from '../dateVideo/DateVideo'
 import subscribeImg  from './subscribe.png'
 import buttonsImg from './buttons.png'
@@ -12,22 +13,28 @@ export function VideoFooter (props) {
   const id = props.id
   const name = useSelector((state)=> selectName(state, id))
   const canal = useSelector((state)=> selectCanal(state, id))
-  const views = useSelector((state)=> selectViews(state, id))
+  const screenSize = useSelector(selectScreenSize)
 
   const {
     buttons,
     canalStyle,
     comments,
     description,
+    forSmallScreen,
+    forBigScreen,
     nameStyle,
     round,
-    container,
     flex,
     subscribe,
       } = styles
 
+  const calcContainerStyle=()=>{
+    if (screenSize==='smallScreen') {return forSmallScreen}
+    if (screenSize==='bigScreen' || screenSize==='fullScreen') {return forBigScreen}
+  }
+
   return (
-    <div className={container}>
+    <div className={calcContainerStyle()}>
 
       <div className={nameStyle}> {name} </div>
 

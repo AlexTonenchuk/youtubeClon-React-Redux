@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/youtubeClon-React-Redux/static/css/main.479f4414.css",
-    "main.js": "/youtubeClon-React-Redux/static/js/main.12e1594b.js",
+    "main.css": "/youtubeClon-React-Redux/static/css/main.e32187eb.css",
+    "main.js": "/youtubeClon-React-Redux/static/js/main.52481ce9.js",
     "static/media/Nirvana - You Know Youre Right.mp4": "/youtubeClon-React-Redux/static/media/Nirvana - You Know Youre Right.7958e0ac157963449edb.mp4",
     "static/media/Feeder - Just A Day.mp4": "/youtubeClon-React-Redux/static/media/Feeder - Just A Day.b870ab64b20debf61b8b.mp4",
     "static/media/Green Day - Wake Me Up When September Ends.mp4": "/youtubeClon-React-Redux/static/media/Green Day - Wake Me Up When September Ends.beb596eb7594f12f4636.mp4",
@@ -24,15 +24,16 @@
     "static/media/Metallica - Whiskey In The Jar.png": "/youtubeClon-React-Redux/static/media/Metallica - Whiskey In The Jar.cc82064498eab2d7d508.png",
     "static/media/Kiss - I Was Made For Lovin You.png": "/youtubeClon-React-Redux/static/media/Kiss - I Was Made For Lovin You.dd9118db02c5483b2da3.png",
     "static/media/Iron Maiden - The Trooper.png": "/youtubeClon-React-Redux/static/media/Iron Maiden - The Trooper.4ec7419afa328963c74f.png",
+    "static/media/comments.png": "/youtubeClon-React-Redux/static/media/comments.3d7a21d97a8963dcf2b4.png",
     "index.html": "/youtubeClon-React-Redux/index.html",
     "static/media/Ozzy Osbourne - I dont wanna stop.wtt": "/youtubeClon-React-Redux/static/media/Ozzy Osbourne - I dont wanna stop.90d4638642b4e8d45a83.wtt",
     "static/media/Metallica - Whiskey In The Jar.wtt": "/youtubeClon-React-Redux/static/media/Metallica - Whiskey In The Jar.92169f77ab4a7de549a7.wtt",
     "static/media/Iron Maiden - The Trooper.wtt": "/youtubeClon-React-Redux/static/media/Iron Maiden - The Trooper.d4314d668e1f2d8a7c63.wtt",
-    "main.479f4414.css.map": "/youtubeClon-React-Redux/static/css/main.479f4414.css.map",
-    "main.12e1594b.js.map": "/youtubeClon-React-Redux/static/js/main.12e1594b.js.map"
+    "main.e32187eb.css.map": "/youtubeClon-React-Redux/static/css/main.e32187eb.css.map",
+    "main.52481ce9.js.map": "/youtubeClon-React-Redux/static/js/main.52481ce9.js.map"
   },
   "entrypoints": [
-    "static/css/main.479f4414.css",
-    "static/js/main.12e1594b.js"
+    "static/css/main.e32187eb.css",
+    "static/js/main.52481ce9.js"
   ]
 }

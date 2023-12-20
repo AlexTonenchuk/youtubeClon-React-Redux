@@ -3,11 +3,13 @@ import styles from './HeaderApp.module.css';
 import logoYou from './youtube.png'
 import { useState } from "react";
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom'
 import { Search } from '../search/Search';
 import { selectScreenSize } from '../panScreenSize/panScreenSizeSlice'
 
 
 export function HeaderApp() {
+  const navigate = useNavigate()
   const [settingsPromptClass, setSettingsPromptClass] = useState(styles.hide);
   const showSettingsPrompt = () =>  setSettingsPromptClass(styles.prompt);
   const hideSettingsPrompt = () =>  setSettingsPromptClass(styles.hide);
@@ -27,7 +29,7 @@ export function HeaderApp() {
 
       <div  id = 'leftContainer' className={styles.leftContainer} >
         <button className={styles.sideBarBtn}> </button>
-        <img src={logoYou} alt='logoYT' className={styles.logo} onClick={()=>window.location.reload()}/>
+        <img src={logoYou} alt='logoYT' className={styles.logo} onClick={()=>navigate( '/' )}/>
       </div>
 
       <div id='centralContainer' className={styles.centralContainer} >

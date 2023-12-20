@@ -25,10 +25,7 @@ export function VideoList (props) {
   // после выполнения поиска
   useEffect( ()=> {
     if (location === 'inVideoPage') { 
-      //dispatch( setSearch(false) ) 
       dispatch( setFilter('Все'))
-      console.dir(search)
-    
     }
   })
 
@@ -70,9 +67,13 @@ export function VideoList (props) {
     if ( id !== urlId ){
       return (
         <Link id = {id} key = {id} to = {`/video/`+ id}>
-          <Video id = {id} key={id}  location = {  location==='inMain' ? 'inListInMain' : false
-                                                      ||
-                                                    location==='inVideoPage' ? 'inListInVideoPage' : false  }
+          <Video 
+            id = {id} 
+            key={id}  
+            preload="auto"
+            location = {  location==='inMain' ? 'inListInMain' : false
+                            ||
+                          location==='inVideoPage' ? 'inListInVideoPage' : false  }
           />
         </Link>
       )     

@@ -12,7 +12,6 @@ import {
   writeCurrentTime,
   setSpecifiedTime,
   writeDuration,
-  selectDuration,
   selectIsSubtitles,
   selectSubtitles,
   selectVideoFile, 
@@ -70,7 +69,7 @@ export function Video (props) {
   useEffect( ()=>{
     if (played === true) {
       ref.current.play()
-    } else if (played === false) {
+    } else if (played === false && ref.current.paused===false ) {
       ref.current.pause()
     }
     ref.current.volume = volume
@@ -99,7 +98,9 @@ export function Video (props) {
     if (location==='inVideoPage' && screenSize==='fullScreen') {
       document.documentElement.requestFullscreen()
     }
-    if (location==='inVideoPage' && (screenSize==='smallScreen' || screenSize==='bigScreen')) {
+    if (  location==='inVideoPage' 
+          && (screenSize==='smallScreen' || screenSize==='bigScreen') 
+          && document.fullscreenElement) {
       document.exitFullscreen()
     } 
   })
@@ -203,7 +204,7 @@ export function Video (props) {
   // RETURN
   return (
     <div className={calcContainerStyle()}>
-      <div className={screenSize==='bigScreen' ? blackBackground : false}>
+      <div className={screenSize==='bigScreen' ? blackBackground : ''}>
         <video
           id = {id}
           key = {id}

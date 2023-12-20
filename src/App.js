@@ -3,16 +3,15 @@ import { HeaderApp } from './features/headerApp/HeaderApp';
 import { Filters } from './features/filters/Filters';
 import { VideoList } from './features/videoList/VideoList';
 import { Sidebar } from './features/sidebar/Sidebar';
-import { BrowserRouter, Routes, Route  } from 'react-router-dom';
+import { HashRouter, Routes, Route  } from 'react-router-dom';
 import styles from './App.module.css';
 import { Video } from './features/video/Video';
-import { Search } from './features/search/Search';
 import { Inscription } from './features/inscription/Inscription';
 
 function App() {
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Inscription/>
       <Routes>
         <Route
@@ -43,7 +42,7 @@ function App() {
         />
 
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

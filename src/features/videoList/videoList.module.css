@@ -17,24 +17,25 @@
     top: -350px;
 }
 
- .inRightSide {
+.listInSmallScreenVideo {
+    position: relative;
     display: inline-block;
     width: 380px;
-    border: 0px solid rgb(238, 11, 11);
+    border: 0px solid rgb(53, 11, 238);
     margin-left: 20px;
-
+    margin-top: 20px;
 }
 
-.underBigScreenVideo {
-    position:absolute;
-    top: 600px;
-    left: 830px;
+.listInBigScreenVideo {
+    position: relative;
+    display: inline-block;
     width: 380px;
+    border: 0px solid rgb(8, 145, 81);
 }
 
-.underFullScreenVideo {
-    position:absolute;
-    top: 100vh;
-    left: 70vw;
+.listInFullScreenVideo {
+    position: relative;
+    display: inline-block;
     width: 380px;
+    border: 0px solid rgb(8, 145, 81);
 }

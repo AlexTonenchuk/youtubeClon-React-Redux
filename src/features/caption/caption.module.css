@@ -1,21 +1,14 @@
 
-.canal {
+.canalName {
   display: flex;
   justify-content: flex-start;
   color: #747474;
   font-size: 14px;
 }
 
-/* .caption {
-  display: flex;
-  width: 100%;
-}
- */
 .miniCaption div {
   font-size: 12px;
-/*   width: 200px;
- */  border: 0px solid rgb(238, 11, 227);
-
+  border: 0px solid rgb(238, 11, 227);
 }
    
 .dot {
@@ -33,7 +26,7 @@
   position: relative;
 }
 
-.name {
+.nameStyle {
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 8px;
@@ -66,7 +59,7 @@
   justify-content: flex-start;
 }
 
-.views {
+.viewsStyle {
   display: inline-block;
   flex-shrink: 0;
 }

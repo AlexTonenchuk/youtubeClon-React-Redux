@@ -2,15 +2,7 @@
     background-image: url(autoplayOff.png);
 }
 
-.autoplayOff:hover {
-    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(autoplayOff.png);
-}
-
 .autoplayOn {
     background-image: url(autoplayOn.png);
-
 }
 
-.autoplayOn:hover {
-    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(autoplayOn.png);
-}

@@ -15,7 +15,6 @@
     padding-top: 10px;
     padding-bottom: 10px;
     background-color: rgba(0, 0, 0, 0.329);
-
 }
 
 .speedMenu {
@@ -39,14 +38,12 @@
     width: 8px;
     color: aquamarine;
     background-color: #383838;
-
 }
 
 ::-webkit-scrollbar-thumb {
     background-color: #646464;
     border-radius: 10px;
 }
-
 
 .rowField {
     border: 0px solid rgb(168, 20, 124);
@@ -58,15 +55,8 @@
     color: rgb(201, 201, 201);
     width: 100%;     
     text-align: right;
-
 }
 
 .checkMarkIcon {
     background-image: url(checkMark.png);
 }
-
-
-
-
-
-

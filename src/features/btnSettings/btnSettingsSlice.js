@@ -1,23 +1,23 @@
 import { 
     createSlice,  
     createSelector 
-  } from '@reduxjs/toolkit';
+} from '@reduxjs/toolkit';
 
-  const initialState = 'nothing'
+const initialState = 'nothing'
 
-  export const btnSettingsSlice = createSlice({
-    name: 'settingsMenu',
-    initialState,
-    reducers: {
-      setSettingsMenu: (state, action) => action.payload,
-    }
-  });
+export const btnSettingsSlice = createSlice({
+  name: 'settingsMenu',
+  initialState,
+  reducers: {
+    setSettingsMenu: (state, action) => action.payload,
+  }
+});
   
 export default btnSettingsSlice.reducer
 
 export const { 
   setSettingsMenu
- } = btnSettingsSlice.actions;
+} = btnSettingsSlice.actions;
   
 export const selectSettingsMenu = createSelector(
   (state) => state,

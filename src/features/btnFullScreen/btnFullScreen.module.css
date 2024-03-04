@@ -7,17 +7,15 @@
     background-repeat: no-repeat;
     background-position: center;
     background-color: rgb(73, 72, 72);
-    cursor:pointer;
+    cursor: pointer;
     position: relative;
 }
-
 .fullScreenBtn {
     background-image: url(fullScreen.png);
 }
 .fullScreenBtn:hover {
     background-image: linear-gradient(#cccccc3b, #cccccc3b), url(fullScreen.png);
 }
-
 .noFullScreenBtn {
     background-image: url(noFullScreen.png);
 }

@@ -1,22 +1,7 @@
-.autoplayOff {
-    background-image: url(autoplayOff.png);
-}
-.autoplayOff:hover {
-    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(autoplayOff.png);
-}
-
-.autoplayOn {
-    background-image: url(autoplayOn.png);
-}
-.autoplayOn:hover {
-    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(autoplayOn.png);
-}
-
 .controlPan {
-    width: 98%;
-    min-width: max-content;
-    position: relative;
-    bottom: 70px;
+    width: 99%;
+    position: absolute;
+    bottom: 10px;
     border: 0px solid red;
     background-color: rgba(73, 72, 72, 0.2);
     padding: 1px;
@@ -25,106 +10,39 @@
 .controlPan button {
     width: 35px;
     height: 30px;
-    border: 1px solid rgba(228, 228, 228, 0.144);
+    border: 0px solid rgba(228, 228, 228, 0.144);
     border-radius: 1px;
     padding: 0;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: rgb(73, 72, 72);
+    background-color: rgba(255, 255, 255, 0);
     cursor:pointer;
     position: relative;
 }
 
-.hide {
-    display: none;
-}
-
-.fullScreen {
-    background-image: url(fullScreen.png);
-}
-
-.fullScreen:hover {
-    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(fullScreen.png);
-}
-
-.narrowScreen {
-    background-image: url(narrowScreen.png);
-}
-.narrowScreen:hover {
-    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(narrowScreen.png);
+.controlPan button:hover  {
+    background-color: rgba(228, 228, 228, 0.103);
+    border: 0px solid rgb(7, 221, 89);
 }
 
 .play {
     background-image: url(play.png);
 }
-.play:hover {
-    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(play.png);
-}
 
 .pause {
     background-image: url(pause.png);
 }
-.pause:hover {
-    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(pause.png);
-}
-
-.previosBtn {
-    background-image: url(previosBtn.png);
-}
-.previosBtn:hover {
-    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(previosBtn.png);
-}
-
-.nextBtn {
-    background-image: url(nextBtn.png);
-}
-.nextBtn:hover {
-    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(nextBtn.png);
-}
-
-.settingsBtnOff {
-    background-image: url(settingsBtnOff.png);
-}
-.settingsBtnOff:hover {
-    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(settingsBtnOff.png);
-}
-
-.settingsBtnOn {
-    background-image: url(settingsBtnOn.png);
-}
-.settingsBtnOn:hover {
-    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(settingsBtnOn.png);
-}
-
-.show {
-    display: block;
-}
-
-.volume {
-    width: 50px;
-    height: 4px;
-    accent-color: rgb(214, 87, 87);
-    
-}
-
-.wideScreen {
-    background-image: url(wideScreen.png);
-}
-.wideScreen:hover {
-    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(wideScreen.png);
-}
-
-
-.flex{
+ 
+.flex {
     display: flex;
     align-items: center;
     justify-content: space-between; 
 }
 
-.leftContainer{
+.leftContainer {
     flex-shrink:0;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -132,16 +50,14 @@
     margin-right: 3px;
 }
 
-.rightContainer{
+.rightContainer {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
-
 }
 
 .rightContainer > * {
     margin-right: 3px;
-
 }
 
 

@@ -9,42 +9,46 @@ import { selectScreenSize } from '../panScreenSize/panScreenSizeSlice'
 
 
 export function HeaderApp() {
+  const {
+    centralContainer,
+    entryBtn,
+    hide,
+    leftContainer,
+    logo,
+    mainContainer,
+    prompt,
+    rightContainer,
+    settingsBtn,
+    sideBarBtn,
+  } = styles
   const navigate = useNavigate()
-  const [settingsPromptClass, setSettingsPromptClass] = useState(styles.hide);
-  const showSettingsPrompt = () =>  setSettingsPromptClass(styles.prompt);
-  const hideSettingsPrompt = () =>  setSettingsPromptClass(styles.hide);
+  const [settingsPromptClass, setSettingsPromptClass] = useState(hide);
+  const showSettingsPrompt = () =>  setSettingsPromptClass(prompt);
+  const hideSettingsPrompt = () =>  setSettingsPromptClass(hide);
   const screenSize = useSelector(selectScreenSize)
   const calcContainerStyle=()=>{
     if (screenSize==='smallScreen' || screenSize=== 'bigScreen') {return mainContainer}
     if (screenSize==='fullScreen') {return hide}
   }
-
-  const {
-    mainContainer,
-    hide,
-  } = styles
-
+  const reload = () => {
+    navigate( '/' )
+    window.location.reload()
+  }
   return (
     <div className={calcContainerStyle()} >
-
-      <div  id = 'leftContainer' className={styles.leftContainer} >
-        <button className={styles.sideBarBtn}> </button>
-        <img src={logoYou} alt='logoYT' className={styles.logo} onClick={()=>navigate( '/' )}/>
+      <div  id = 'leftContainer' className={leftContainer} >
+        <button className={sideBarBtn}> </button>
+        <img src={logoYou} alt='logoYT' className={logo} onClick={reload}/>
       </div>
-
-      <div id='centralContainer' className={styles.centralContainer} >
+      <div id='centralContainer' className={centralContainer} >
         <Search/>
       </div>
-
-      <div id='rightContainer' className={styles.rightContainer} >
-        <button className={styles.settingsBtn}
-                onMouseOver={showSettingsPrompt}
-                onMouseLeave={hideSettingsPrompt}>
+      <div id='rightContainer' className={rightContainer} >
+        <button className={settingsBtn} onMouseOver={showSettingsPrompt} onMouseLeave={hideSettingsPrompt}>
           <div className={settingsPromptClass}> Настройки </div>
         </button>
-        <button className={styles.entryBtn}></button>
+        <button className={entryBtn}></button>
       </div>
-
     </div>
   );
 }

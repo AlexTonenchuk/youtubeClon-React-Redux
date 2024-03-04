@@ -2,25 +2,24 @@ import React from "react";
 import styles from './btnBigScreen.module.css'
 import { useSelector, useDispatch } from "react-redux";
 import { setScreenSize, selectScreenSize } from "../panScreenSize/panScreenSizeSlice";
+import { setSpecifiedTime, selectCurrentTime } from "../videoList/videoListSlice"
 
-// Эта кнопка вынесена отдельным компонентом т.к.
-// она переключает размер экрана для любого видео глобально
-export function BtnBigScreen(){
+
+export function BtnBigScreen(props){
+  const id = props.id
   const dispatch = useDispatch()
-  const screenSize = useSelector( selectScreenSize )
-
+  const screenSize =  useSelector( selectScreenSize )
+  const currentTime = useSelector( (state)=> selectCurrentTime(state, id) )
   const changeScreenSize =()=> {
-    if (screenSize==='bigScreen'){
-      dispatch(setScreenSize('smallScreen'))
-    } else if (screenSize==='smallScreen'){
-        dispatch(setScreenSize('bigScreen'))
-    }
+    dispatch( setSpecifiedTime({id: id, specifiedTime: currentTime}))
+    if (screenSize==='bigScreen')   { dispatch(setScreenSize('smallScreen')) } 
+    if (screenSize==='smallScreen') { dispatch(setScreenSize('bigScreen')) }
   }
-
+  
   return (
     <button
       id='btnScreenSize'
-      className={screenSize==='smallScreen' ? styles.largeRectangle : styles.smallRectangle}
+      className={ screenSize==='smallScreen' ? styles.largeRectangle : styles.smallRectangle}
       onClick={ changeScreenSize }       
     >
     </button>

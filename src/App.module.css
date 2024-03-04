@@ -1,8 +1,4 @@
-.container {
-    border: 0px solid red;
-    position: relative;
 
-}
 
 .flex {
     display: flex;
@@ -17,6 +13,11 @@ div {
 
 .mainContainer {
     position: relative;
+    max-width: 1280px;
+    min-width: 520px;
+    width: 98vw;
+    border: 3px solid rgb(241, 94, 205);
+
 }
 
 

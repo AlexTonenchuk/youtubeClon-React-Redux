@@ -1,38 +1,39 @@
-.subscribe {
-    padding: 0;
-    margin: 0;
-    object-fit: contain;
-    border-radius: 35px;
-    border: 1px dashed rgba(255, 0, 0, 0.5);
 
-}
 
 .buttons {
     padding: 0;
-    margin: 0;
+    margin-left: 20px;
     object-fit: contain;
     border-radius: 35px;
     border: 1px dashed rgba(255, 0, 0, 0.459);
-
 }
 
-.forSmallScreen {
+.canalStyle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.containerForBigScreen {
+    display: inline-block;
+    width: calc(100% - 400px);
+    min-width: 420px;
+    background-color: white;
+    position: relative;
+    border: 0px solid rgb(156, 24, 145);
+    vertical-align: top;
+}
+
+.containerForSmallScreen {
     width: 100%;
     background-color: white;
     position: relative;
-    top: -50px;
-    border: 0px solid rgb(184, 62, 62);
+    top: -10px;
+    border: 0px solid rgb(156, 24, 127);
 }
 
-.forBigScreen {
-    width: 65%;
-    background-color: white;
-    position: relative;
-    top: -50px;
-    border: 0px solid rgb(184, 62, 62);
-}
-
-.comments {
+ .comments {
     width: 100%;
     padding: 0;
     margin: 0;
@@ -40,27 +41,31 @@
     object-fit: cover;
     border-radius: 5px;
     border: 1px dashed rgba(255, 0, 0, 0.459);
-
 }
 
 .description {
-    width: 95%;
+    width: 100%;
     border-radius: 5px;
     background-color: rgb(238, 238, 238);
-    padding: 16px;
     margin-top: 10px;
     border: 1px dashed rgba(255, 0, 0, 0.459);
-
 }
 
-.flex{
+.inlinelock {
+    display: inline-block;
+}
+
+.flex {
     display: flex;
-    justify-content:space-between;
+    justify-content:flex-start;
+    flex-wrap: wrap;
 }
 
 .round {
+    display: inline-block;
     width: 40px;
     height: 40px;
+    margin-right: 10px;
     border: 1px solid rgba(228, 228, 228, 0.144);
     border-radius: 20px;
     padding: 0;
@@ -75,8 +80,6 @@
     background-image: linear-gradient(#cccccc3b, #cccccc3b), url(round.png);
 }
 
-
-
 .nameStyle {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
@@ -84,11 +87,11 @@
     text-transform: uppercase;
 }
 
-.canalStyle {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    text-transform: uppercase;
+.subscribe {
+    padding: 0;
+    margin-left: 20px;
+    object-fit: contain;
+    border-radius: 35px;
+    border: 1px dashed rgba(255, 0, 0, 0.5);
 }
-
 

@@ -1,4 +1,3 @@
-
 .iconField {
     width: 35px;
     height: 30px;
@@ -18,7 +17,6 @@
     margin-top: auto;
     margin-bottom: auto;
 }
-
 
 .settingsMenu {
     padding: 5px;
@@ -48,7 +46,6 @@
     position: relative;
     margin-top: auto;
     margin-bottom: auto;
-
 }
 
 .dontWork{
@@ -56,7 +53,6 @@
     margin-bottom: 3px;
     cursor: auto;
 }
-
 
 /* Иконки */
 .btnOffIcon {

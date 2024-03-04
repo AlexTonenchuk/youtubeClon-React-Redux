@@ -37,7 +37,4 @@ export const selectCurrentFilter = createSelector(
   (state) => state,
   state => state.filters.currentFilter,
 );
-
-
-
-  
+ 

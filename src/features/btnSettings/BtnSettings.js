@@ -12,25 +12,18 @@ export function BtnSettings () {
     if (visibleMenu === 'nothing')  { dispatch(setSettingsMenu('settingsMenu')) }
     if (visibleMenu !== 'nothing')  { dispatch(setSettingsMenu('nothing')) }
   }
-  const putSettingsMenuComponent =()=> {
-    if (visibleMenu === "nothing")        { return false }
-    if (visibleMenu === "settingsMenu")   { return <SettingsMenu/> }
-    if (visibleMenu === "speedMenu")      { return <SpeedMenu/> }
-  }
   const {
-    iconField,
     offIcon,
     onIcon,
     settingsMenuContainer,
   } = styles
-  // RETURN:
+  
   return (
     <div>
-      <div  className={ iconField+' '+(visibleMenu === 'nothing' ? offIcon : onIcon) }
-            onClick={ toggleBtn }>
-      </div>
+      <button  className={ visibleMenu === 'nothing' ? offIcon : onIcon } onClick={ toggleBtn }>   </button>
       <div className={ settingsMenuContainer }>
-        { putSettingsMenuComponent() }
+        { visibleMenu === "settingsMenu" ? <SettingsMenu/> : false }
+        { visibleMenu === "speedMenu" ? <SpeedMenu/> : false }
       </div>
     </div>
   )

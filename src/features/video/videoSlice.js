@@ -3,23 +3,25 @@
   createSelector 
 } from '@reduxjs/toolkit';
 
-const initialState = undefined 
+const initialState = {currentId: undefined} 
 
-export const screenSizeSlice = createSlice({
-  name: 'currentVideoId',
+export const videoSlice = createSlice({
+  name: 'video',
   initialState,
   reducers: {
-    setScreenSize: (state, action) => action.payload,
+    setCurrentId: (stateSlice, action) => {
+      stateSlice.currentId = action.payload
+    },
   }
 });
 
-export default screenSizeSlice.reducer
+export default videoSlice.reducer
 
 export const { 
-setScreenSize
-} = screenSizeSlice.actions;
+  setCurrentId
+} = videoSlice.actions;
 
-export const selectScreenSize = createSelector(
-(state) => state,
-(state) => state.screenSize
-) */
+export const selectCurrentId = createSelector(
+  (state) => state.video,
+  (video) => video.currentId
+)  */

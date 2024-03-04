@@ -8,7 +8,7 @@
     color:aliceblue;
 }
 
-.conteiner {
+.conteinerClass {
     display: inline-block;
     overflow: hidden;
     overflow-y: hidden;
@@ -16,7 +16,7 @@
     width: 600px;
 }
 
-.conteiner button {
+.conteinerClass button {
     height: 32px;
     margin-left: 6px;
     margin-right: 6px;
@@ -27,7 +27,7 @@
     padding-right: 12px;
 }
 
-.filters {
+.filtersClass {
     display: inline-block;
     position: relative;
     margin-left: calc( (100% - 700px)*0.5);
@@ -64,7 +64,7 @@
     background-image: linear-gradient(#cccccc3b, #cccccc3b), url(back.png);
 }
 
-.promptLeft{
+.promptLeft {
     position: absolute;
     top: 70px;
     left: 10px;
@@ -116,7 +116,7 @@
     background-image: linear-gradient(#cccccc3b, #cccccc3b);
 }
 
-.wrapStyle {
+.wrapClass {
     width: max-content;
     margin: 5px;
     transition: margin-left 0.3s;

@@ -1,31 +1,8 @@
 .durationVideo {
-    border: 1px solid rgba(59, 84, 194, 0.089);
+    border: 0px solid rgba(59, 84, 194, 0.089);
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(168, 164, 164);
     width: max-content;
     height: max-content;
-    border-radius: 4px;
     font-size: 14px;
-    color: rgb(26, 26, 26);
+    color: rgb(230, 230, 230);
 }
-
-/* .durationVideo {
-    border: 1px solid rgba(59, 84, 194, 0.089);
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 3px;
-
-    background-color: rgb(29, 29, 29);
-    position: absolute;
-    width: max-content;
-    bottom: 6px;
-    right: 3px;
-    border-radius: 4px;
-    font-size: 14px;
-    color: rgb(224, 224, 224);
-}
- */
-
-
-
-
- 

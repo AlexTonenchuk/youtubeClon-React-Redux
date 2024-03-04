@@ -54,7 +54,6 @@
     width: calc(100% - 180px);
     border: 0px;
     border: 0px solid #2202af;
-
 }
 
 .inputStyle:focus {
@@ -111,7 +110,6 @@
     background-size: auto auto;
     background-position: center;
     cursor: pointer;
-    
 }
 
 .searchStyle {
@@ -163,5 +161,4 @@
     opacity: 0.95;
     font-size: 12px;
     text-align: center;
-
 }

@@ -53,11 +53,6 @@ export const videoListSlice = createSlice({
       const id = action.payload
       state.entities[id].isSubtitles = !state.entities[id].isSubtitles
     },
-
-
-
-    
-
   }
 });
 
@@ -89,7 +84,6 @@ export const selectCategories = createSelector(
   (state, id) => id,
   (state, id) => state.videoList.entities[id].categories
 )
-
 
 export const selectCreatDate = createSelector(
   (state) => state,
@@ -138,6 +132,13 @@ export const selectPlayed = createSelector(
   (state, id) => state.videoList.entities[id].played
 )
 
+//получаем постер
+export const selectPoster = createSelector(
+  (state, id) => state,
+  (state, id) => id,
+  (state, id) => state.videoList.entities[id].poster
+)
+
 //получаем  время на которое хотим перемотать видео
 export const selectSpecifiedTime = createSelector(
   (state, id) => state,
@@ -165,21 +166,9 @@ export const selectVolume = createSelector(
   (state, id) => state.videoList.entities[id].volume
 )
 
-
-
-
-
-
-
 //получаем содержимое субтитра
 export const selectSubtitles = createSelector(
   (state, id) => state,
   (state, id) => id,
   (state, id) => state.videoList.entities[id].subtitles
 )
-
-
-
-
-
-

@@ -6,9 +6,8 @@ import styles from './videoList.module.css'
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { selectScreenSize } from "../panScreenSize/panScreenSizeSlice";
-import { selectSearch, setSearch } from '../search/searchSlice';
+import { selectSearch } from '../search/searchSlice';
 import { useEffect } from 'react';
-import { selectCategories } from './videoListSlice';
 import { selectCurrentFilter } from '../filters/filtersSlice';
 import { setFilter } from '../filters/filtersSlice';
 
@@ -20,7 +19,6 @@ export function VideoList (props) {
   const screenSize =  useSelector( selectScreenSize)
   const search = useSelector(selectSearch)
   const filter = useSelector(selectCurrentFilter)
-
   // обнуление поля поиска в глобальном стейте
   // после выполнения поиска
   useEffect( ()=> {
@@ -28,24 +26,21 @@ export function VideoList (props) {
       dispatch( setFilter('Все'))
     }
   })
-
   const {
     inMain,
     inMainFiltred,
-    inRightSide,
-    underBigScreenVideo,
-    underFullScreenVideo
+    listInSmallScreenVideo,
+    listInBigScreenVideo,
+    listInFullScreenVideo
   } = styles
-
   // !!! похорошему бы переделать в switch !!!
-  const calcStyle =()=> {
+  const calcContainerStyle =()=> {
     if (location==='inMain' && !search)                         { return inMain } 
     if (location==='inMain' && search)                          { return inMainFiltred } 
-    if (location==="inVideoPage" && screenSize==='smallScreen') { return inRightSide }
-    if (location==="inVideoPage" && screenSize==='bigScreen')   { return underBigScreenVideo }
-    if (location==="inVideoPage" &&  screenSize==='fullScreen') { return underFullScreenVideo }
+    if (location==="inVideoPage" && screenSize==='smallScreen') { return listInSmallScreenVideo }
+    if (location==="inVideoPage" && screenSize==='bigScreen')   { return listInBigScreenVideo }
+    if (location==="inVideoPage" && screenSize==='fullScreen') { return listInFullScreenVideo }
   }
-
   // фу. фильтрации списка видео с учетом поискового запроса
   // и с учетом выбронного фильтра-жанра музыки
   const filterVideoList = ( videoList, searchWord, filter )=> {
@@ -61,7 +56,6 @@ export function VideoList (props) {
     })
     return filtredVideoList
   }
-
   const videos = filterVideoList(videoList, search, filter).map((item) => {
     const id = `${item.id}`
     if ( id !== urlId ){
@@ -81,7 +75,7 @@ export function VideoList (props) {
   });
 
   return (
-    <div className={calcStyle()}>
+    <div className={calcContainerStyle()}>
       {videos}
     </div>
   )

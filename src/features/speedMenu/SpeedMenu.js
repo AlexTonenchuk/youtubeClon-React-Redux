@@ -39,10 +39,8 @@ export function SpeedMenu () {
       ) 
     }
   })
-  // RETURN
   return (
-    <div className={speedMenu} 
-          onClick={changeSpeed}>
+    <div className={speedMenu} onClick={changeSpeed}>
       <div id='back' key='back' className={rowField+' '+firstRow}> {'< Скорость воспроизведения'} </div>
       { speeds }
     </div>

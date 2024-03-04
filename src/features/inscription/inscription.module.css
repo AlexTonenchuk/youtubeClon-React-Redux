@@ -9,9 +9,7 @@
   margin-right: auto;
   background-color: rgb(97, 97, 97);
   color: aliceblue;
-
-
-  }
+}
 
 .hide {
   display: none;
@@ -32,8 +30,6 @@
   background-color: rgb(61, 61, 61);
   padding: 20px;
   box-shadow: 0 15px 15px 0 rgb(19, 19, 19);
-
-  
 }
 
 .ok {

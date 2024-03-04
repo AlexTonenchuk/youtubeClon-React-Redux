@@ -1,10 +1,8 @@
 .centralContainer {
-    width: 40vw;
+    width: 40%;
     min-width: 320px;
     position: relative;
-    height: 50px;
     border: 0px;
-    margin-right: 0vw;
     border: 0px solid red;
 }
 
@@ -14,7 +12,7 @@
     border-radius: 36px;
     border: 1px solid #cccccc;
     padding: 0;
-    margin-right: 30px;
+    margin-right: 20px;
     background-color: white;
     background-image: url(entry.png);
     background-repeat: no-repeat;
@@ -40,14 +38,18 @@
 .leftContainer {
     display: flex;
     align-items: center;
-    margin-right: 30px;
 }
 
 .mainContainer {
     display: flex;
     align-items: center;
     justify-content:space-between;
-    max-width: 1240px;
+    max-width: 1280px;
+    min-width: 520px;
+    width: 98vw;
+    border: 0px solid red;
+    position: relative;
+    margin-bottom: 3px;
 }
 
 .prompt {
@@ -66,7 +68,6 @@
 .rightContainer {
     display: flex;
     align-items: center;
-    margin-left: 30px;
     border: 1px dashed rgba(255, 0, 0, 0.507);
 }
 
@@ -93,7 +94,7 @@
     width: 40px;
     border-radius: 50%;
     padding: 0;
-    margin-left: 30px;
+    margin-left: 20px;
     background-image: url(sideBarBtn.png);
     background-repeat: no-repeat;
     background-size: 150%;

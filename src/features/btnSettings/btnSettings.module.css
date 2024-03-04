@@ -1,16 +1,3 @@
-.iconField {
-    width: 35px;
-    height: 30px;
-    border: 1px solid rgba(228, 228, 228, 0.144);
-    border-radius: 1px;
-    padding: 0;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: rgb(7, 7, 7);
-    cursor:pointer;
-    position: relative;
-}
-
 .settingsMenuContainer {
     position: absolute;
     top: 100px;
@@ -18,16 +5,10 @@
     width: max-content;
 }
 
-/* Иконки */
 .offIcon {
     background-image: url(settingsBtnOff.png);
 }
-.offIcon:hover {
-    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(settingsBtnOff.png);
-}
+
 .onIcon {
     background-image: url(settingsBtnOn.png);
-}
-.onIcon:hover {
-    background-image: linear-gradient(#cccccc3b, #cccccc3b), url(settingsBtnOn.png);
 }

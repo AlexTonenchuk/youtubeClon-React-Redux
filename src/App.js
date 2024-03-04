@@ -5,12 +5,12 @@ import { VideoList } from './features/videoList/VideoList';
 import { Sidebar } from './features/sidebar/Sidebar';
 import { HashRouter, Routes, Route  } from 'react-router-dom';
 import styles from './App.module.css';
-import { Video } from './features/video/Video';
 import { Inscription } from './features/inscription/Inscription';
+import { VideoPage } from './features/videoPage/VideoPage';
 
 function App() {
-
   return (
+    // HashRouter вместо BrouesrRouter чтобы роутинг работал на gh-pages
     <HashRouter>
       <Inscription/>
       <Routes>
@@ -18,7 +18,7 @@ function App() {
           exact
           path="/" 
           element = {
-            <div>
+            <div className = {styles.mainContainer}>
               <HeaderApp/>
               <Filters/>
               <Sidebar/>
@@ -26,21 +26,7 @@ function App() {
             </div> 
           } 
         />
-
-        <Route 
-          path = "/video/:id" 
-          element = { 
-            <div className = {styles.mainContainer} >
-              <HeaderApp/>
-              <div className={styles.container}>
-                <Video location = 'inVideoPage' />
-                <VideoList location = 'inVideoPage' />
-              </div>
-              
-            </div>
-          }
-        />
-
+        <Route path = "/video/:id"  element = { <VideoPage/> } />
       </Routes>
     </HashRouter>
   );

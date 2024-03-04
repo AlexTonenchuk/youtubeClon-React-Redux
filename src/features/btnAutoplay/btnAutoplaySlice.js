@@ -17,7 +17,7 @@ export default autoplaySlice.reducer
 
 export const { 
   setAutoplay
- } = autoplaySlice.actions;
+} = autoplaySlice.actions;
   
 export const selectAutoplay = createSelector(
   (state) => state,

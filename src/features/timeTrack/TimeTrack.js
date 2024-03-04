@@ -27,7 +27,6 @@ export function TimeTrack (props) {
     const width = e.currentTarget.getBoundingClientRect().width
     const time = Math.floor( (e.clientX-left)*duration/width )
     dispatch( setSpecifiedTime({id, specifiedTime:time}) )
-
   }
   //обработчик меняет видимость всплывающего окна, меняет его координату, 
   // меняет значение внутри него в соответствии с позицией курсора на трэке
@@ -51,14 +50,17 @@ export function TimeTrack (props) {
       className = {styles.track}
       onClick = {fastForward}
       onMouseOut = {hideTimePopup}
-      onMouseMove = {moveTimePopup}  >
+      onMouseMove = {moveTimePopup}  
+    >
       <div 
         className={styles.red}
-        style={{width: currentTime*100/duration + '%' }}   >
+        style={{width: currentTime*100/duration + '%' }}   
+      >
       </div>
       <div 
         className = {styles.popup +' '+ popupState.visibility}
-        style={{left:popupState.left}}    >
+        style={{left:popupState.left}}    
+      >
         {popupState.timeInPopup}
       </div>
     </div>

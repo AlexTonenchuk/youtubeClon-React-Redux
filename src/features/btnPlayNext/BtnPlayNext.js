@@ -1,20 +1,23 @@
 import React from "react";
 import styles from './btnPlayNext.module.css'
-import { useDispatch } from "react-redux";
-import { setPlayNext} from "./btnPlayNextSlice";
-
-// Эта кнопка вынесена отдельным компонентом т.к.
-// она работает для текущего видео 
-export function BtnPlayNext(){
-  const dispatch = useDispatch()
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom'
+import { togglePlay, selectPlayed } from "../videoList/videoListSlice";
 
 
+export function BtnPlayNext(props){
+  const id = props.id
+  const dispatch =  useDispatch()
+  const navigate =  useNavigate()
+  const played =    useSelector( (state)=> selectPlayed(state, id) )
+  const onclick =()=> {
+    if (played) { 
+      dispatch( togglePlay(id) ) 
+    }
+    navigate( '/video/'+(Number(id)+1) )
+  }
   return (
-    <button
-      id='btnPlayNext'
-      className={styles.btnPlayNext}
-      onClick={ ()=> dispatch(setPlayNext(true)) }       
-    >
+    <button id='btnPlayNext' className={styles.btnPlayNext} onClick={ onclick } >
     </button>
   )
 }

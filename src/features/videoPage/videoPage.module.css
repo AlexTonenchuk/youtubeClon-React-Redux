@@ -1,0 +1,19 @@
+.container {
+    position: relative;
+}
+
+.containerWhenSmallScreen {
+    width: 62%;
+    min-width: 530px;
+    display: inline-block;
+    border: 0px solid rgb(4, 0, 255);
+    position: relative;
+    vertical-align: top;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.containerWhenBigScreen {
+    width: 99%;
+    border: 0px solid rgb(255, 217, 0); 
+}

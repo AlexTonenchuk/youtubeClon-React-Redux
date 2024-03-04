@@ -2,8 +2,6 @@ import React from 'react'
 import styles from './volume.module.css'
 import { useSelector, useDispatch } from "react-redux";
 import { 
-    muteOn, 
-    muteOff,
     toggleMute,
     setVolume,
     selectVolume,
@@ -12,7 +10,6 @@ import {
   
 
 export function Volume (props) {
-
     const id = props.id
     const dispatch = useDispatch()
     const volume = useSelector( (state)=> selectVolume(state, id) )
@@ -21,22 +18,21 @@ export function Volume (props) {
         const volume = e.target.value/10
         dispatch( setVolume({id, volume}) )
     }
-
     const {
+        container,
         sound,
         soundOff,
         soundOn,
+        volumeClass,
     } = styles
-
     return (
-        <div className={styles.container}>
+        <div className={container}>
             <button 
                 className = { sound+' '+(isMute === true ? soundOff : soundOn) }
                 onClick = { ()=> dispatch( toggleMute(id) ) }          >
             </button>
-
             <input 
-                className = { styles.volume }
+                className = { volumeClass }
                 type="range" 
                 id="volume" 
                 name="volume"

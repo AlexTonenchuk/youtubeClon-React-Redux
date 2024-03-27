@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/youtubeClon-React-Redux/static/css/main.306e0b10.css",
-    "main.js": "/youtubeClon-React-Redux/static/js/main.0089e53d.js",
+    "main.css": "/youtubeClon-React-Redux/static/css/main.449da1f5.css",
+    "main.js": "/youtubeClon-React-Redux/static/js/main.b57fffb0.js",
     "static/media/Nirvana - You Know Youre Right.mp4": "/youtubeClon-React-Redux/static/media/Nirvana - You Know Youre Right.7958e0ac157963449edb.mp4",
     "static/media/Feeder - Just A Day.mp4": "/youtubeClon-React-Redux/static/media/Feeder - Just A Day.b870ab64b20debf61b8b.mp4",
     "static/media/Green Day - Wake Me Up When September Ends.mp4": "/youtubeClon-React-Redux/static/media/Green Day - Wake Me Up When September Ends.beb596eb7594f12f4636.mp4",
@@ -25,15 +25,23 @@
     "static/media/Kiss - I Was Made For Lovin You.png": "/youtubeClon-React-Redux/static/media/Kiss - I Was Made For Lovin You.dd9118db02c5483b2da3.png",
     "static/media/Iron Maiden - The Trooper.png": "/youtubeClon-React-Redux/static/media/Iron Maiden - The Trooper.4ec7419afa328963c74f.png",
     "static/media/comments.png": "/youtubeClon-React-Redux/static/media/comments.3d7a21d97a8963dcf2b4.png",
+    "static/media/Feeder - Just A Day.wtt": "/youtubeClon-React-Redux/static/media/Feeder - Just A Day.3c50b3a91bdfc62c33d6.wtt",
+    "static/media/Korn - Word Up.wtt": "/youtubeClon-React-Redux/static/media/Korn - Word Up.1027c32962a5e279d3d2.wtt",
+    "static/media/Nirvana - You Know Youre Right.wtt": "/youtubeClon-React-Redux/static/media/Nirvana - You Know Youre Right.0b36b596a0e1b9bdd3cc.wtt",
+    "static/media/Ill Nino - What Comes Around.wtt": "/youtubeClon-React-Redux/static/media/Ill Nino - What Comes Around.5ebf00f7b28459241a95.wtt",
+    "static/media/Limp Bizkit - Break Stuff.wtt": "/youtubeClon-React-Redux/static/media/Limp Bizkit - Break Stuff.2033e648efd67e6e5182.wtt",
+    "static/media/Green Day - Wake Me Up When September Ends.wtt": "/youtubeClon-React-Redux/static/media/Green Day - Wake Me Up When September Ends.79fd972f31ec4e57019e.wtt",
     "index.html": "/youtubeClon-React-Redux/index.html",
-    "static/media/Ozzy Osbourne - I dont wanna stop.wtt": "/youtubeClon-React-Redux/static/media/Ozzy Osbourne - I dont wanna stop.90d4638642b4e8d45a83.wtt",
-    "static/media/Metallica - Whiskey In The Jar.wtt": "/youtubeClon-React-Redux/static/media/Metallica - Whiskey In The Jar.92169f77ab4a7de549a7.wtt",
-    "static/media/Iron Maiden - The Trooper.wtt": "/youtubeClon-React-Redux/static/media/Iron Maiden - The Trooper.d4314d668e1f2d8a7c63.wtt",
-    "main.306e0b10.css.map": "/youtubeClon-React-Redux/static/css/main.306e0b10.css.map",
-    "main.0089e53d.js.map": "/youtubeClon-React-Redux/static/js/main.0089e53d.js.map"
+    "static/media/Iron Maiden - The Trooper.wtt": "/youtubeClon-React-Redux/static/media/Iron Maiden - The Trooper.c825797383f4454c1aa2.wtt",
+    "static/media/Ozzy Osbourne - I dont wanna stop.wtt": "/youtubeClon-React-Redux/static/media/Ozzy Osbourne - I dont wanna stop.10b3a83d9a1856ae5959.wtt",
+    "static/media/Kiss - I Was Made For Lovin You.wtt": "/youtubeClon-React-Redux/static/media/Kiss - I Was Made For Lovin You.b0369650efd35e58c32a.wtt",
+    "static/media/Limp Bizkit - Nookie.wtt": "/youtubeClon-React-Redux/static/media/Limp Bizkit - Nookie.9c9c44f8c7098518653f.wtt",
+    "static/media/Metallica - Whiskey In The Jar.wtt": "/youtubeClon-React-Redux/static/media/Metallica - Whiskey In The Jar.c2b3968731c2150fa88c.wtt",
+    "main.449da1f5.css.map": "/youtubeClon-React-Redux/static/css/main.449da1f5.css.map",
+    "main.b57fffb0.js.map": "/youtubeClon-React-Redux/static/js/main.b57fffb0.js.map"
   },
   "entrypoints": [
-    "static/css/main.306e0b10.css",
-    "static/js/main.0089e53d.js"
+    "static/css/main.449da1f5.css",
+    "static/js/main.b57fffb0.js"
   ]
 }

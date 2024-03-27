@@ -122,6 +122,7 @@ export function Video (props) {
     containerForBigScreen,
     containerForFullScreen,
     containerInListInVideopage,
+    subtitlesClass,
   } = styles
   // БЛОК УПРАВЛЕНИЯ СТИЛЯМИ <Video/> (похорошему бы переделать в switch):
   const calcVideoStyle =()=> {
@@ -167,8 +168,14 @@ export function Video (props) {
           onEnded = { onEnded }
           poster = { poster }  >
           <source src={video}/>
-          { isSubtitles === true ? 
-            <track kind = 'subtitles' src = { subtitles } srcLang="ru" default label="Русский"/>
+          { isSubtitles === true ?
+              <track 
+                className={subtitlesClass}
+                style={{color:"red"}}
+                kind = 'subtitles' 
+                src = { subtitles }
+                srcLang="ru" 
+                default label="Русский"/>
             : false
           }
         </video>

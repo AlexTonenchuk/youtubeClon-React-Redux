@@ -95,3 +95,8 @@
     object-fit: cover;
 }
 
+.subtitlesClass {
+    border: 3px solid rgb(11, 211, 238);
+
+}
+

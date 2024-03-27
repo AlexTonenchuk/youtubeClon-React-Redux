@@ -3,6 +3,8 @@
     background-color: rgb(167, 167, 167);
     height: 5px;
     margin-bottom: 5px;
+    position: relative;
+
 }
 
 .red {
@@ -13,8 +15,11 @@
 .popup {
     width: max-content;
     height: max-content;
-    background-color: aqua;
-    position: absolute;
+    color: rgb(255, 255, 255);
+    font-weight: 900;
+    font-size: 12px;
+    background-color: rgb(33, 34, 34);
+    position: relative;
     top: -30px;
 }
 

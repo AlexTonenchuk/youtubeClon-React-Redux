@@ -44,6 +44,7 @@ export function Filters () {
     if (btn==='leftBtn'){setleftBtnInFocus(false)}
     if (btn==='rightBtn'){setrightBtnInFocus(false)}
   }
+  const onclick = (e)=> dispatch(setFilter(e.target.id))
   const {
     black,
     conteinerClass,
@@ -72,7 +73,7 @@ export function Filters () {
         id={filter} 
         key={filter} 
         className={filterBtn+' '+isBlack } 
-        onClick={(e)=> dispatch(setFilter(e.target.id))} 
+        onClick={onclick} 
       >
         {filter} 
       </button>

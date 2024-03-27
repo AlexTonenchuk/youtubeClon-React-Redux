@@ -73,8 +73,9 @@ export function Search(){
           className = { textInput ? closeBtn : hide }
           type="submit"
           onClick={ (e)=> {
-            e.preventDefault(); 
+            e.preventDefault()
             setTextInput('')
+            dispatch(setSearch(false))
           }}
         > 
         </button>

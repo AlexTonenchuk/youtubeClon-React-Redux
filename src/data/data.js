@@ -14,6 +14,16 @@ import illNinoWhatComesAround from './Ill Nino - What Comes Around.mp4'
 import ironMaidenTheTrooper_subtitles from './Iron Maiden - The Trooper.wtt'
 import ozzyOsbourneIdontWannaStop_subtitles from './Ozzy Osbourne - I dont wanna stop.wtt'
 import metallicaWhiskeyInTheJar_subtitles from './Metallica - Whiskey In The Jar.wtt'
+import kissIWasMadeForLovinYou_subtitles from './Kiss - I Was Made For Lovin You.wtt'
+import limpBizkitBreakStuff_subtitles from './Limp Bizkit - Break Stuff.wtt'
+import limpBizkitNookie_subtitles from './Limp Bizkit - Nookie.wtt'
+import kornWordUp_subtitles from './Korn - Word Up.wtt'
+import feederJustAday_subtitles from './Feeder - Just A Day.wtt'
+import nirvanaYouKnowYoureRight_subtitles from './Nirvana - You Know Youre Right.wtt'
+import greenDayWakeMeUpWhenSeptemberEnds_subtitles from './Green Day - Wake Me Up When September Ends.wtt'
+import illNinoWhatComesAround_subtitles from './Ill Nino - What Comes Around.wtt'
+ 
+
 
 
 import ironMaidenTheTrooper_poster from './Iron Maiden - The Trooper.png'
@@ -72,6 +82,7 @@ export const videoList = [
     {
         id:4, 
         video: kissIWasMadeForLovinYou,
+        subtitles: kissIWasMadeForLovinYou_subtitles,
         name: 'Kiss - I Was Made For Lovin You',
         poster: kissIWasMadeForLovinYou_poster,
         canal:'Metall', 
@@ -109,6 +120,7 @@ export const videoList = [
     {
         id:6, 
         video: limpBizkitBreakStuff,
+        subtitles: limpBizkitBreakStuff_subtitles,
         name: 'Limp Bizkit - Break Stuff', 
         poster: limpBizkitBreakStuff_poster,
         canal:'RapCor', 
@@ -127,6 +139,7 @@ export const videoList = [
     {
         id:7, 
         video: limpBizkitNookie,
+        subtitles: limpBizkitNookie_subtitles,
         name: 'Limp Bizkit - Nookie',
         poster: limpBizkitNookie_poster,
         canal:'RapCor', 
@@ -145,6 +158,7 @@ export const videoList = [
     {
         id:8, 
         video: kornWordUp,
+        subtitles: kornWordUp_subtitles,
         name: 'Korn - Word Up',
         poster: kornWordUp_poster,
         canal:'Alternativ', 
@@ -163,6 +177,7 @@ export const videoList = [
     {
         id:9, 
         video: feederJustAday,
+        subtitles: feederJustAday_subtitles,
         name: 'Feeder - Just A Day',
         poster: feederJustAday_poster,
         canal:'PunkRock', 
@@ -181,6 +196,7 @@ export const videoList = [
     {
         id:10, 
         video: nirvanaYouKnowYoureRight,
+        subtitles: nirvanaYouKnowYoureRight_subtitles,
         name: 'Nirvana - You Know Youre Right',
         poster: nirvanaYouKnowYoureRight_poster,
         canal:'Alternativ', 
@@ -199,6 +215,7 @@ export const videoList = [
     {
         id:11, 
         video: greenDayWakeMeUpWhenSeptemberEnds,
+        subtitles: greenDayWakeMeUpWhenSeptemberEnds_subtitles,
         name: 'Green Day - Wake Me Up When September Ends',
         poster: greenDayWakeMeUpWhenSeptemberEnds_poster,
         canal:'PunkRock', 
@@ -217,6 +234,7 @@ export const videoList = [
     {
         id:12, 
         video: illNinoWhatComesAround,
+        subtitles: illNinoWhatComesAround_subtitles,
         name: 'Ill Nino - What Comes Around',
         poster: illNinoWhatComesAround_poster,
         canal:'Alternativ', 

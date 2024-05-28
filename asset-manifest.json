@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/youtubeClon-React-Redux/static/css/main.449da1f5.css",
-    "main.js": "/youtubeClon-React-Redux/static/js/main.b57fffb0.js",
+    "main.js": "/youtubeClon-React-Redux/static/js/main.a3c67f9f.js",
     "static/media/Nirvana - You Know Youre Right.mp4": "/youtubeClon-React-Redux/static/media/Nirvana - You Know Youre Right.7958e0ac157963449edb.mp4",
     "static/media/Feeder - Just A Day.mp4": "/youtubeClon-React-Redux/static/media/Feeder - Just A Day.b870ab64b20debf61b8b.mp4",
     "static/media/Green Day - Wake Me Up When September Ends.mp4": "/youtubeClon-React-Redux/static/media/Green Day - Wake Me Up When September Ends.beb596eb7594f12f4636.mp4",
@@ -38,10 +38,10 @@
     "static/media/Limp Bizkit - Nookie.wtt": "/youtubeClon-React-Redux/static/media/Limp Bizkit - Nookie.9c9c44f8c7098518653f.wtt",
     "static/media/Metallica - Whiskey In The Jar.wtt": "/youtubeClon-React-Redux/static/media/Metallica - Whiskey In The Jar.c2b3968731c2150fa88c.wtt",
     "main.449da1f5.css.map": "/youtubeClon-React-Redux/static/css/main.449da1f5.css.map",
-    "main.b57fffb0.js.map": "/youtubeClon-React-Redux/static/js/main.b57fffb0.js.map"
+    "main.a3c67f9f.js.map": "/youtubeClon-React-Redux/static/js/main.a3c67f9f.js.map"
   },
   "entrypoints": [
     "static/css/main.449da1f5.css",
-    "static/js/main.b57fffb0.js"
+    "static/js/main.a3c67f9f.js"
   ]
 }

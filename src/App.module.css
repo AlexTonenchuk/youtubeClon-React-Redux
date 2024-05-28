@@ -1,5 +1,3 @@
-
-
 .flex {
     display: flex;
     justify-content: left;
@@ -17,7 +15,6 @@ div {
     min-width: 520px;
     width: 98vw;
     border: 0cqh solid rgb(241, 94, 205);
-
 }
 
 

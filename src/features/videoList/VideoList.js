@@ -33,6 +33,7 @@ export function VideoList (props) {
     listInBigScreenVideo,
     listInFullScreenVideo
   } = styles
+  // ББлок управления стилями
   // !!! похорошему бы переделать в switch !!!
   const calcContainerStyle =()=> {
     if (location==='inMain' && !search)                         { return inMain } 

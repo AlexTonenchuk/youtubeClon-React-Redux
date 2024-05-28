@@ -6,7 +6,7 @@ import {
     setVolume,
     selectVolume,
     selectMute
-  } from "../videoList/videoListSlice";
+} from "../videoList/videoListSlice";
   
 
 export function Volume (props) {

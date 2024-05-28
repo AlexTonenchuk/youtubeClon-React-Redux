@@ -54,9 +54,7 @@ export function Video (props) {
     но по факту это не ошибка, это просто сообщение что загрузка оборвана
     это и нужно, т.е. вкл/выкл проигрывания будет абсолютно контролируемым процессом
     со стороны пользователя */
-    console.dir(mute)
     ref.current.volume = volume
-
     if (played === true)              { ref.current.play() } 
     if (played === false)             { ref.current.pause() }
     if (mute === true)                { ref.current.volume = 0 } 
@@ -95,10 +93,8 @@ export function Video (props) {
   }
   const onClick =()=> {
     if (location==='inListInVideoPage' || location==='inListInMain') {
-      dispatch ( setSpecifiedTime({id, specifiedTime:0}) )
-      dispatch ( writeCurrentTime({id, currentTime:0}) )
+      dispatch (playOff(urlId?urlId:2))
       dispatch (playOff(id))
-      dispatch ( muteOn(id))
     }
   }
   /* после прогрузки, в стейт перезаписываются значения, 
@@ -151,7 +147,6 @@ export function Video (props) {
     if (location==='inVideoPage' 
         && screenSize==='fullScreen')    { return containerForFullScreen  }
   }
-  // RETURN
   return (
     <div className={calcContainerStyle()}>
       <div className={screenSize==='bigScreen' ? blackBackground : ''}>

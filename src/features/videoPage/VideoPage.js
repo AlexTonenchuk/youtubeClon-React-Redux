@@ -9,11 +9,9 @@ import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
 
-
 export function VideoPage() {
   const screenSize =    useSelector( selectScreenSize )
   const id = useParams().id
-
   const {
     containerWhenSmallScreen,
     containerWhenBigScreen,
@@ -45,7 +43,6 @@ export function VideoPage() {
         </div>
         : false
       }
-
     </div>
   );
 }

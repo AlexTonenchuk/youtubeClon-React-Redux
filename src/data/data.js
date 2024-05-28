@@ -11,6 +11,7 @@ import nirvanaYouKnowYoureRight from './Nirvana - You Know Youre Right.mp4'
 import greenDayWakeMeUpWhenSeptemberEnds from './Green Day - Wake Me Up When September Ends.mp4'
 import illNinoWhatComesAround from './Ill Nino - What Comes Around.mp4'
 
+
 import ironMaidenTheTrooper_subtitles from './Iron Maiden - The Trooper.wtt'
 import ozzyOsbourneIdontWannaStop_subtitles from './Ozzy Osbourne - I dont wanna stop.wtt'
 import metallicaWhiskeyInTheJar_subtitles from './Metallica - Whiskey In The Jar.wtt'
@@ -23,8 +24,6 @@ import nirvanaYouKnowYoureRight_subtitles from './Nirvana - You Know Youre Right
 import greenDayWakeMeUpWhenSeptemberEnds_subtitles from './Green Day - Wake Me Up When September Ends.wtt'
 import illNinoWhatComesAround_subtitles from './Ill Nino - What Comes Around.wtt'
  
-
-
 
 import ironMaidenTheTrooper_poster from './Iron Maiden - The Trooper.png'
 import metallicaWhiskeyInTheJar_poster from './Metallica - Whiskey In The Jar.png'
